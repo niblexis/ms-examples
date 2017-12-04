@@ -1,0 +1,14 @@
+clarity:
+    spell-class: ".buff.ManaRegenSpell"
+    name: clarity
+    spell-icon: potion
+    description: Increase mana regeneration for a time.
+    cast-item: book
+    cooldown: 300
+    duration: 60
+    regen-mod-amt: 3
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: Your thoughts race and flow with ease!
+    str-fade: Your mind returns to normal.

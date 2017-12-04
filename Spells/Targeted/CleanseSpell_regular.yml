@@ -1,0 +1,18 @@
+cleanse:
+    spell-class: ".targeted.CleanseSpell"
+    name: cleanse
+    spell-icon: nether_star
+    description: Remove negative affects from yourself.
+    cast-item: book
+    cooldown: 60
+    remove:
+      - fire
+      - 17
+      - 19
+      - 20
+    target-self: true
+    beneficial: true
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: You cleanse yourself of negative effects.

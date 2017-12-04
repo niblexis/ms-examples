@@ -210,8 +210,6 @@ Falling-Dream_13:
            sound: entity.elder_guardian.curse
            pitch: 1.7
            volume: 100
-     variable-mods-cast:
-          - Glider_Energy 0
      can-cast-by-command: false
 
 Falling-Dream_14:

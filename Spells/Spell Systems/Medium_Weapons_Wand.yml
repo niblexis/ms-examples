@@ -1,0 +1,350 @@
+variables:
+     Mana:
+          type: player
+          min: 0
+          max: 100
+          default: 100
+          exp-bar: true
+
+predefined-items:
+     Wand:
+          type: stick
+          name: "&8Wand"
+          lore:
+               - "&7&oA wand used to cast lightweight spells."
+
+##------------------[Mana]------------------##
+
+Mana_Regen_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     spells:
+          - Mana_Regen_Dummy
+     modifiers:
+          - variableequals Mana:100 denied
+
+Mana_Regen_Dummy:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Mana +0.2
+     can-cast-by-command: false
+
+##------------------[Skills]------------------##
+
+##-----------[Blink]-----------##
+
+Wand_Blink:
+     spell-class: ".targeted.BlinkSpell"
+     cast-item: Wand
+     name: "&9Blink"
+     cooldown: 15
+     str-on-cooldown: "&9Blink &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     range: 15
+     str-cant-blink: ""
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &fBlink &9»"
+          Particles_Pos1:
+               position: pos1
+               effect: particles
+               particle-name: witchMagic
+               count: 10
+               particle-speed: 0.002
+               horiz-spread: 0.4
+               vert-spread: 0.4
+               height-offset: 1
+          Particles_Pos2:
+               position: pos2
+               effect: particles
+               particle-name: witchMagic
+               count: 10
+               particle-speed: 0.002
+               horiz-spread: 0.4
+               vert-spread: 0.4
+               height-offset: 1
+     cost:
+          - variable Mana 20
+     str-missing-reagents: "&7&oYou don't have enough mana to cast that spell."
+     can-cast-by-command: false
+
+##-----------[Mana Bolt]-----------##
+
+Wand_Mana-Bolt_Particle-Projectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     cast-item: Wand
+     name: "&9Mana Bolt"
+     cooldown: 2
+     str-on-cooldown: "&9Mana Bolt &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     projectile-velocity: 20
+     particle-name: magicCrit
+     particle-speed: 0.02
+     particle-count: 15
+     particle-horizontal-spread: 0.2
+     particle-vertical-spread: 0.2
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     spell: Wand_Mana-Bolt_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.enchantment_table.use
+               pitch: 1.6
+               volume: 1
+     cost:
+          - variable Mana 5
+     str-missing-reagents: "&7&oYou don't have enough mana to cast that spell."
+     modifiers:
+          - holdingprecise Wand required
+     can-cast-by-command: false
+
+Wand_Mana-Bolt_Pain:
+     spell-class: ".targeted.PainSpell"
+     damage: 4
+     can-cast-by-command: false
+
+##-----------[Cure]-----------##
+
+Wand_Cure:
+     spell-class: ".targeted.HealSpell"
+     cast-item: Wand
+     name: "&9Cure"
+     cooldown: 5
+     str-on-cooldown: "&9Cure &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     heal-amount: 10
+     cancel-if-full: true
+     str-max-health: "&7&oYour target already has full health."
+     target-players: true
+     str-no-target: ""
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &fCure &9»"
+          Particles:
+               position: target
+               effect: particles
+               particle-name: heart
+               count: 10
+               particle-speed: 0.002
+               horiz-spread: 0.4
+               vert-spread: 0.4
+               height-offset: 1
+          Sound_Caster:
+               position: caster
+               effect: soundpersonal
+               sound: entity.player.levelup
+               pitch: 2
+               volume: 0.3
+     cost:
+          - variable Mana 30
+     str-missing-reagents: "&7&oYou don't have enough mana to cast that spell."
+     modifiers:
+          - sneaking castinstead Wand_Cure_Self
+     can-cast-by-command: false
+
+Wand_Cure_Self:
+     spell-class: ".targeted.HealSpell"
+     cast-item: Wand
+     cancel-if-full: true
+     str-max-health: "&7&oYou already have full health."
+     cooldown: 10
+     str-on-cooldown: "&9Cure &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     target-self: true
+     heal-amount: 10
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &fCure &9»"
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9&l« &fBlack Hole &9&l»"
+          Particles:
+               position: target
+               effect: particles
+               particle-name: heart
+               count: 10
+               particle-speed: 0.002
+               horiz-spread: 0.4
+               vert-spread: 0.4
+               height-offset: 1
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.player.levelup
+               pitch: 2
+               volume: 0.3
+     cost:
+          - variable Mana 30
+     str-missing-reagents: "&7&oYou don't have enough mana to cast that spell."
+     can-cast-by-command: false
+
+##-----------[Black Hole]-----------##
+
+Wand_Black-Hole_Set_Particle-Projectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     cast-item: Wand
+     name: "&9Black Hole"
+     cooldown: 30
+     str-on-cooldown: "&9Black Hole &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     projectile-velocity: 10
+     particle-name: blockcrack_159_15
+     particle-speed: 0.02
+     particle-count: 15
+     particle-horizontal-spread: 0.2
+     particle-vertical-spread: 0.2
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     spell: Wand_Black-Hole_Pull_Particle-Projectile
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &fBlack Hole &9»"
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.enchantment_table.use
+               pitch: 0.5
+               volume: 1
+     cost:
+          - variable Mana 30
+     str-missing-reagents: "&7&oYou don't have enough mana to cast that spell."
+     can-cast-by-command: false
+
+Wand_Black-Hole_Pull_Particle-Projectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 0
+     projectile-gravity: 0
+     hug-surface: true
+     particle-name: blockcrack_159_15
+     particle-speed: 0.02
+     particle-count: 600
+     particle-horizontal-spread: 1
+     particle-vertical-spread: 1
+     max-distance: 100
+     max-duration: 10
+     stop-on-hit-ground: false
+     stop-on-hit-entity: false
+     height-from-surface: 2
+     hit-ground: false
+     hit-radius: 1
+     hit-air-during: true
+     spell-interval: 1
+     tick-interval: 1
+     special-effect-interval: 40
+     spell: Wand_Black-Hole_Pull_Forcebomb
+     effects:
+          Sound:
+               position: special
+               effect: sound
+               sound: entity.elder_guardian.ambient
+               pitch: 0.8
+               volume: 0.3
+     can-cast-by-command: false
+
+Wand_Black-Hole_Pull_Forcebomb:
+     spell-class: ".targeted.ForcebombSpell"
+     target-players: false
+     radius: 10
+     pushback-force: -5
+     max-vertical-force: 2
+     can-cast-by-command: false
+
+##-----------[Comet Stream]-----------##
+
+Wand_Comet-Stream_Multi:
+     spell-class: ".MultiSpell"
+     cast-item: Wand
+     name: "&9&lComet Stream"
+     cooldown: 150
+     str-on-cooldown: "&9&lComet Stream &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     spells:
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+          - DELAY 3
+          - Wand_Comet-Stream_Particle-Projectile
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &f&lComet Stream &9»"
+     cost:
+          - variable Mana 100
+     str-missing-reagents: "&7&oYou don't have enough mana to cast that spell."
+     can-cast-by-command: false
+
+Wand_Comet-Stream_Particle-Projectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     particle-name: smoke
+     particle-speed: 0.0002
+     particle-count: 7
+     particle-horizontal-spread: 0.2
+     particle-vertical-spread: 0.2
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     special-effect-interval: 1
+     spell: Wand_Comet-Stream_Geyser
+     effects:
+          Particles:
+               position: special
+               effect: particles
+               particle-name: flame
+               count: 1
+               particle-speed: 0.002
+               horiz-spread: 0.4
+               vert-spread: 0.4
+          Sound:
+               position: caster
+               effect: sound
+               sound: entity.firework.launch
+               pitch: 1
+               volume: 1
+     can-cast-by-command: false
+
+Wand_Comet-Stream_Geyser:
+     spell-class: ".targeted.GeyserSpell"
+     velocity: 10
+     animation-speed: 1
+     geyser-type: lava
+     damage: 3
+     effects:
+          Particles:
+               position: target
+               effect: particles
+               particle-name: lava
+               count: 10
+               particle-speed: 0.002
+               horiz-spread: 0.4
+               vert-spread: 0.4
+               height-offset: 1
+          Explosion:
+               position: target
+               effect: explosion
+     can-cast-by-command: false

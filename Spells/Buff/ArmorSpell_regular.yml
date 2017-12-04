@@ -1,0 +1,17 @@
+armor:
+    spell-class: ".buff.ArmorSpell"
+    name: armor
+    spell-icon: iron_chestplate
+    cast-item: book
+    duration: 30
+    num-uses: 15
+    helmet: gold_helmet protection_explosions:1 oxygen:1
+    chestplate: gold_chestplate protection_projectile:1
+    leggings: gold_leggings protection_fire:1
+    boots: gold_boots protection_fall:1
+    cost:
+        - mana 25
+        - gold_nugget 1
+    str-cost: 25 mana and 1 golden nugget
+    str-cast-self: You have conjured some magic armor!
+    str-has-armor: You cannot cast this spell if you are already wearing armor.

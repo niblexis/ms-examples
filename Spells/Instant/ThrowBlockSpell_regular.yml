@@ -1,0 +1,21 @@
+anvil:
+    spell-class: ".instant.ThrowBlockSpell"
+    name: anvil
+    spell-icon: anvil
+    description: Throws an anvil.
+    cast-item: blaze_rod
+    cooldown: 10
+    block-type: anvil
+    velocity: 1.0
+    vertical-adjustment: 0.5
+    rotation-offset: 0
+    fall-damage: 2.0
+    fall-damage-max: 20
+    drop-item: false
+    remove-blocks: false
+    call-target-event: true
+    check-plugins: false
+    cost:
+        - mana 25
+        - anvil
+    str-cost: 25 mana and 1 anvil

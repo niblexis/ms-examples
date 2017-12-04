@@ -1,0 +1,21 @@
+drainlife:
+    spell-class: ".targeted.DrainlifeSpell"
+    name: drainlife
+    spell-icon: ghast_tear
+    description: Drain life from your enemy and give it to you.
+    cast-item: blaze_rod
+    cooldown: 5
+    range: 15
+    take-type: health
+    take-amt: 2
+    give-type: health
+    give-amt: 2
+    animation-speed: 2
+    ignore-armor: false
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You drain life from your enemy.
+    str-no-target: No target found.

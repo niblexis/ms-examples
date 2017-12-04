@@ -1,0 +1,766 @@
+variables:
+     Flintlock_Ammo:
+          type: player
+          min: 0
+          max: 6
+          default: 6
+          exp-bar: true
+
+predefined-items:
+     Flintlock:
+          type: prismarine_shard
+          name: "&8Flintlock"
+          lore:
+               - "&7&oA flintlock that fires off bolts of energy."\
+
+##-----------[Ammo]-----------##
+
+Flintlock_Ammo_Reload_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - Flintlock_Ammo_Reload_Buff_Potion
+          - Flintlock_Ammo_Reload_Buff_Dummy
+          - DELAY 1
+          - Flintlock_Ammo_Reload
+          - Flintlock_Ammo_Reload_Multi
+          - DELAY 10
+          - Flintlock_Ammo_Reload_Buff_Clear
+     modifiers:
+          - variablelessthan Flintlock_Ammo:6 required
+     can-cast-by-command: false
+
+Flintlock_Ammo_Reload_Buff_Dummy:
+     spell-class: ".buff.DummySpell"
+     duration: 2
+     effects:
+          Particles:
+               position: buff
+               effect: particles
+               particle-name: depthsuspend
+               count: 10
+               particle-speed: 0.002
+               horiz-spread: 0.4
+               vert-spread: 0.4
+               height-offset: 1
+               effect-interval: 10
+          Sound:
+               position: buff
+               effect: soundpersonal
+               sound: entity.irongolem.step
+               pitch: 0.8
+               volume: 1
+               effect-interval: 10
+     modifiers:
+          - buffactive Flintlock_Ammo_Reload_Buff_Dummy denied
+     can-cast-by-command: false
+
+Flintlock_Ammo_Reload_Buff_Potion:
+     spell-class: ".targeted.PotionEffectSpell"
+     type: 2
+     duration: 60
+     strength: 2
+     targeted: false
+     modifiers:
+          - buffactive Flintlock_Ammo_Reload_Buff_Dummy denied
+     can-cast-by-command: false
+
+Flintlock_Ammo_Reload:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Flintlock_Ammo +0.15
+     can-cast-by-command: false
+
+Flintlock_Ammo_Reload_Buff_Clear:
+     spell-class: ".targeted.CleanseSpell"
+     target-self: true
+     remove:
+          - 2
+          - buff:Flintlock_Ammo_Reload_Buff_Dummy
+     modifiers:
+          - variableequals Flintlock_Ammo:6 required
+     can-cast-by-command: false
+
+##------------------[Skills]------------------##
+
+##-----------[Breaker Blast]-----------##
+
+Flintlock_Breaker-Blast_Particle-Projectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     cast-item: Flintlock
+     name: "&9Breaker Blast"
+     cooldown: 2
+     str-on-cooldown: "&9Breaker Blast &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     projectile-velocity: 20
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     cost:
+          - variable Flintlock_Ammo 1
+     modifiers:
+          - variableequals Flintlock_Ammo:0 castinstead Flintlock_Ammo_Reload_Multi
+          - sneaking castinstead Flintlock_Ammo_Reload_Multi
+          - buffactive Flintlock_Ammo_Reload_Buff_Dummy denied
+          - holdingprecise Flintlock required
+     can-cast-by-command: false
+
+Flintlock_Breaker-Blast_Pain:
+     spell-class: ".targeted.PainSpell"
+     damage: 5
+     can-cast-by-command: false
+
+##-----------[Cannon Burst]-----------##
+
+Flintlock_Cannon-Burst_Shell_Particle-Projectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     cast-item: Flintlock
+     cooldown: 15
+     str-on-cooldown: "&9Cannon Burst &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     projectile-velocity: 10
+     projectile-gravity: 0.5
+     particle-name: blockcrack_7
+     particle-speed: 0.0002
+     particle-count: 50
+     particle-horizontal-spread: 0.2
+     particle-vertical-spread: 0.2
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1.3
+     vertical-hit-radius: 1.3
+     spell: Flintlock_Cannon-Burst_Explode
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &fCannon Burst &9»"
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 1.1
+               volume: 1
+     cost:
+          - variable Flintlock_Ammo 4
+     modifiers:
+          - variableequals Flintlock_Ammo:0 castinstead Flintlock_Ammo_Reload_Multi
+          - buffactive Flintlock_Ammo_Reload_Buff_Dummy denied
+     str-missing-reagents: "&7&oYou don't have enough ammunition to use that ability."
+     can-cast-by-command: false
+
+Flintlock_Cannon-Burst_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 4
+     prevent-block-damage: true
+     prevent-player-damage: true
+     damage-multiplier: 0.2
+     can-cast-by-command: false
+
+
+##-----------[Rocket Propellant]-----------##
+
+Flintlock_Rocket-Propellant_Multi:
+     spell-class: ".MultiSpell"
+     cast-item: Flintlock
+     cooldown: 30
+     str-on-cooldown: "&9Rocket Propellant &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     spells:
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+          - DELAY 3
+          - Flintlock_Rocket-Propellant_Velocity
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &fRocket Propellant &9»"
+     can-cast-by-command: false
+
+Flintlock_Rocket-Propellant_Velocity:
+     spell-class: ".instant.VelocitySpell"
+     speed: 1.3
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: largeexplode
+               count: 4
+               particle-speed: 0.001
+               horiz-spread: 0.5
+               vert-spread: 0.5
+               height-offset: 0
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 1
+               volume: 1
+     modifiers:
+          - gliding power 0.6
+     can-cast-by-command: false
+
+##-----------[Incendiary Shot]-----------##
+
+Flintlock_Incendiary-Shot_Particle-Projectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     cast-item: Flintlock
+     name: "&9Incendiary Shot"
+     cooldown: 15
+     str-on-cooldown: "&9Incendiary Shot &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     special-effect-interval: 4
+     projectile-velocity: 20
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Incendiary-Shot_Combust
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &fIncendiary Shot &9»"
+          Particles:
+               position: special
+               effect: particles
+               particle-name: flame
+               count: 10
+               particle-speed: 0.002
+               horiz-spread: 0.05
+               vert-spread: 0.05
+               height-offset: 1
+          Sound_Explode:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+          Sound_Burn:
+               position: special
+               effect: soundpersonal
+               sound: entity.creeper.primed
+               pitch: 2
+               volume: 1
+     cost:
+          - variable Flintlock_Ammo 2
+     modifiers:
+          - variableequals Flintlock_Ammo:0 castinstead Flintlock_Ammo_Reload_Multi
+          - sneaking castinstead Flintlock_Ammo_Reload_Multi
+          - buffactive Flintlock_Ammo_Reload_Buff_Dummy denied
+     str-missing-reagents: "&7&oYou don't have enough ammunition to use that ability."
+     can-cast-by-command: false
+
+Flintlock_Incendiary-Shot_Combust:
+     spell-class: ".targeted.CombustSpell"
+     fire-ticks: 100
+     fire-tick-damage: 1
+     effects:
+          Particles:
+               position: target
+               effect: particles
+               particle-name: flame
+               count: 20
+               particle-speed: 0.002
+               horiz-spread: 0.5
+               vert-spread: 0.5
+               height-offset: 1
+     can-cast-by-command: false
+
+##-----------[One Million Needles]-----------##
+
+Flintlock_One-Million-Needles_Multi:
+     spell-class: ".MultiSpell"
+     cast-item: Flintlock
+     name: "&9&lOne Million Needles"
+     cooldown: 40
+     str-on-cooldown: "&9&lOne Million Needles &7&oon cooldown! &9&o%c seconds &7&oremaining."
+     spells:
+          - Flintlock_One-Million-Needles_Particle-Projectile_1
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_2
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_3
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_4
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_5
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_6
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_7
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_8
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_9
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_10
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_11
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_12
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_13
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_14
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_15
+          - DELAY 2
+          - Flintlock_One-Million-Needles_Particle-Projectile_16
+     effects:
+          Text:
+               position: caster
+               effect: actionbartext
+               message: "&9« &f&lOne Million Needles &9»"
+     cost:
+          - variable Flintlock_Ammo 6
+     modifiers:
+          - variableequals Flintlock_Ammo:0 castinstead Flintlock_Ammo_Reload_Multi
+          - sneaking castinstead Flintlock_Ammo_Reload_Multi
+          - buffactive Flintlock_Ammo_Reload_Buff_Dummy denied
+     str-missing-reagents: "&7&oYou don't have enough ammunition to use that ability."
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_1:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 50
+     projectile-vert-offset: 0
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_2:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 30
+     projectile-vert-offset: 0.2
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_3:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -20
+     projectile-vert-offset: 0
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_4:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -50
+     projectile-vert-offset: 0.4
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_5:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 40
+     projectile-vert-offset: -0.1
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_6:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -35
+     projectile-vert-offset: 0
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_7:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -49
+     projectile-vert-offset: 0
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_8:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -32
+     projectile-vert-offset: 0.35
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_9:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 0
+     projectile-vert-offset: 0
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_10:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 8
+     projectile-vert-offset: 0.2
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_11:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 14
+     projectile-vert-offset: 0.5
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_12:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 16
+     projectile-vert-offset: 0.2
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_13:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -14
+     projectile-vert-offset: -0.1
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_14:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -24
+     projectile-vert-offset: 0
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_15:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: 28
+     projectile-vert-offset: 0.7
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false
+
+Flintlock_One-Million-Needles_Particle-Projectile_16:
+     spell-class: ".instant.ParticleProjectileSpell"
+     projectile-velocity: 20
+     projectile-horiz-offset: -35
+     projectile-vert-offset: 0.39
+     particle-name: depthsuspend
+     particle-speed: 0.02
+     particle-count: 50
+     particle-horizontal-spread: 0.05
+     particle-vertical-spread: 0.05
+     max-distance: 100
+     max-duration: 100
+     hit-radius: 1
+     vertical-hit-radius: 1
+     spell: Flintlock_Breaker-Blast_Pain
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.generic.explode
+               pitch: 2
+               volume: 1
+     can-cast-by-command: false

@@ -1,0 +1,14 @@
+confusion:
+    spell-class: ".instant.ConfusionSpell"
+    name: confusion
+    spell-icon: eye_of_ender
+    description: Cause nearby monsters to attack each other.
+    cast-item: bone
+    cooldown: 30
+    range: 20
+    can-target: zombie,skeleton,creeper
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: You cause nearby monsters to become confused and attack each other.
+    str-cast-others: "%a causes nearby monsters to attack each other."

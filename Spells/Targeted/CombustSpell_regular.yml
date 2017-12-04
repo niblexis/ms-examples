@@ -1,0 +1,18 @@
+combust:
+    spell-class: ".targeted.CombustSpell"
+    name: combust
+    spell-icon: fire
+    description: Set a target on fire.
+    cast-item: blaze_rod
+    cooldown: 10
+    range: 20
+    obey-los: true
+    fire-ticks: 100
+    fire-tick-damage: 1
+    prevent-immunity: true
+    can-target: monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.

@@ -1,0 +1,21 @@
+carpet:
+    spell-class: ".buff.CarpetSpell"
+    name: carpet
+    spell-icon: thin_glass
+    description: Lets you walk on a platform of glass.
+    cast-item: book
+    cooldown: 30
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    size: 2
+    cost:
+        - mana 50
+        - feather 5
+    use-cost:
+        - mana 20
+        - feather 1
+    use-cost-interval: 50
+    str-cost: 50 mana, 5 feathers, plus 20 mana and 1 feather every 50 blocks
+    str-cast-self: You are now walking on a platform of glass!
+    str-cast-others: "%a is now walking on a platform of glass!"
+    str-fade: Your magical glass platform disappears.

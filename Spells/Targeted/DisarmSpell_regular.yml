@@ -1,0 +1,29 @@
+disarm:
+    spell-class: ".targeted.DisarmSpell"
+    name: disarm
+    spell-icon: stone_sword:130
+    description: Disarm your opponent.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    disarmable-items:
+        - blaze_rod
+        - stick
+        - book
+        - bone
+        - wood_sword
+        - stone_sword
+        - iron_sword
+        - diamond_sword
+        - bow
+    can-target: players,zombies,skeletons
+    disarm-duration: 100
+    dont-drop: true
+    prevent-theft: true
+    cost:
+        - mana 20
+    str-cost: 20 mana
+    str-no-target: No target found.
+    str-invalid-item: Your target could not be disarmed.
+    str-cast-self: You have disarmed %t.
+    str-cast-target: "%a has disarmed you."

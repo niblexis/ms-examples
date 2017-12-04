@@ -1,0 +1,19 @@
+empower:
+    spell-class: ".buff.EmpowerSpell"
+    name: empower
+    spell-icon: glowstone_dust
+    description: Makes your spells more powerful.
+    cast-item: book
+    power-multiplier: 1.5
+    cooldown: 120
+    duration: 30
+    num-uses: 10
+    cost:
+        - mana 15
+    use-cost:
+        - mana 5
+    use-cost-interval: 1
+    str-cost: 15 mana, plus 5 mana for each spell cast
+    str-cast-self: You begin to glow with magical energy.
+    str-cast-others: "%a begins to glow with magical energy."
+    str-fade: You are no longer glowing with magical energy.

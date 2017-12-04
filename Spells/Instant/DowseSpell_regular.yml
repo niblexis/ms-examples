@@ -1,0 +1,18 @@
+dowse:
+    spell-class: ".instant.DowseSpell"
+    name: dowse
+    spell-icon: compass
+    description: Dowse for iron ore.
+    cast-item: book
+    cooldown: 60
+    block-type: iron_ore
+    entity-type: ""
+    radius: 4
+    rotate-player: true
+    set-compass: true
+    cost:
+        - mana 35
+        - stone 2
+    str-cost: 35 mana and 2 stone blocks
+    str-cast-self: There is iron ore nearby.
+    str-not-found: No iron ore found nearby.

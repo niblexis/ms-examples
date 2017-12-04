@@ -1,0 +1,11 @@
+enderchest:
+    spell-class: ".instant.EnderchestSpell"
+    name: enderchest
+    spell-icon: ender_chest
+    description: Opens your ender chest inventory.
+    cast-item: book
+    cooldown: 300
+    cost:
+        - mana 50
+        - ender_pearl 1
+    str-cost: 50 mana and 1 ender pearl

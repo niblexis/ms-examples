@@ -1,0 +1,19 @@
+blink:
+    spell-class: ".targeted.BlinkSpell"
+    name: blink
+    spell-icon: ender_pearl
+    description: Teleport a short distance.
+    cast-item: stick
+    cooldown: 8
+    range: 25
+    pass-through-ceiling: false
+    smoke-trail: true
+    effects:
+        - pos1 ender
+        - pos2 ender
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You blink away!
+    str-cast-others: "%a blinks away!"
+    str-cant-blink: You cannot blink there.

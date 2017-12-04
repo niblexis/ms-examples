@@ -1,0 +1,19 @@
+conjure:
+    spell-class: ".instant.ConjureSpell"
+    name: conjure
+    spell-icon: redstone
+    description: Conjure some potion reagents.
+    cast-item: book
+    cooldown: 600
+    power-affects-quantity: false
+    power-affects-chance: true
+    calculate-drops-individually: true
+    auto-equip: false
+    items:
+        - redstone 1-2 25%
+        - speckled_melon 1 25%
+        - magma_cream 1-2 25%
+        - spider_eye 1-2 25%
+    add-to-inventory: false
+    str-cost: free
+    str-cast-self: You have conjured some potion reagents!
