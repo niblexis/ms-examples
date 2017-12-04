@@ -1,0 +1,28 @@
+predefined-items:
+     Dizzy_Delight:
+          type: 373
+          name: "&cDizzy Delight"
+          lore:
+             - "&7&oA drink that will make you very, very dizzy.."
+          potioneffects:
+               - "9 1 600"
+
+Dizzy-Delight_Buff:
+     spell-class: ".buff.DummySpell"
+     consume-cast-item: Dizzy_Delight
+     toggle: false
+     duration: 30
+     cancel-on-death: true
+     effects:
+        Orbit:
+           position: orbit
+           orbit-y-offset: 1.8
+           orbit-seconds-per-revolution: 1
+           orbit-radius: 0.6
+           effect: particles
+           particle-name: crit
+           horiz-spread: 0.1
+           vert-spread: 0.1
+           speed: 0.02
+           count: 10
+     can-cast-by-command: false

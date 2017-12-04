@@ -1,0 +1,72 @@
+predefined-items:
+     Aredian_Cookie:
+          type: 357
+          name: "&cAredian Cookie"
+          lore:
+               - "&7&oA cookie made with a recipe from an long-lost"
+               - "&7&oSpellquiver city named Aredia."
+
+Aredian-Cookies_Buff:
+     spell-class: ".buff.DummySpell"
+     consume-cast-item: Aredian_Cookie
+     toggle: false
+     cooldown: 30
+     duration: 30
+     str-on-cooldown: "&7&oYou can't eat another &cAredian Cookie &7&ofor &9&o%c seconds&7&o."
+     effects:
+          Particles_Air:
+               position: orbit
+               effect: particles
+               particle-name: cloud
+               count: 2
+               horiz-spread: 0.2
+               vert-spread: 0.2
+               speed: 0.002
+               orbit-radius: 2
+               orbit-seconds-per-revolution: 2
+               orbit-effect-interval: 1
+               height-offset: 2
+          Particles_Fire:
+               position: orbit
+               effect: particles
+               particle-name: flame
+               count: 4
+               horiz-spread: 0.2
+               vert-spread: 0.2
+               speed: 0.002
+               orbit-radius: 1.5
+               orbit-seconds-per-revolution: 1.5
+               orbit-effect-interval: 1
+               height-offset: 1.5
+          Particles_Water:
+               position: orbit
+               effect: particles
+               particle-name: droplet
+               count: 10
+               horiz-spread: 0.2
+               vert-spread: 0.2
+               speed: 0.002
+               orbit-radius: 1
+               orbit-seconds-per-revolution: 1
+               orbit-effect-interval: 1
+               height-offset: 1
+          Particles_Earth:
+               position: orbit
+               effect: particles
+               particle-name: blockcrack_2_0
+               count: 10
+               horiz-spread: 0.2
+               vert-spread: 0.2
+               speed: 0.002
+               orbit-radius: 1
+               orbit-seconds-per-revolution: 0.5
+               orbit-effect-interval: 1
+               height-offset: 0.5
+          Sound:
+               position: buff
+               effect: soundpersonal
+               sound: block.fire.extinguish
+               effect-interval: 5
+               volume: 0.2
+               pitch: 0.5
+     can-cast-by-command: false

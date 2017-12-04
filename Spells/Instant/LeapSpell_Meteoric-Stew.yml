@@ -1,0 +1,131 @@
+predefined-items:
+     Meteoric_Stew:
+          type: 282
+          name: "&cMeteoric Stew"
+          lore:
+               - "&7&oSome say that it was scooped straight out of"
+               - "&7&oa volcano."
+
+Meteoric-Stew_Rise_Leap:
+     spell-class: ".instant.LeapSpell"
+     consume-cast-item: Meteoric_Stew
+     cooldown: 30
+     str-on-cooldown: "&7&oYou can't eat another &cMeteoric Stew &7&ofor &9&o%c seconds&7&o."
+     forward-velocity: 4
+     upward-velocity: 40
+     land-spell: Meteoric-Stew_Crash_Multi
+     effects:
+        Particles_1:
+             position: caster
+             effect: particles
+             particle-name: lava
+             count: 10
+             horiz-spread: 0.6
+             vert-spread: 0.6
+             speed: 0.002
+        Particles_2:
+             position: caster
+             effect: particles
+             particle-name: cloud
+             count: 10
+             horiz-spread: 0.6
+             vert-spread: 0.6
+             speed: 0.002
+        Sound:
+             position: caster
+             effect: sound
+             sound: entity.generic.explode
+             volume: 1
+             pitch: 1
+     can-cast-by-command: false
+
+Meteoric-Stew_Crash_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - sneak
+     spells:
+          - Meteoric-Stew_Crash_Leap
+     modifiers:
+          - leaping Meteoric-Stew_Rise_Leap required
+
+Meteoric-Stew_Crash_Leap:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: -60
+     land-spell: Meteoric-Stew_Crash_Multi
+     effects:
+        Particles_1:
+             position: caster
+             effect: particles
+             particle-name: lava
+             count: 10
+             horiz-spread: 0.6
+             vert-spread: 0.6
+             speed: 0.002
+        Particles_2:
+             position: caster
+             effect: particles
+             particle-name: cloud
+             count: 10
+             horiz-spread: 0.6
+             vert-spread: 0.6
+             speed: 0.002
+        Sound:
+             position: caster
+             effect: sound
+             sound: entity.generic.explode
+             volume: 1
+             pitch: 1
+     can-cast-by-command: false
+
+Meteoric-Stew_Crash_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - Meteoric-Stew_Crash_Bounce
+          - Meteoric-Stew_Crash_Explode
+
+Meteoric-Stew_Crash_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     prevent-block-damage: true
+     prevent-player-damage: true
+     explosion-size: 8
+     damage-multiplier: 3
+     effects:
+        Particles_1:
+             position: caster
+             effect: particles
+             particle-name: lava
+             count: 100
+             horiz-spread: 3
+             vert-spread: 0.3
+             speed: 0.002
+             height-offset: 0
+        Particles_2:
+             position: caster
+             effect: particles
+             particle-name: cloud
+             count: 70
+             horiz-spread: 3
+             vert-spread: 0.3
+             speed: 0.002
+             height-offset: 0
+        Explode:
+             position: caster
+             effect: particles
+             particle-name: hugeexplosion
+             count: 2
+             horiz-spread: 0.4
+             vert-spread: 0.4
+             speed: 0.002
+        Sound:
+             position: caster
+             effect: sound
+             sound: entity.generic.explode
+             volume: 1
+             pitch: 1
+     can-cast-by-command: false
+
+Meteoric-Stew_Crash_Bounce:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 3
+     upward-velocity: 8

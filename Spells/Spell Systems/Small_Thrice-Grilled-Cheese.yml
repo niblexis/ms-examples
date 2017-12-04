@@ -1,0 +1,69 @@
+predefined-items:
+     Thrice_Grilled_Cheese:
+          type: 297
+          name: "&cThrice-Grilled Cheese"
+          lore:
+               - "&7&oThe cheese might be a little too hot.."
+
+Thrice-Grilled-Cheese_Buff:
+     spell-class: ".buff.DummySpell"
+     consume-cast-item: Thrice_Grilled_Cheese
+     toggle: false
+     duration: 10
+     cooldown: 10
+     str-on-cooldown: "&7&oYou can't eat another &cThrice-Grilled Cheese &7&ofor &9&o%c seconds&7&o."
+     effects:
+        Particles:
+           position: buff
+           effect: particles
+           particle-name: flame
+           horiz-spread: 0.8
+           vert-spread: 0.8
+           speed: 0.05
+           count: 40
+           effect-interval: 20
+        Sound:
+           position: buff
+           effect: soundpersonal
+           sound: block.fire.extinguish
+           pitch: 0.5
+           volume: 0.8
+           effect-interval: 20
+     can-cast-by-command: false
+
+Thrice-Grilled-Cheese_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     spells:
+          - Thrice-Grilled-Cheese_Leap
+     modifiers:
+          - buffactive Thrice-Grilled-Cheese_Buff required
+          - onblock 0 denied
+          - sneaking castinstead Thrice-Grilled-Cheese_Sneaking_Dummy
+     can-cast-by-command: false
+
+Thrice-Grilled-Cheese_Leap:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 6
+     upward-velocity: -4
+     can-cast-by-command: false
+
+Thrice-Grilled-Cheese_Sneaking_Dummy:
+     spell-class: ".instant.DummySpell"
+     effects:
+        Particles:
+           position: caster
+           effect: particles
+           particle-name: lava
+           horiz-spread: 0.8
+           vert-spread: 0.8
+           speed: 0.05
+           count: 1
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound:  block.lava.pop
+           pitch: 0.5
+           volume: 0.3
+     can-cast-by-command: false

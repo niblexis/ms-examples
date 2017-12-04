@@ -1,0 +1,241 @@
+predefined-items:
+     Falling_Dream:
+          type: 373
+          name: "&cFalling Dream"
+          lore:
+             - "&7&oOr is it a nightmare?"
+          potioneffects:
+               - "2 1 10"
+
+Falling-Dream_Multi:
+     spell-class: ".MultiSpell"
+     consume-cast-item: Falling_Dream
+     cooldown: 20
+     str-on-cooldown: "&7&oYou can't drink another &cFalling Dream &7&ofor &9&o%c seconds&7&o."
+     spells:
+          - Falling-Dream_1
+          - DELAY 17
+          - Falling-Dream_2
+          - DELAY 16
+          - Falling-Dream_3
+          - DELAY 15
+          - Falling-Dream_4
+          - DELAY 14
+          - Falling-Dream_5
+          - DELAY 13
+          - Falling-Dream_6
+          - DELAY 12
+          - Falling-Dream_7
+          - DELAY 11
+          - Falling-Dream_8
+          - DELAY 10
+          - Falling-Dream_9
+          - DELAY 9
+          - Falling-Dream_10
+          - DELAY 8
+          - Falling-Dream_11
+          - DELAY 7
+          - Falling-Dream_12
+          - DELAY 6
+          - Falling-Dream_13
+          - DELAY 5
+          - Falling-Dream_14
+          - DELAY 4
+          - Falling-Dream_15
+
+Falling-Dream_1:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 12
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 0
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_2:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 13
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 0.6
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_3:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 9
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 0.7
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_4:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 13
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 0.8
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_5:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 13
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 0.9
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_6:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 14
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_7:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 14
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.1
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_8:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 14
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.2
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_9:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 14
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.3
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_10:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 14
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.4
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_11:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 14
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.5
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_12:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 17
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.6
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_13:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 17
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.7
+           volume: 100
+     variable-mods-cast:
+          - Glider_Energy 0
+     can-cast-by-command: false
+
+Falling-Dream_14:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 17
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.8
+           volume: 100
+     can-cast-by-command: false
+
+Falling-Dream_15:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 17
+     effects:
+        Sound:
+           position: caster
+           effect: soundpersonal
+           sound: entity.elder_guardian.curse
+           pitch: 1.9
+           volume: 100
+     can-cast-by-command: false
