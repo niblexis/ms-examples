@@ -1,0 +1,15 @@
+entomb:
+    spell-class: ".targeted.EntombSpell"
+    name: entomb
+    spell-icon: glass
+    description: Encase an enemy in glass.
+    cast-item: blaze_rod
+    cooldown: 5
+    range: 15
+    can-target: players,monsters
+    tomb-block-type: 20
+    tomb-duration: 20
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-no-target: No target found.

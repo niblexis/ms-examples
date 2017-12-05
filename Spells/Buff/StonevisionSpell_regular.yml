@@ -1,0 +1,18 @@
+stonevision:
+    spell-class: ".buff.StonevisionSpell"
+    name: stonevision
+    spell-icon: stone
+    description: See through stone.
+    cast-item: book
+    range: 4
+    transparent-type: 1
+    unobfuscate: false
+    cooldown: 60
+    duration: 30
+    cost:
+        - mana 50
+        - stone 2
+        - glass 2
+    str-cost: 50 mana, 2 stone, and 2 glass
+    str-cast-self: You can see through stone!
+    str-fade: You can no longer see through stone.

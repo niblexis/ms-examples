@@ -1,0 +1,20 @@
+geyser:
+    spell-class: ".targeted.GeyserSpell"
+    name: geyser
+    spell-icon: water
+    description: Create a geyser of water at your enemy's feet.
+    cast-item: blaze_rod
+    range: 20
+    damage: 0
+    velocity: 10
+    animation-speed: 2
+    geyser-height: 4
+    geyser-type: water
+    ignore-armor: false
+    can-target: players,monsters,animals
+    check-plugins: false
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You create a geyser at your enemy's feet.
+    str-no-target: No target found.

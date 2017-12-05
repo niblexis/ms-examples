@@ -1,0 +1,15 @@
+leap:
+    spell-class: ".instant.LeapSpell"
+    name: leap
+    spell-icon: diamond_boots
+    description: Leap forward.
+    cast-item: stick
+    forward-velocity: 40
+    upward-velocity: 15
+    cancel-damage: true
+    cooldown: 10
+    cost:
+        - mana 15
+    str-cost: mana 15
+    str-cast-self: You leap forward.
+    str-cast-others: "%a leaps forward."

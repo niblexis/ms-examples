@@ -1,0 +1,18 @@
+reach:
+    spell-class: ".buff.ReachSpell"
+    name: reach
+    spell-icon: dispenser
+    description: Place and destroy blocks from far away.
+    cast-item: stick
+    cooldown: 120
+    duration: 60
+    range: 15
+    consume-blocks: true
+    drop-blocks: true
+    disallowed-break-blocks: [0,7]
+    disallowed-place-blocks: [0,7]
+    cost:
+        - mana 50
+    str-cost: 50 mana
+    str-cast-self: You gain the ability to manipulate the world around you.
+    str-fade: You can no longer manipulate the world around you.

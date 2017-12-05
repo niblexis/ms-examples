@@ -1,0 +1,19 @@
+waterwalk:
+    spell-class: ".buff.WaterwalkSpell"
+    name: waterwalk
+    spell-icon: boat
+    description: Walk across the water.
+    cast-item: book
+    speed: 0.05
+    duration: 60
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    cost:
+        - mana 25
+        - boat 1
+    use-cost:
+        - water_lily 1
+    use-cost-interval: 50
+    str-cost: 25 mana and 1 boat, plus 1 water lily every 50 blocks moved
+    str-cast-self: You can now walk on water!
+    str-fade: You can no longer walk on water.

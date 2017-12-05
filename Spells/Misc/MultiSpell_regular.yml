@@ -1,0 +1,14 @@
+zeus:
+    spell-class: ".MultiSpell"
+    name: zeus
+    spell-icon: gold_axe
+    cooldown: 30
+    cast-item: blaze_rod
+    check-individual-cooldowns: false
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    spells:
+        - lightning
+        - DELAY 5
+        - explode

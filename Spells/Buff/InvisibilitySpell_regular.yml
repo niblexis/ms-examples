@@ -1,0 +1,24 @@
+invisibility:
+    spell-class: ".buff.InvisibilitySpell"
+    name: invisibility
+    spell-icon: record_11
+    description: Makes you invisible to players and monsters.
+    cast-item: bone
+    cooldown: 60
+    effects:
+        - caster spawn
+        - disabled spawn
+    toggle: true
+    prevent-pickups: true
+    cancel-on-give-damage: true
+    cancel-on-logout: true
+    duration: 15
+    cost:
+        - mana 25
+    use-cost:
+        - mana 15
+    use-cost-interval: 3
+    str-cost: 25 mana, plus 15 mana every 3 seconds
+    str-cast-self: You vanish!
+    str-cast-others: "%a vanishes!"
+    str-fade: You are visible again.

@@ -1,0 +1,14 @@
+explosivearrow:
+    spell-class: ".instant.ProjectileSpell"
+    name: explosivearrow
+    spell-icon: arrow
+    description: Cause an explosion where an arrow lands
+    cast-item: blaze_rod
+    projectile: arrow
+    velocity: 0
+    require-hit-entity: false
+    cancel-damage: true
+    remove-projectile: true
+    max-distance: 25
+    spells: [explode]
+    str-cast-self: You fire an explosive arrow.

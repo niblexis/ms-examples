@@ -1,0 +1,230 @@
+variables:
+     Attribute_Points_Available:
+          type: player
+          min: 0
+          max: 9999
+          default: 0
+     Attribute_Points_Acquired:
+          type: player
+          min: 0
+          max: 1000
+          default: 0
+     Attribute_Points_Agility:
+          type: player
+          min: 0
+          max: 50
+          default: 0
+     Attribute_Points_Strength:
+          type: player
+          min: 0
+          max: 50
+          default: 0
+     Attribute_Points_Defense:
+          type: player
+          min: 0
+          max: 50
+          default: 0
+
+predefined-items:
+     Back:
+          type: "160:15"
+          name: "&0&oBack"
+     Attribute-Points_Reset:
+          type: "160:14"
+          name: "&4&lReset Attributes"
+     Attribute-Points_Reset_Confirm:
+          type: "160:13"
+          name: "&2&lYes"
+     Attribute-Points_Reset_Deny:
+          type: "160:14"
+          name: "&4&lNo"
+     Attribute_Points:
+          type: "160:11"
+          name: "&8&lPoints Remaining"
+          lore:
+               - "&7%var:Attribute_Points_Available:0%/%var:Attribute_Points_Acquired:0%"
+     Attribute-Points_Strength:
+          type: iron_sword
+          name: "&c&lStrength"
+          lore:
+               - "&8&lPoints: &7%var:Attribute_Points_Strength:0%/50"
+               - "&7&oDetermines your physical strength."
+     Attribute-Points_Agility:
+          type: feather
+          name: "&f&lAgility"
+          lore:
+               - "&8&lPoints: &7%var:Attribute_Points_Agility:0%/50"
+               - "&7&oDetermines how fast you run."
+     Attribute-Points_Defense:
+          type: iron_chestplate
+          name: "&9&lDefense"
+          lore:
+               - "&8&lPoints: &7%var:Attribute_Points_Defense:0%/50"
+               - "&7&oDetermines how much resistance to damage you have."
+
+Attribute-Points_Acquire:
+     spell-class: ".instant.DummySpell"
+     str-cast-self: "&7&oYou have gained &9&o6 attribute points&7&o."
+     variable-mods-cast:
+          - Attribute_Points_Available +6
+          - Attribute_Points_Acquired +6
+     can-cast-by-command: false
+
+##------------------[Attribute Upgrading]------------------##
+
+Attribute-Points_Menu_Main:
+     spell-class: ".MenuSpell"
+     title: "             &8&lAttributes"
+     unique-names: true
+     delay: 1
+     options:
+          Attribute-Points_Reset:
+               slot: 0
+               item: Attribute-Points_Reset
+               spell: Attribute-Points_Menu_Reset
+          Attribute-Points_Counter:
+               slot: 1
+               item: Attribute_Points
+               spell: Attribute-Points_Menu_Main
+               stay-open: true
+          Attribute-Points_Strength:
+               slot: 3
+               item: Attribute-Points_Strength
+               spell: Attribute-Points_Strength_Upgrade
+               stay-open: true
+          Attribute-Points_Agility:
+               slot: 4
+               item: Attribute-Points_Agility
+               spell: Attribute-Points_Agility_Upgrade
+               stay-open: true
+          Attribute-Points_Defense:
+               slot: 5
+               item: Attribute-Points_Defense
+               spell: Attribute-Points_Defense_Upgrade
+               stay-open: true
+          Attribute-Points_Back:
+               slot: 8
+               item: "160:15|&8&lBack"
+               spell: Adventurer-Journal_Menu_Main
+     incantations:
+          - "/attributes"
+     can-cast-by-command: false
+
+##-----------[Attribute Resetting]-----------##
+
+Attribute-Points_Menu_Reset:
+     spell-class: ".MenuSpell"
+     title: "           &8&lAre You Sure?"
+     unique-names: true
+     delay: 1
+     options:
+          Reset_Deny:
+               slot: 3
+               item: Attribute-Points_Reset_Deny
+               spell: Attribute-Points_Menu_Main
+          Reset_Confirm:
+               slot: 5
+               item: Attribute-Points_Reset_Confirm
+               spell: Attribute-Points_Menu_Reset_Confirm_Multi(mode=full)
+     can-cast-by-command: false
+
+Attribute-Points_Menu_Reset_Confirm_Multi:
+     spell-class: ".MultiSpell"
+     cooldown: 1800
+     str-on-cooldown: "&7&oYou can't reset your attribute points for &9&o%c seconds&7&o."
+     spells:
+          - Attribute-Points_Menu_Reset_Confirm_Dummy
+          - Attribute-Points_Menu_Reset_Confirm_Defense_External
+          - Attribute-Points_Menu_Main
+     can-cast-by-command: false
+
+Attribute-Points_Menu_Reset_Confirm_Dummy:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Agility =0
+          - meta_walk_speed =0.2
+          - Attribute_Points_Strength =0
+          - meta_attribute_generic_attack_damage_base =1
+          - Attribute_Points_Defense =0
+          - meta_attribute_generic_armor_base =0
+          - Attribute_Points_Available =Attribute_Points_Acquired
+     effects:
+        Particles:
+             position: caster
+             effect: particles
+             particle-name: witchMagic
+             horiz-spread: 0.6
+             vert-spread: 0.6
+             count: 16
+             height-offset: 1.5
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.wither.spawn
+             pitch: 1
+             volume: 0.2
+     can-cast-by-command: false
+
+Attribute-Points_Menu_Reset_Confirm_Defense_External:
+     spell-class: ".ExternalCommandSpell"
+     command-to-execute:
+          - "cast modifyvariable meta_attribute_generic_armor_base %a =0"
+     execute-on-console-instead: true
+     can-cast-by-command: false
+
+##-----------[Strength]-----------##
+
+Attribute-Points_Strength_Upgrade:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Strength +1
+          - meta_attribute_generic_attack_damage_base +0.1
+          - Attribute_Points_Available -1
+     modifiers:
+          - variableequals Attribute_Points_Strength:50 denied
+     effects:
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.experience_orb.pickup
+             pitch: 0.8
+             volume: 0.2
+     can-cast-by-command: false
+
+##-----------[Agility]-----------##
+
+Attribute-Points_Agility_Upgrade:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Agility +1
+          - meta_walk_speed +0.003
+          - Attribute_Points_Available -1
+     modifiers:
+          - variableequals Attribute_Points_Agility:50 denied
+     effects:
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.experience_orb.pickup
+             pitch: 0.8
+             volume: 0.2
+     can-cast-by-command: false
+
+##-----------[Defense]-----------##
+
+Attribute-Points_Defense_Upgrade:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Defense +1
+          - meta_attribute_generic_armor_base +0.42
+          - Attribute_Points_Available -1
+     modifiers:
+          - variableequals Attribute_Points_Defense:50 denied
+     effects:
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.experience_orb.pickup
+             pitch: 0.8
+             volume: 0.2
+     can-cast-by-command: false

@@ -1,0 +1,14 @@
+phase:
+    spell-class: ".instant.PhaseSpell"
+    name: phase
+    spell-icon: diamond
+    description: Phase through solid matter.
+    cast-item: stick
+    cooldown: 10
+    range: 5
+    max-distance: 15
+    allowed-pass-thru-blocks: []
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cant-phase: Unable to find place to phase to.

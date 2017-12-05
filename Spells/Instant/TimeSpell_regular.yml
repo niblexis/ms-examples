@@ -1,0 +1,14 @@
+sun:
+    spell-class: ".instant.TimeSpell"
+    name: sun
+    spell-icon: watch
+    description: Changes the time to morning.
+    cast-item: book
+    cooldown: 1800
+    cost:
+        - mana 75
+        - redstone 8
+        - watch 1
+    str-cost: 75 mana, 5 redstone dust and a clock
+    time-to-set: 0
+    str-announce: The sun has suddenly appeared in the sky!

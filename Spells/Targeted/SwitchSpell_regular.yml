@@ -1,0 +1,15 @@
+switch:
+    spell-class: ".targeted.SwitchSpell"
+    name: switch
+    spell-icon: eye_of_ender
+    description: Switch places with your target.
+    cast-item: stick
+    cooldown: 6
+    switch-back: 0
+    can-target: players
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have switched places with %t.
+    str-cast-target: "%a has switched places with you."
+    str-no-target: No target found.

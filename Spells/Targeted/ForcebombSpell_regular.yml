@@ -1,0 +1,18 @@
+forcebomb:
+    spell-class: ".targeted.ForcebombSpell"
+    name: forcebomb
+    spell-icon: record_4
+    description: Push back your enemies.
+    cast-item: blaze_rod
+    cooldown: 8
+    range: 15
+    radius: 3
+    pushback-force: 30
+    additional-vertical-force: 15
+    max-vertical-force: 20
+    can-target: players,monsters
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: An explosion of energy pushes your enemies around.
+    str-no-target: No target found.

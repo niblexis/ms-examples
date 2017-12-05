@@ -1,0 +1,17 @@
+wall:
+    spell-class: ".instant.WallSpell"
+    name: wall
+    spell-icon: brick
+    description: Creates a temporary wall to block your enemies.
+    cast-item: stick
+    cooldown: 15
+    range: 3
+    wall-width: 5
+    wall-height: 3
+    wall-type: brick
+    wall-duration: 15
+    cost:
+        - mana 12
+        - stone 2
+    str-cost: 12 mana and 2 stone
+    str-no-target: Unable to create a wall.

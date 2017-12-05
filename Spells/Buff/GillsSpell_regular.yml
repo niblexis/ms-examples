@@ -1,0 +1,19 @@
+gills:
+    spell-class: ".buff.GillsSpell"
+    name: gills
+    spell-icon: gold_helmet
+    description: Allows you to breath underwater.
+    cast-item: book
+    glass-head-effect: true
+    cooldown: 60
+    duration: 300
+    num-uses: 5
+    cost:
+        - mana 50
+        - sugar_cane 1
+    use-cost:
+        - sugar_cane 1
+    use-cost-interval: 1
+    str-cost: 50 mana and 1 sugar cane, plus 1 sugar cane few seconds
+    str-cast-self: You form gills on your neck!
+    str-fade: Your gills disappear.

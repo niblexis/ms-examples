@@ -1,0 +1,20 @@
+minion:
+    spell-class: ".buff.MinionSpell"
+    name: minion
+    spell-icon: monster_egg:54
+    description: Summons an undead minion to aid you.
+    cast-item: bone
+    cooldown: 60
+    duration: 60
+    mob-chances:
+        - Zombie 75
+        - Skeleton 25
+    prevent-sun-burn: true
+    target-players: false
+    cost:
+        - mana 30
+        - bone 2
+    str-cost: 30 mana and 2 bones
+    str-cast-self: You summon an undead minion.
+    str-cast-others: "%a has summoned an undead minion."
+    str-fade: Your undead minion dies.

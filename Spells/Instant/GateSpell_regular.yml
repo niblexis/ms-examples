@@ -1,0 +1,18 @@
+gate:
+    spell-class: ".instant.GateSpell"
+    name: gate
+    spell-icon: portal
+    description: Teleport to spawn.
+    can-cast-with-item: false
+    world: CURRENT
+    coordinates: SPAWN
+    effects:
+        - pos1 ender
+        - pos2 ender
+    cost:
+        - mana 50
+        - iron_ingot 1
+    str-cost: 1 redstone dust and 1 iron bar
+    str-cast-self: You have teleported to spawn.
+    str-cast-others: "%a teleports!"
+    str-gate-failed: Unable to teleport.

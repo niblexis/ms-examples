@@ -1,0 +1,18 @@
+freeze:
+    spell-class: ".instant.FreezeSpell"
+    name: freeze
+    spell-icon: snow_ball
+    description: Spray your enemies with cold snowballs.
+    cast-item: blaze_rod
+    snowballs: 25
+    horizontal-spread: 15
+    vertical-spread: 5
+    damage: 3
+    slow-amount: 3
+    slow-duration: 80
+    can-target: players,monsters
+    cooldown: 5
+    cost:
+        - mana 10
+        - snow_ball 1
+    str-cost: 10 mana and 1 snowball

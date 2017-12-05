@@ -1,0 +1,15 @@
+summon_helper:
+    spell-class: ".targeted.SummonSpell"
+    can-cast-with-item: false
+    can-cast-by-command: false
+    require-exact-name: false
+    require-acceptance: true
+    max-accept-delay: 90
+    accept-command: accept
+    str-usage: |
+        Usage: /cast summon <playername>, or /cast summon
+        while looking at a sign with a player name on the first line.
+    str-no-target: Target player not found.
+    str-summon-pending: You are being summoned! Type /accept to teleport.
+    str-summon-accepted: You have been summoned.
+    str-summon-expired: The summon has expired.

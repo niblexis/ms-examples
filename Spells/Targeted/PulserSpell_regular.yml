@@ -1,0 +1,20 @@
+stormblock:
+    spell-class: ".targeted.PulserSpell"
+    name: stormblock
+    spell-icon: diamond_block
+    description: Summons a diamond block that calls lightning down upon nearby enemies.
+    cast-item: blaze_rod
+    cooldown: 30
+    total-pulses: 5
+    interval: 30
+    max-distance: 15
+    cap-per-player: 2
+    block-type: diamond_block
+    unbreakable: false
+    only-count-on-success: false
+    spells:
+        - storm
+    str-cast-self: You have summoned a storm block!
+    str-cast-others: "%a has summoned a storm block!"
+    str-at-cap: You have too many effects at once.
+    str-no-target: No target found.

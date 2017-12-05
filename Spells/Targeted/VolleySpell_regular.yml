@@ -1,0 +1,19 @@
+volley:
+    spell-class: ".targeted.VolleySpell"
+    name: volley
+    spell-icon: bow
+    description: Send a volley of arrows at your targeted location.
+    cast-item: blaze_rod
+    cooldown: 45
+    range: 30
+    arrows: 10
+    speed: 20
+    spread: 150
+    shoot-interval: 0
+    cost:
+        - mana 20
+        - arrow 2
+    str-cost: 20 mana and 2 arrows
+    str-cast-self: You fire a volley of magic arrows.
+    str-cast-others: "%a fires a volley of arrows."
+    str-no-target: No target found.

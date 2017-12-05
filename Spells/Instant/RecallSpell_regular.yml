@@ -1,0 +1,20 @@
+recall:
+    spell-class: ".instant.RecallSpell"
+    name: recall
+    spell-icon: compass
+    description: Teleports you to your marked location.
+    cast-item: stick
+    cooldown: 300
+    mark-spell: mark
+    max-range: -1
+    allow-cross-world: true
+    use-bed-location: false
+    cost:
+        - mana 75
+        - iron_ingot 1
+    str-cost: 75 mana and 1 iron bar
+    str-cast-self: You teleport to your marked location.
+    str-no-mark: You have not marked a location to recall to.
+    str-other-world: You cannot recall to another world.
+    str-too-far: Your marked location is too far away.
+    str-cast-others: "%a disappears!"

@@ -1,0 +1,21 @@
+flamewalk:
+    spell-class: ".buff.FlamewalkSpell"
+    name: flamewalk
+    spell-icon: fire
+    description: Burn your enemies around you as you walk.
+    cast-item: book
+    cooldown: 30
+    range: 8
+    fire-ticks: 100
+    tick-interval: 100
+    target-players: false
+    duration: 120
+    cost:
+        - mana 25
+        - 263 2
+    use-cost:
+        - mana 10
+    use-cost-interval: 10
+    str-cost: 25 mana, 2 coal, plus 10 mana occasionally
+    str-cast-self: You begin to burn your enemies around you.
+    str-fade: You are no longer burning your enemies.

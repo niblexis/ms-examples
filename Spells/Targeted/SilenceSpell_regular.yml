@@ -1,0 +1,21 @@
+silence:
+    spell-class: ".targeted.SilenceSpell"
+    name: silence
+    spell-icon: raw_fish
+    description: Prevent a player from casting spells for a time.
+    cast-item: blaze_rod
+    range: 10
+    prevent-cast: true
+    prevent-chat: false
+    prevent-commands: false
+    duration: 200
+    allowed-spells:
+        - list
+        - help
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You have silenced %t.
+    str-cast-target: "%a has silenced you."
+    str-silenced: You are silenced.
+    str-no-target: No target found.

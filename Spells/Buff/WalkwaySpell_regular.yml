@@ -1,0 +1,21 @@
+walkway:
+    spell-class: ".buff.WalkwaySpell"
+    name: walkway
+    spell-icon: wood_stairs
+    description: Summon a moving magical walkway to take you places.
+    cast-item: book
+    cooldown: 60
+    platform-type: 5
+    size: 6
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    cost:
+        - mana 50
+        - wood 1
+    use-cost:
+        - mana 15
+        - wood 1
+    use-cost-interval: 15
+    str-cost: 50 mana, plus 15 mana and 1 wood every 15 blocks
+    str-cast-self: You summon a magical walkway.
+    str-fade: Your magical walkway disappears.

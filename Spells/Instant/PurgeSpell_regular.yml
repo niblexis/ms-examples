@@ -1,0 +1,14 @@
+purge:
+    spell-class: ".instant.PurgeSpell"
+    name: purge
+    spell-icon: potion:16396
+    description: Kill all monsters and animals around you.
+    cast-item: bone
+    cooldown: 60
+    range: 8
+    can-target: monsters,animals
+    cost:
+        - mana 50
+    str-cost: 50 mana
+    str-cast-self: You purge all life around you.
+    str-cast-others: "%a purges all nearby life."

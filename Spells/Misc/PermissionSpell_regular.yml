@@ -1,0 +1,18 @@
+torcharrow:
+    spell-class: ".PermissionSpell"
+    name: torcharrow
+    spell-icon: torch
+    enabled: false
+    description: Shoot torch arrows.
+    cast-item: book
+    cooldown: 10
+    can-cast-by-command: true
+    can-cast-with-item: true
+    permission-nodes:
+        - "torcharrow.tArrow"
+    duration: 600
+    cost:
+        - mana 25
+        - torch 3
+    str-cost: 25 mana and 3 torches
+    str-cast-self: You can now fire torch arrows.

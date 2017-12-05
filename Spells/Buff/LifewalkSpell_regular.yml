@@ -1,0 +1,23 @@
+lifewalk:
+    spell-class: ".buff.LifewalkSpell"
+    name: lifewalk
+    spell-icon: sapling:2
+    description: Flowers grow in your footsteps!
+    cast-item: book
+    tick-interval: 15
+    red-flower-chance: 15
+    yellow-flower-chance: 15
+    sapling-chance: 5
+    tallgrass-chance: 25
+    fern-chance: 15
+    cost:
+        - mana 25
+        - red_rose 1
+        - yellow_flower 1
+    use-cost:
+        - yellow_flower 1
+    use-cost-interval: 25
+    str-cost: 25 mana, 1 rose, 1 yellow flower, plus 1 flower every so often
+    str-cast-self: Flowers grow in your footsteps!
+    str-cast-others: Flowers grow in %a's footsteps!
+    str-fade: Flowers no longer grow in your footsteps.

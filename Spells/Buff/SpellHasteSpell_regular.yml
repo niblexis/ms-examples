@@ -1,0 +1,15 @@
+spellhaste:
+    spell-class: ".buff.SpellHasteSpell"
+    name: spellhaste
+    spell-icon: ink_sack:4
+    description: Reduces the cast time and cooldown of your spells.
+    cast-item: book
+    cooldown: 60
+    duration: 15
+    cast-time-mod-amt: -50
+    cooldown-mod-amt: -50
+    cost:
+        - mana 25
+    str-cost: 25 mana
+    str-cast-self: Your mind quickens, allowing you to cast faster!
+    str-fade: Your mind slows again.

@@ -1,0 +1,21 @@
+zap:
+    spell-class: ".targeted.ZapSpell"
+    name: zap
+    spell-icon: gold_pickaxe
+    description: Instantly destroys a block.
+    cast-item: stick
+    cooldown: 1
+    allowed-block-types: []
+    disallowed-block-types: [air, bedrock]
+    drop-block: false
+    drop-normal: true
+    effects:
+        - target blockbreak
+    check-plugins: true
+    range: 15
+    cost:
+        - mana 5
+    str-cost: 5 mana
+    str-cast-self: You zapped a block.
+    str-cant-zap: You can't zap that.
+    str-no-target: No target found.

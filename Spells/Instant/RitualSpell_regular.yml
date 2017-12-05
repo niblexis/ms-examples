@@ -1,0 +1,26 @@
+summon:
+    spell-class: ".instant.RitualSpell"
+    name: summon
+    spell-icon: portal
+    description: Summon another player to your position. This ritual requires 3 participants.
+    cast-item: stick
+    cooldown: 300
+    ritual-duration: 200
+    req-participants: 3
+    charge-reagents-immediately: true
+    set-cooldown-immediately: true
+    set-cooldown-for-all: true
+    spell: summon_helper
+    tick-interval: 5
+    effect-interval: 20
+    cost:
+        - mana 75
+        - redstone 3
+        - iron_ingot 3
+    str-cost: 75 mana, 3 redstone, and 3 iron bars
+    str-cast-self: You begin a summoning ritual.
+    str-cast-others: "%a has begun a summoning ritual. Right-click to participate."
+    str-ritual-joined: You have joined the summoning ritual.
+    str-ritual-success: The summoning ritual is a success!
+    str-ritual-interrupted: The summoning ritual has been interrupted.
+    str-ritual-failed: The summoning ritual has failed.

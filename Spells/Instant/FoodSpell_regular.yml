@@ -1,0 +1,13 @@
+food:
+    spell-class: ".instant.FoodSpell"
+    name: food
+    spell-icon: cooked_beef
+    description: Makes you less hungry.
+    cast-item: book
+    cooldown: 30
+    food: 4
+    saturation: 2.5
+    cost:
+        - mana 25
+    str-cost: 25 mana
+    str-cast-self: You feel less hungry.

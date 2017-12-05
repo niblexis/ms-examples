@@ -1,0 +1,20 @@
+levitate:
+    spell-class: ".targeted.LevitateSpell"
+    name: levitate
+    spell-icon: feather
+    description: Cause your target to fly through the air.
+    cast-item: bone
+    tick-rate: 5
+    duration: 15
+    cooldown: 30
+    range: 12
+    cancel-on-item-switch: true
+    cancel-on-spell-cast: true
+    can-target: players,monsters,animals
+    cost:
+        - mana 30
+        - feather 2
+    str-cost: 30 mana and 2 feathers
+    str-cast-self: You are levitating %t!
+    str-cast-target: "%a is levitating you!"
+    str-no-target: No target found.

@@ -1,0 +1,15 @@
+shadowstep:
+    spell-class: ".targeted.ShadowstepSpell"
+    name: shadowstep
+    spell-icon: leather_boots
+    cast-item: stick
+    effects:
+        - caster spawner
+        - target spawner
+    can-target: players,monsters
+    range: 15
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+    str-no-landing-spot: Cannot shadowstep there.

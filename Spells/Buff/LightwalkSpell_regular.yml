@@ -1,0 +1,15 @@
+lightwalk:
+    spell-class: ".buff.LightwalkSpell"
+    name: lightwalk
+    spell-icon: glowstone
+    description: Light your path.
+    cast-item: 317
+    cost:
+        - mana 25
+        - torch 3
+    use-cost:
+        - torch 1
+    use-cost-interval: 25
+    str-cost: 25 mana and 3 torches, plus 1 torch occasionally
+    str-cast-self: Light appears at your feet.
+    str-fade: The light at your feet goes out.

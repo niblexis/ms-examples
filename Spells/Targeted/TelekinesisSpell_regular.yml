@@ -1,0 +1,12 @@
+telekinesis:
+    spell-class: ".targeted.TelekinesisSpell"
+    name: telekinesis
+    spell-icon: lever
+    description: Manipulate switches and buttons remotely.
+    cast-item: stick
+    cooldown: 15
+    range: 20
+    cost:
+        - mana 5
+    str-cost: 5 mana
+    str-no-target: You must target a switch or button.

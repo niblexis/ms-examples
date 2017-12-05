@@ -1,0 +1,25 @@
+repair:
+    spell-class: ".instant.RepairSpell"
+    name: repair
+    spell-icon: workbench
+    description: Repairs your gear.
+    cast-item: book
+    cooldown: 120
+    repair-amount: 300
+    to-repair:
+        - held
+        - hotbar
+        - inventory
+        - helmet
+        - chestplate
+        - leggings
+        - boots
+    ignore-items:
+        - 259
+        - 346
+    cost:
+        - mana 50
+        - iron_ingot 2
+    str-cost: 50 mana and 2 iron bars
+    str-cast-self: You've repaired your gear!
+    str-nothing-to-repair: You have nothing to repair.

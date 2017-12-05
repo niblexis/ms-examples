@@ -1,0 +1,14 @@
+roar:
+    spell-class: ".instant.RoarSpell"
+    name: roar
+    spell-icon: mob_spawner
+    description: Forces nearby enemies to attack you.
+    cast-item: book
+    cooldown: 15
+    range: 8
+    can-target: monsters
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: "You roar, causing nearby enemies to attack you."
+    str-cast-others: "%a roars loudly!"

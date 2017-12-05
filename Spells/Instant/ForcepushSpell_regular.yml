@@ -1,0 +1,17 @@
+forcepush:
+    spell-class: ".instant.ForcepushSpell"
+    name: forcepush
+    spell-icon: record_3
+    description: Push back your enemies.
+    cast-item: bone
+    cooldown: 8
+    range: 10
+    pushback-force: 30
+    additional-vertical-force: 15
+    max-vertical-force: 20
+    can-target: players,monsters
+    cost:
+        - mana 30
+    str-cost: 30 mana
+    str-cast-self: You push back your enemies!
+    str-cast-others: "%a pushes back his enemies."

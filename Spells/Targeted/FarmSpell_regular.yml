@@ -1,0 +1,16 @@
+farm:
+    spell-class: ".targeted.FarmSpell"
+    name: farm
+    spell-icon: seeds
+    cast-item: book
+    description: Make crops grow nearby.
+    cooldown: 10
+    radius: 3
+    growth: 1
+    targeted: false
+    cost:
+        - mana 75
+        - seeds 2
+    str-cost: 75 mana and 2 seeds
+    str-cast-self: The crops around you grow quickly.
+    str-no-target: There are no crops nearby.

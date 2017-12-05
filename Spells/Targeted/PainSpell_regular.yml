@@ -1,0 +1,17 @@
+pain:
+    spell-class: ".targeted.PainSpell"
+    name: pain
+    spell-icon: bone
+    description: Cause your enemy pain.
+    cast-item: blaze_rod
+    cooldown: 5
+    damage: 4
+    range: 15
+    ignore-armor: false
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+        - health 1
+    str-cost: 10 mana and a half heart
+    str-no-target: No target found.

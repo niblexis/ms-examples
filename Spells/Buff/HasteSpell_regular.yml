@@ -1,0 +1,15 @@
+haste:
+    spell-class: ".buff.HasteSpell"
+    name: haste
+    spell-icon: gold_boots
+    description: Sprint faster for a time.
+    cast-item: book
+    effect-strength: 3
+    boost-duration: 300
+    duration: 60
+    cost:
+        - mana 25
+    str-cost: 25 mana
+    str-cast-self: You gain unnatural speed!
+    str-cast-others: "%a gains unnatural speed!"
+    str-fade: You lose your unnatural speed.

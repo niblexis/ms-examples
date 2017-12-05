@@ -1,0 +1,12 @@
+mana:
+    spell-class: ".instant.ManaSpell"
+    name: lifetap
+    spell-icon: potion:8193
+    description: Restores mana at the cost of life.
+    cast-item: bone
+    cooldown: 3
+    mana: 25
+    cost:
+        - health 4
+    str-cost: 2 hearts
+    str-cast-self: You restore 25 mana.

@@ -1,0 +1,18 @@
+explode:
+    spell-class: ".targeted.ExplodeSpell"
+    name: explode
+    spell-icon: tnt
+    description: Create an explosion.
+    cast-item: blaze_rod
+    range: 25
+    explosion-size: 3
+    backfire-chance: 3
+    prevent-block-damage: false
+    prevent-player-damage: false
+    damage-multiplier: 10
+    add-fire: false
+    simulate-tnt: true
+    ignore-canceled: false
+    str-no-target: You cannot create an explosion there.
+    str-cast-self: Boom!
+    str-cast-others: Boom!

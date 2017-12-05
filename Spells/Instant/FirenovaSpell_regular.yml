@@ -1,0 +1,16 @@
+firenova:
+    spell-class: ".instant.FirenovaSpell"
+    name: firenova
+    spell-icon: blaze_powder
+    description: Summon an expanding ring of fire.
+    cast-item: bone
+    cooldown: 10
+    range: 5
+    tick-speed: 10
+    burn-tall-grass: true
+    check-plugins: true
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You summon an expanding ring of fire.
+    str-cast-others: "%a summons an expanding ring of fire."

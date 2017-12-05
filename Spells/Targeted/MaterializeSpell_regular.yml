@@ -1,0 +1,16 @@
+water:
+    spell-class: ".targeted.MaterializeSpell"
+    name: water
+    spell-icon: water_bucket
+    description: Summons a water spring into existence.
+    cast-item: stick
+    cooldown: 120
+    range: 8
+    block-type: water
+    reset-delay: 200
+    apply-physics: true
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No tar

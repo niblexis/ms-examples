@@ -1,0 +1,13 @@
+stealth:
+    spell-class: ".buff.StealthSpell"
+    name: stealth
+    spell-icon: leather_boots
+    description: Become invisible to monsters.
+    cast-item: bone
+    cooldown: 60
+    duration: 20
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You become invisble to monsters.
+    str-fade: You are no longer invisible to monsters.

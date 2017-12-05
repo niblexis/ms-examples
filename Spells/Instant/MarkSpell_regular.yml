@@ -1,0 +1,14 @@
+mark:
+    spell-class: ".instant.MarkSpell"
+    name: mark
+    spell-icon: bed
+    description: Marks your location for later recall.
+    cast-item: stick
+    cooldown: 43200
+    permanent-marks: true
+    cost:
+        - mana 75
+        - redstone 5
+        - iron_ingot 5
+    str-cost: 75 mana, 5 redstone dust and 5 iron bars
+    str-cast-self: You have marked your location.

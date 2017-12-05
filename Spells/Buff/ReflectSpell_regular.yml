@@ -1,0 +1,16 @@
+reflect:
+    spell-class: ".buff.ReflectSpell"
+    name: reflect
+    spell-icon: thin_glass
+    description: Reflect spells cast at you.
+    cooldown: 30
+    num-uses: 3
+    cost:
+        - mana 30
+    use-cost:
+        - mana 20
+    use-cost-interval: 1
+    str-cost: 30 mana, plus 20 mana per spell reflected
+    str-cast-self: You feel a magical barrier surround you.
+    str-cast-others: A magical barrier surrounds %a.
+    str-fade: Your magical barrier fades.

@@ -1,0 +1,17 @@
+lilywalk:
+    spell-class: ".buff.LilywalkSpell"
+    name: lilywalk
+    spell-icon: water_lily
+    description: Lets you walk on water on lily pads.
+    cast-item: book
+    cooldown: 30
+    cost:
+        - mana 40
+        - water_lily 1
+    use-cost:
+        - water_lily 1
+    use-cost-interval: 25
+    str-cost: 40 mana and 1 lilypad, plus 1 lilypad every 50 blocks
+    str-cast-self: You can now walk on water!
+    str-cast-others: "%a can now walk on water!"
+    str-fade: You can no longer walk on water.

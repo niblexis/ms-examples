@@ -1,0 +1,24 @@
+fireball:
+    spell-class: ".targeted.FireballSpell"
+    name: fireball
+    spell-icon: fireball
+    description: Throw a fiery ball of destruction.
+    cast-item: blaze_rod
+    cooldown: 5
+    range: 30
+    require-entity-target: false
+    can-target: players,monsters
+    check-plugins: true
+    damage-multiplier: 3
+    small-fireball: true
+    no-fire: false
+    no-explosion: false
+    no-explosion-effect: true
+    no-explosion-damage: 5
+    no-explosion-damage-range: 3
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: You cannot throw a fireball there.
+    str-cast-self: You throw a fiery ball of destruction!
+    str-cast-others: "%a throws a fiery ball of destruction!"

@@ -1,0 +1,19 @@
+storm:
+    spell-class: ".targeted.AreaEffectSpell"
+    name: storm
+    spell-icon: gold_sword
+    description: Strike lightning upon all nearby enemies.
+    cast-item: bone
+    horizontal-radius: 10
+    vertical-radius: 5
+    point-blank: true
+    fail-if-no-targets: true
+    can-target: players,monsters,animals
+    spells:
+        - lightning
+    cooldown: 15
+    cost:
+        - mana 35
+    str-cost: 35 mana
+    str-cast-self: You call down a lightning storm!
+    str-no-target: No target found.

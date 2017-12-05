@@ -1,0 +1,19 @@
+haze:
+    spell-class: ".targeted.PotionEffectSpell"
+    name: haze
+    spell-icon: slime_ball
+    description: Makes your target's vision hazey.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    type: 9
+    strength: 0
+    duration: 200
+    targeted: true
+    can-target: players
+    obey-los: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have confuzzled your target!
+    str-no-target: No target found.

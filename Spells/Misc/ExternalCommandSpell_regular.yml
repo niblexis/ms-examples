@@ -1,0 +1,25 @@
+gianttree:
+    spell-class: ".ExternalCommandSpell"
+    name: gianttree
+    spell-icon: sapling:3
+    enabled: false
+    description: Create a giant tree!
+    cooldown: 300
+    can-cast-by-command: true
+    can-cast-with-item: false
+    command-to-execute:
+        - "gt 25 4"
+    command-to-execute-later: []
+    command-delay: 0
+    command-to-block:
+        - "gt"
+    temporary-permissions: []
+    require-player-target: false
+    obey-los: true
+    range: 20
+    cost:
+        - mana 50
+        - sapling 5
+    str-cost: 50 mana and 5 saplings
+    str-cast-self: You grow a tree!
+    str-cant-use-command: "&4You don't have permission to do that."

@@ -1,0 +1,18 @@
+lightning:
+    spell-class: ".targeted.LightningSpell"
+    name: lightning
+    spell-icon: gold_sword
+    description: Call down lightning.
+    cast-item: blaze_rod
+    cooldown: 15
+    range: 20
+    additional-damage: 0
+    no-damage: false
+    require-entity-target: true
+    check-plugins: false
+    cost:
+        - mana 15
+    str-cost: 15 mana
+    str-cast-self: You call down lightning.
+    str-cast-others: "%a calls down lightning."
+    str-no-target: No target found.

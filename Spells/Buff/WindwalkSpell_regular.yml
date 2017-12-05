@@ -1,0 +1,25 @@
+windwalk:
+    spell-class: ".buff.WindwalkSpell"
+    name: windwalk
+    spell-icon: feather
+    enabled: true
+    description: Fly through the air.
+    cast-item: book
+    fly-speed: 0.1
+    launch-speed: 1
+    cancel-on-land: false
+    cancel-on-logout: true
+    cancel-on-teleport: true
+    cancel-on-give-damage: false
+    cancel-on-take-damage: false
+    duration: 120
+    cost:
+        - mana 25
+        - feather 2
+    use-cost:
+        - feather 1
+    use-cost-interval: 15
+    str-cost: 25 mana, 2 feathers, plus 1 feather every 15 seconds
+    str-cast-self: You can now walk on the wind!
+    str-cast-others: "%a is now walking on the wind!"
+    str-fade: You are no longer walking on the wind.

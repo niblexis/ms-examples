@@ -1,0 +1,20 @@
+forcetoss:
+    spell-class: ".targeted.ForcetossSpell"
+    name: forcetoss
+    spell-icon: piston_base
+    description: Magically throw an enemy into the air.
+    cast-item: blaze_rod
+    require-entity-target: true
+    cooldown: 5
+    range: 15
+    damage: 0
+    horizontal-force: 30
+    vertical-force: 15
+    can-target: players,monsters
+    check-plugins: true
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-no-target: No target found.
+    str-cast-self: You push back your enemy!
+    str-cast-others: "%a pushes back his enemy."

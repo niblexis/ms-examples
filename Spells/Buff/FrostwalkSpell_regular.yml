@@ -1,0 +1,18 @@
+frostwalk:
+    spell-class: ".buff.FrostwalkSpell"
+    name: frostwalk
+    spell-icon: ice
+    description: Lets you walk on water.
+    cast-item: book
+    size: 2
+    leave-frozen: false
+    cooldown: 30
+    cost:
+        - mana 50
+    use-cost:
+        - snow_ball 1
+    use-cost-interval: 25
+    str-cost: 50 mana, plus 1 snowball every 25 blocks
+    str-cast-self: You can now walk on water!
+    str-cast-others: "%a can now walk on water!"
+    str-fade: You can no longer walk on water.

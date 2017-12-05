@@ -1,0 +1,13 @@
+tree:
+    spell-class: ".targeted.TreeSpell"
+    name: tree
+    spell-icon: sapling
+    range: 15
+    cooldown: 5
+    tree-type: tree
+    animation-speed: 20
+    cost:
+        - mana 10
+        - sapling 1
+    str-cost: 10 mana and 1 sapling
+    str-no-target: You cannot grow a tree there.

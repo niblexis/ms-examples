@@ -1,0 +1,13 @@
+prayer:
+    spell-class: ".instant.PrayerSpell"
+    name: prayer
+    spell-icon: yellow_flower
+    description: Heals yourself for five hearts.
+    cast-item: stick
+    cooldown: 15
+    amount-healed: 10
+    cost:
+        - mana 10
+    str-cost: 10 mana
+    str-cast-self: You have healed yourself.
+    str-at-full-health: You are already at full health.
