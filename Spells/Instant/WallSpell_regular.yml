@@ -1,4 +1,4 @@
-wall:
+regular_wall:
     spell-class: ".instant.WallSpell"
     name: wall
     spell-icon: brick

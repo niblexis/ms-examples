@@ -1,4 +1,4 @@
-reflect:
+regular_reflect:
     spell-class: ".buff.ReflectSpell"
     name: reflect
     spell-icon: thin_glass

@@ -1,4 +1,4 @@
-lilywalk:
+regular_lilywalk:
     spell-class: ".buff.LilywalkSpell"
     name: lilywalk
     spell-icon: water_lily

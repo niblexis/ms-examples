@@ -1,4 +1,4 @@
-freeze:
+regular_freeze:
     spell-class: ".instant.FreezeSpell"
     name: freeze
     spell-icon: snow_ball

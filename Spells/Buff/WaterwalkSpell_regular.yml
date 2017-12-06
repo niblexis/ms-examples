@@ -1,4 +1,4 @@
-waterwalk:
+regular_waterwalk:
     spell-class: ".buff.WaterwalkSpell"
     name: waterwalk
     spell-icon: boat

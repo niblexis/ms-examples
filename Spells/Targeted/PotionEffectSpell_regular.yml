@@ -1,4 +1,4 @@
-blind:
+regular_blind:
     spell-class: ".targeted.PotionEffectSpell"
     name: blind
     spell-icon: ink_sack:0

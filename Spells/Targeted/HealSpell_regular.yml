@@ -1,4 +1,4 @@
-haze:
+regular_haze:
     spell-class: ".targeted.PotionEffectSpell"
     name: haze
     spell-icon: slime_ball

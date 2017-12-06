@@ -1,4 +1,4 @@
-anvil:
+regular_anvil:
     spell-class: ".instant.ThrowBlockSpell"
     name: anvil
     spell-icon: anvil

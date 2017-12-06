@@ -1,4 +1,4 @@
-phase:
+regular_phase:
     spell-class: ".instant.PhaseSpell"
     name: phase
     spell-icon: diamond

@@ -1,4 +1,4 @@
-flamewalk:
+regular_flamewalk:
     spell-class: ".buff.FlamewalkSpell"
     name: flamewalk
     spell-icon: fire

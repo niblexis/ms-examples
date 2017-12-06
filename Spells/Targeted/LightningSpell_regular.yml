@@ -1,4 +1,4 @@
-lightning:
+regular_lightning:
     spell-class: ".targeted.LightningSpell"
     name: lightning
     spell-icon: gold_sword

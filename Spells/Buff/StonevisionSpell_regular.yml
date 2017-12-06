@@ -1,4 +1,4 @@
-stonevision:
+regular_stonevision:
     spell-class: ".buff.StonevisionSpell"
     name: stonevision
     spell-icon: stone

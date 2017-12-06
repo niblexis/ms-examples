@@ -1,4 +1,4 @@
-carpet:
+regular_carpet:
     spell-class: ".buff.CarpetSpell"
     name: carpet
     spell-icon: thin_glass

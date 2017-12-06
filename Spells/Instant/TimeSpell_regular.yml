@@ -1,4 +1,4 @@
-sun:
+regular_sun:
     spell-class: ".instant.TimeSpell"
     name: sun
     spell-icon: watch

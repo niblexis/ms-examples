@@ -1,4 +1,4 @@
-lifewalk:
+regular_lifewalk:
     spell-class: ".buff.LifewalkSpell"
     name: lifewalk
     spell-icon: sapling:2

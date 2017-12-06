@@ -1,4 +1,4 @@
-zeus:
+regular_zeus:
     spell-class: ".MultiSpell"
     name: zeus
     spell-icon: gold_axe

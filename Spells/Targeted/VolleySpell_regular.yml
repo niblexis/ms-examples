@@ -1,4 +1,4 @@
-volley:
+regular_volley:
     spell-class: ".targeted.VolleySpell"
     name: volley
     spell-icon: bow

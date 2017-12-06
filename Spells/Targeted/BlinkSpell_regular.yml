@@ -1,4 +1,4 @@
-blink:
+regular_blink:
     spell-class: ".targeted.BlinkSpell"
     name: blink
     spell-icon: ender_pearl

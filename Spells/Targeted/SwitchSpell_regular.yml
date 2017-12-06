@@ -1,4 +1,4 @@
-switch:
+regular_switch:
     spell-class: ".targeted.SwitchSpell"
     name: switch
     spell-icon: eye_of_ender

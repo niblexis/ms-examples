@@ -1,4 +1,4 @@
-fireball:
+regular_fireball:
     spell-class: ".targeted.FireballSpell"
     name: fireball
     spell-icon: fireball

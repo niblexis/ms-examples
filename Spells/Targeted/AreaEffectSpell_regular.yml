@@ -1,4 +1,4 @@
-storm:
+regular_storm:
     spell-class: ".targeted.AreaEffectSpell"
     name: storm
     spell-icon: gold_sword

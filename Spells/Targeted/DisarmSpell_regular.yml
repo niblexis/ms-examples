@@ -1,4 +1,4 @@
-disarm:
+regular_disarm:
     spell-class: ".targeted.DisarmSpell"
     name: disarm
     spell-icon: stone_sword:130

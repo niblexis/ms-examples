@@ -1,4 +1,4 @@
-firenova:
+regular_firenova:
     spell-class: ".instant.FirenovaSpell"
     name: firenova
     spell-icon: blaze_powder

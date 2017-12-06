@@ -1,4 +1,4 @@
-forcepush:
+regular_forcepush:
     spell-class: ".instant.ForcepushSpell"
     name: forcepush
     spell-icon: record_3

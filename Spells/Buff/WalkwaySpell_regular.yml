@@ -1,4 +1,4 @@
-walkway:
+regular_walkway:
     spell-class: ".buff.WalkwaySpell"
     name: walkway
     spell-icon: wood_stairs

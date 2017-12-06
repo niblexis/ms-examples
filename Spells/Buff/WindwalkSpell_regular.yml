@@ -1,4 +1,4 @@
-windwalk:
+regular_windwalk:
     spell-class: ".buff.WindwalkSpell"
     name: windwalk
     spell-icon: feather

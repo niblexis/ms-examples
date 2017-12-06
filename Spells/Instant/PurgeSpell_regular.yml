@@ -1,4 +1,4 @@
-purge:
+regular_purge:
     spell-class: ".instant.PurgeSpell"
     name: purge
     spell-icon: potion:16396

@@ -1,4 +1,4 @@
-zap:
+regular_zap:
     spell-class: ".targeted.ZapSpell"
     name: zap
     spell-icon: gold_pickaxe

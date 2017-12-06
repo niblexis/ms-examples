@@ -1,4 +1,4 @@
-prayer:
+regular_prayer:
     spell-class: ".instant.PrayerSpell"
     name: prayer
     spell-icon: yellow_flower

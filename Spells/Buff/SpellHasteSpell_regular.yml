@@ -1,4 +1,4 @@
-spellhaste:
+regular_spellhaste:
     spell-class: ".buff.SpellHasteSpell"
     name: spellhaste
     spell-icon: ink_sack:4

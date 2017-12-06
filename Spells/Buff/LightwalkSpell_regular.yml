@@ -1,4 +1,4 @@
-lightwalk:
+regular_lightwalk:
     spell-class: ".buff.LightwalkSpell"
     name: lightwalk
     spell-icon: glowstone

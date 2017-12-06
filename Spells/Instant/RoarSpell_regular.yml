@@ -1,4 +1,4 @@
-roar:
+regular_roar:
     spell-class: ".instant.RoarSpell"
     name: roar
     spell-icon: mob_spawner

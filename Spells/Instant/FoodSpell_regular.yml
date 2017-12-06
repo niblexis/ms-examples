@@ -1,4 +1,4 @@
-food:
+regular_food:
     spell-class: ".instant.FoodSpell"
     name: food
     spell-icon: cooked_beef

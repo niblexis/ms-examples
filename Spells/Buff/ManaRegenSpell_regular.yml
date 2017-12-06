@@ -1,4 +1,4 @@
-clarity:
+regular_clarity:
     spell-class: ".buff.ManaRegenSpell"
     name: clarity
     spell-icon: potion

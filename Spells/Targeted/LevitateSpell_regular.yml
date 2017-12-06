@@ -1,4 +1,4 @@
-levitate:
+regular_levitate:
     spell-class: ".targeted.LevitateSpell"
     name: levitate
     spell-icon: feather

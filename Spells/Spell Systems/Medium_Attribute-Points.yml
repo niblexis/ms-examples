@@ -102,10 +102,6 @@ Attribute-Points_Menu_Main:
                item: Attribute-Points_Defense
                spell: Attribute-Points_Defense_Upgrade
                stay-open: true
-          Attribute-Points_Back:
-               slot: 8
-               item: "160:15|&8&lBack"
-               spell: Adventurer-Journal_Menu_Main
      incantations:
           - "/attributes"
      can-cast-by-command: false

@@ -1,4 +1,4 @@
-repair:
+regular_repair:
     spell-class: ".instant.RepairSpell"
     name: repair
     spell-icon: workbench

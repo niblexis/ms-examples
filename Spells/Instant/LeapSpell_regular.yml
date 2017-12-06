@@ -1,4 +1,4 @@
-leap:
+regular_leap:
     spell-class: ".instant.LeapSpell"
     name: leap
     spell-icon: diamond_boots

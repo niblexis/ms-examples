@@ -1,4 +1,4 @@
-summon:
+regular_summon:
     spell-class: ".instant.RitualSpell"
     name: summon
     spell-icon: portal

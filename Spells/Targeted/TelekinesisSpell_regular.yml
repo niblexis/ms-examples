@@ -1,4 +1,4 @@
-telekinesis:
+regular_telekinesis:
     spell-class: ".targeted.TelekinesisSpell"
     name: telekinesis
     spell-icon: lever

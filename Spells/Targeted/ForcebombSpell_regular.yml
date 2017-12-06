@@ -1,4 +1,4 @@
-forcebomb:
+regular_forcebomb:
     spell-class: ".targeted.ForcebombSpell"
     name: forcebomb
     spell-icon: record_4

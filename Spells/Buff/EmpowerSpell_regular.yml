@@ -1,4 +1,4 @@
-empower:
+regular_empower:
     spell-class: ".buff.EmpowerSpell"
     name: empower
     spell-icon: glowstone_dust

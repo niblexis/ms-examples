@@ -1,4 +1,4 @@
-stormblock:
+regular_stormblock:
     spell-class: ".targeted.PulserSpell"
     name: stormblock
     spell-icon: diamond_block

@@ -1,4 +1,4 @@
-drainlife:
+regular_drainlife:
     spell-class: ".targeted.DrainlifeSpell"
     name: drainlife
     spell-icon: ghast_tear

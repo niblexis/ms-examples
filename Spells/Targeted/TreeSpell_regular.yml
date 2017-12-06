@@ -1,4 +1,4 @@
-tree:
+regular_tree:
     spell-class: ".targeted.TreeSpell"
     name: tree
     spell-icon: sapling

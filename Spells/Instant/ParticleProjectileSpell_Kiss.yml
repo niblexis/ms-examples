@@ -1,0 +1,36 @@
+Emotes_Kiss_ParticleProjectile:
+     spell-class: ".instant.ParticleProjectileSpell"
+     cooldown: 20
+     str-on-cooldown: "&7&oEmote on cooldown! &9&o%c seconds remaining&7&o."
+     str-cast-self: "&7&oYou blow a kiss into the air."
+     projectile-velocity: 18
+     particle-horizontal-spread: 0.1
+     particle-vertical-spread: 0.1
+     particle-count: 10
+     particle-name: heart
+     hit-players: true
+     spell: Emotes_Kiss_Dummy
+     incantations:
+          - "/kiss"
+     permission-name: traverse.emotes
+     can-cast-by-command: false
+
+Emotes_Kiss_Dummy:
+     spell-class: ".targeted.DummySpell"
+     effects:
+        Particles:
+             position: target
+             effect: particles
+             particle-name: heart
+             horiz-spread: 0.8
+             vert-spread: 0.8
+             height-offset: 1.7
+             speed: 0.002
+             count: 20
+        Sound:
+             position: target
+             effect: soundpersonal
+             sound: entity.player.levelup
+             pitch: 1
+             volume: 1
+     can-cast-by-command: false

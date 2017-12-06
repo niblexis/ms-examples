@@ -1,4 +1,4 @@
-cripple:
+regular_ripple:
     spell-class: ".targeted.CrippleSpell"
     name: cripple
     spell-icon: web

@@ -1,4 +1,4 @@
-gate:
+regular_gate:
     spell-class: ".instant.GateSpell"
     name: gate
     spell-icon: portal

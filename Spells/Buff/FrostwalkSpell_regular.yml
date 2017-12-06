@@ -1,4 +1,4 @@
-frostwalk:
+regular_frostwalk:
     spell-class: ".buff.FrostwalkSpell"
     name: frostwalk
     spell-icon: ice

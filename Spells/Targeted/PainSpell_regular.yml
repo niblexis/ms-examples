@@ -1,4 +1,4 @@
-pain:
+regular_pain:
     spell-class: ".targeted.PainSpell"
     name: pain
     spell-icon: bone

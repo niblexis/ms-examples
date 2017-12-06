@@ -1,4 +1,4 @@
-mark:
+regular_mark:
     spell-class: ".instant.MarkSpell"
     name: mark
     spell-icon: bed

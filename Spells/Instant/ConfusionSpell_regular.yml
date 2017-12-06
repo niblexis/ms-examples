@@ -1,4 +1,4 @@
-confusion:
+regular_confusion:
     spell-class: ".instant.ConfusionSpell"
     name: confusion
     spell-icon: eye_of_ender

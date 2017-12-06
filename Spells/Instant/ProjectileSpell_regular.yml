@@ -1,4 +1,4 @@
-explosivearrow:
+regular_explosivearrow:
     spell-class: ".instant.ProjectileSpell"
     name: explosivearrow
     spell-icon: arrow

@@ -1,4 +1,4 @@
-combust:
+regular_combust:
     spell-class: ".targeted.CombustSpell"
     name: combust
     spell-icon: fire

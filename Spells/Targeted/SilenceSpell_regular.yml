@@ -1,4 +1,4 @@
-silence:
+regular_silence:
     spell-class: ".targeted.SilenceSpell"
     name: silence
     spell-icon: raw_fish

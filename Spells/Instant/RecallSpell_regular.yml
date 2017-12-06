@@ -1,4 +1,4 @@
-recall:
+regular_recall:
     spell-class: ".instant.RecallSpell"
     name: recall
     spell-icon: compass

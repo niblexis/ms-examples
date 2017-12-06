@@ -1,4 +1,4 @@
-explode:
+regular_explode:
     spell-class: ".targeted.ExplodeSpell"
     name: explode
     spell-icon: tnt

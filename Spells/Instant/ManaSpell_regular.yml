@@ -1,4 +1,4 @@
-mana:
+regular_mana:
     spell-class: ".instant.ManaSpell"
     name: lifetap
     spell-icon: potion:8193

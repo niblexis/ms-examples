@@ -1,4 +1,4 @@
-entomb:
+regular_entomb:
     spell-class: ".targeted.EntombSpell"
     name: entomb
     spell-icon: glass

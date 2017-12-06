@@ -1,4 +1,4 @@
-shadowstep:
+regular_shadowstep:
     spell-class: ".targeted.ShadowstepSpell"
     name: shadowstep
     spell-icon: leather_boots

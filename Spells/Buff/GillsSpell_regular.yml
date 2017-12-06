@@ -1,4 +1,4 @@
-gills:
+regular_gills:
     spell-class: ".buff.GillsSpell"
     name: gills
     spell-icon: gold_helmet

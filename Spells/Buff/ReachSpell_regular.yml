@@ -1,4 +1,4 @@
-reach:
+regular_reach:
     spell-class: ".buff.ReachSpell"
     name: reach
     spell-icon: dispenser

@@ -1,4 +1,4 @@
-conjure:
+regular_conjure:
     spell-class: ".instant.ConjureSpell"
     name: conjure
     spell-icon: redstone

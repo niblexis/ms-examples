@@ -1,4 +1,4 @@
-water:
+regular_water:
     spell-class: ".targeted.MaterializeSpell"
     name: water
     spell-icon: water_bucket

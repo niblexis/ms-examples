@@ -1,4 +1,4 @@
-farm:
+regular_farm:
     spell-class: ".targeted.FarmSpell"
     name: farm
     spell-icon: seeds

@@ -1,4 +1,4 @@
-geyser:
+regular_geyser:
     spell-class: ".targeted.GeyserSpell"
     name: geyser
     spell-icon: water

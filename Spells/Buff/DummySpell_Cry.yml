@@ -1,0 +1,20 @@
+Emotes_Cry:
+     spell-class: ".buff.DummySpell"
+     duration: 3
+     cooldown: 10
+     str-on-cooldown: "&7&oEmote on cooldown! &9&o%c seconds remaining&7&o."
+     str-cast-self: "&7&oYou begin to sob uncontrollably."
+     effects:
+        Particles:
+             position: buff
+             effect: particles
+             particle-name: droplet
+             horiz-spread: 0.3
+             vert-spread: 0.3
+             height-offset: 1.7
+             speed: 0.002
+             count: 30
+             effect-interval: 12
+     incantations:
+          - "/cry"
+     can-cast-by-command: false

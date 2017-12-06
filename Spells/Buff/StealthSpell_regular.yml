@@ -1,4 +1,4 @@
-stealth:
+regular_stealth:
     spell-class: ".buff.StealthSpell"
     name: stealth
     spell-icon: leather_boots

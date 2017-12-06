@@ -1,4 +1,4 @@
-build:
+regular_build:
     spell-class: ".targeted.BuildSpell"
     name: build
     spell-icon: stone

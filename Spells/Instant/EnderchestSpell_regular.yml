@@ -1,4 +1,4 @@
-enderchest:
+regular_enderchest:
     spell-class: ".instant.EnderchestSpell"
     name: enderchest
     spell-icon: ender_chest

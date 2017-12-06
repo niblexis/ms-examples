@@ -1,4 +1,4 @@
-invisibility:
+regular_invisibility:
     spell-class: ".buff.InvisibilitySpell"
     name: invisibility
     spell-icon: record_11

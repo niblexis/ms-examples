@@ -1,4 +1,4 @@
-forcetoss:
+regular_forcetoss:
     spell-class: ".targeted.ForcetossSpell"
     name: forcetoss
     spell-icon: piston_base

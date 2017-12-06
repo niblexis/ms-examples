@@ -1,4 +1,4 @@
-haste:
+regular_haste:
     spell-class: ".buff.HasteSpell"
     name: haste
     spell-icon: gold_boots

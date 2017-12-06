@@ -1,4 +1,4 @@
-cleanse:
+regular_cleanse:
     spell-class: ".targeted.CleanseSpell"
     name: cleanse
     spell-icon: nether_star

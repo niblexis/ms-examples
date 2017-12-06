@@ -1,4 +1,4 @@
-dowse:
+regular_dowse:
     spell-class: ".instant.DowseSpell"
     name: dowse
     spell-icon: compass

@@ -1,4 +1,4 @@
-minion:
+regular_minion:
     spell-class: ".buff.MinionSpell"
     name: minion
     spell-icon: monster_egg:54

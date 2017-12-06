@@ -1,4 +1,4 @@
-summon_helper:
+regular_summon_helper:
     spell-class: ".targeted.SummonSpell"
     can-cast-with-item: false
     can-cast-by-command: false
