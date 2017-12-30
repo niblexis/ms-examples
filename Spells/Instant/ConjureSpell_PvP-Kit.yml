@@ -1,0 +1,13 @@
+Kits_PvP:
+     spell-class: ".instant.ConjureSpell"
+     add-to-inventory: true
+     items:
+          - diamond_helmet 1
+          - diamond_chestplate 1
+          - diamond leggings 1
+          - diamond boots 1
+          - diamond_sword 1
+          - bow 1
+          - arrow 64
+     incantations:
+          - "/kit pvp"

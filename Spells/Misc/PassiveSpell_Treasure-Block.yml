@@ -1,0 +1,31 @@
+Treasure-Block_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - rightclickblocktype 41
+     spells:
+          - Treasure-Block_Conjure(mode=full)
+     modifiers:
+          - holding 285 required
+          - chance 5 castinstead Treasure-Block_Zap
+
+Treasure-Block_Conjure:
+     spell-class: ".instant.ConjureSpell"
+     cooldown: 3
+     items:
+          - diamond 1-3 50%
+          - gold_ingot 3-7 90%
+          - gold_nugget 12-36 70%
+          - 314 1 5%
+          - 283 1 5%
+     effects:
+          Break:
+               effect: blockbreak
+               position: caster
+               id: 41
+               height-offset: 1
+
+Treasure-Block_Zap:
+     spell-class: ".targeted.ZapSpell"
+     drop-normal: false
+     allowed-block-types:
+          - 41

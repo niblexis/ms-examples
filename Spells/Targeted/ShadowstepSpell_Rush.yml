@@ -1,0 +1,18 @@
+Rush:
+     spell-class: ".targeted.ShadowstepSpell"
+     distance: 2.5
+     range: 10
+     yaw: 180
+     effects:
+          Particles:
+               effect: particles
+               position: line
+               particle-name: cloud
+               count: 30
+               speed: 0.2
+          Sound:
+               effect: sound
+               position: caster
+               sound: entity.horse.gallop
+               pitch: 1.5
+               volume: 2

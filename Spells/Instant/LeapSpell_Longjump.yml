@@ -1,0 +1,17 @@
+Longjump:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 20
+     upward-velocity: 7
+     effects:
+          Particles:
+               effect: particles
+               position: caster
+               particle-name: cloud
+               count: 30
+               speed: 0.2
+          Sound:
+               effect: sound
+               position: caster
+               sound: item.elytra.flying
+               pitch: 1.5
+               volume: 2
