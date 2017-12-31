@@ -1,0 +1,20 @@
+Electric-Path_Beam:
+     spell-class: ".instant.BeamSpell"
+     beam-width: 2
+     y-offset: 0
+     max-distance: 20
+     interval: 5
+     spell: Electric-Path_Lightning
+
+Electric-Path_Lightning:
+     spell-class: ".targeted.LightningSpell"
+     require-entity-target: false
+     effects:
+          Particles:
+               position: line
+               effect: particles
+               particle-name: crit
+               horiz-spread: 2
+               vert-spread: 0.3
+               count: 30
+               speed: 0.002

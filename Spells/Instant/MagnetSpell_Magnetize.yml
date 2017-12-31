@@ -1,0 +1,8 @@
+Magnetize:
+     spell-class: ".instant.MagnetSpell"
+     str-cast-self: "&7&oYou attract the items around you"
+     range: 20
+     velocity: 5
+     teleport-items: false
+     force-pickup: false
+     remove-item-gravity: false

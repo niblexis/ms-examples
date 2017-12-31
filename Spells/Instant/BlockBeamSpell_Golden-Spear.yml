@@ -1,0 +1,16 @@
+Golden-Spear_Blocks:
+     spell-class: ".instant.BlockBeamSpell"
+     block-type: "gold_block"
+     max-distance: 15
+     hit-radius: 1
+     remove-delay: 20
+     interval: 1
+     y-offset: 0
+     rotation-x: 60
+     rotation-y: 0
+     small: false
+     spell: Golden-Spear_Impact
+
+Golden-Spear_Impact:
+     spell-class: ".targeted.ExplodeSpell"
+     prevent-block-damage: true

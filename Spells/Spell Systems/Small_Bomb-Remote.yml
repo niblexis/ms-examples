@@ -1,0 +1,48 @@
+variables:
+     Bomb_Placed:
+          type: player
+          min: 0
+          max: 1
+
+predefined-items:
+     Bomb_Remote:
+          type: lever
+          name: "&cBomb Remote"
+
+Bomb_Place:
+     spell-class: ".instant.MarkSpell"
+     cast-item: Bomb_Remote
+     modifiers:
+          - variableequals Bomb_Placed:1 castinstead Bomb_Detonate_Multi
+     variable-mods-cast:
+          - Bomb_Placed =1
+     effects:
+          Particles:
+               effect: particles
+               position: caster
+               particle-name: crit
+               count: 30
+               speed: 0.2
+
+Bomb_Detonate_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - Bomb_Detonate_CastAtMark
+          - Bomb_Detonate_Clear(mode=full)
+
+Bomb_Detonate_CastAtMark:
+     spell-class: ".instant.CastAtMarkSpell"
+     mark-spell: Bomb_Place
+     spell: Bomb_Detonate_Explode
+     str-no-mark: ""
+
+Bomb_Detonate_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     prevent-block-damage: true
+
+Bomb_Detonate_Clear:
+     spell-class: ".targeted.RemoveMarksSpell"
+     radius: 10000
+     mark-spell: Bomb_Place
+     variable-mods-cast:
+          - Bomb_Placed =0
