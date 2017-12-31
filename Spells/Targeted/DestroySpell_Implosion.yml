@@ -1,0 +1,43 @@
+Implosion:
+     spell-class: ".targeted.DestroySpell"
+     horiz-radius: 3
+     vert-radius: 3
+     velocity: 2
+     velocity-type: fountain
+     prevent-landing-blocks: false
+     block-types-to-throw: null
+     block-types-to-remove: null
+     falling-block-damage: 0
+     effects:
+        Particles_1:
+             position: target
+             effect: particles
+             particle-name: lava
+             count: 100
+             horiz-spread: 3
+             vert-spread: 0.3
+             speed: 0.002
+             height-offset: 0
+        Particles_2:
+             position: target
+             effect: particles
+             particle-name: cloud
+             count: 70
+             horiz-spread: 3
+             vert-spread: 0.3
+             speed: 0.002
+             height-offset: 0
+        Explode:
+             position: target
+             effect: particles
+             particle-name: hugeexplosion
+             count: 2
+             horiz-spread: 0.4
+             vert-spread: 0.4
+             speed: 0.002
+        Sound:
+             position: target
+             effect: sound
+             sound: entity.generic.explode
+             volume: 1
+             pitch: 1

@@ -1,0 +1,22 @@
+predefined-items:
+     Artemis:
+          type: bow
+          name: "&b&oArtemis"
+          lore:
+               - "&7&oThe legendary ice bow, Artemis."
+
+Artemis_BowSpell:
+     spell-class: ".BowSpell"
+     bow-name: "&b&oArtemis"
+     spell: Artemis_Homing
+
+Artemis_Homing:
+     spell-class: ".targeted.HomingArrowSpell"
+     special-effect-interval: 1
+     effects:
+          Particles:
+               effect: particles
+               position: special
+               particle-name: crit
+               count: 10
+               speed: 0.2

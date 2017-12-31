@@ -1,0 +1,18 @@
+Raise-Cow_Passive:
+     spell-class: ".PassiveSpell"
+     cancel-default-action: true
+     triggers:
+          - rightclickentity cow
+     spells:
+          - Raise-Cow_Age
+     modifiers:
+          - holding 296 required
+
+Raise-Cow_Age:
+     spell-class: ".targeted.AgeSpell"
+     apply-age-lock: false
+     set-maturity: true
+     age: 0
+     cost:
+          - 296 1
+     str-missing-reagents: ""

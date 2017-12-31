@@ -1,0 +1,24 @@
+Bleed_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - givedamage
+     spells:
+          - Bleed_DoT
+     modifiers:
+          - holding 359 required
+
+Bleed_DoT:
+     spell-class: ".targeted.DotSpell"
+     delay: 5
+     interval: 15
+     duration: 200
+     damage: 1
+     prevent-knockback: true
+     effects:
+          Particles:
+               effect: particles
+               position: target
+               particle-name: blockcrack_152
+               count: 30
+               speed: 0.2
+               height-offset: 1
