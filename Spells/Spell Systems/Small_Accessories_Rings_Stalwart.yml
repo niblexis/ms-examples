@@ -1,0 +1,73 @@
+predefined-items:
+     Rings_Stalwart_I:
+          type: "351:2"
+          name: "&4Ring of the Stalwart I"
+          lore:
+               - "&8On Equip: &7Prevent knockback 50% of the time"
+     Rings_Stalwart_II:
+          type: "351:2"
+          name: "&6Ring of the Stalwart I"
+          lore:
+               - "&8On Equip: &7Prevent knockback 100% of the time"
+
+Accessories_Equip_Rings_Stalwart_I_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Rings_Stalwart_I
+     boots: Rings_Stalwart_I
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have a ring equipped."
+     cost:
+          - Rings_Stalwart_I 1
+     modifiers:
+          - wearingprecise Rings_Stalwart_I denied
+          - wearingprecise Rings_Stalwart_II denied
+     str-modifier-failed: "&7&oYou already have a ring equipped."
+
+Accessories_Equip_Rings_Stalwart_II_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Rings_Stalwart_II
+     boots: Rings_Stalwart_II
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have a ring equipped."
+     cost:
+          - Rings_Stalwart_I 1
+     modifiers:
+          - wearingprecise Rings_Stalwart_I denied
+          - wearingprecise Rings_Stalwart_II denied
+     str-modifier-failed: "&7&oYou already have a ring equipped."
+
+##------------------[Buffs]------------------##
+
+Accessories_Buffs_Rings_Stalwart_Passive:
+      spell-class: ".PassiveSpell"
+      triggers:
+           - ticks 1
+      spells:
+           - Accessories_Buffs_Rings_Stalwart_Reset
+      modifiers:
+           - wearingprecise Rings_Stalwart_I castinstead Accessories_Buffs_Rings_Stalwart_I
+           - wearingprecise Rings_Stalwart_II castinstead Accessories_Buffs_Rings_Stalwart_II
+
+Accessories_Buffs_Rings_Stalwart_Reset:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - meta_attribute_generic_knockback_resistance_base =0
+     modifiers:
+          - variableequals meta_attribute_generic_knockback_resistance_base:0 denied
+
+
+Accessories_Buffs_Rings_Stalwart_I:
+      spell-class: ".instant.DummySpell"
+      variable-mods-cast:
+          - meta_attribute_generic_knockback_resistance_base =0.5
+      modifiers:
+          - variableequals meta_attribute_generic_knockback_resistance_base:0.5 denied
+
+Accessories_Buffs_Rings_Stalwart_II:
+      spell-class: ".instant.DummySpell"
+      variable-mods-cast:
+          - meta_attribute_generic_knockback_resistance_base =1
+      modifiers:
+          - variableequals meta_attribute_generic_knockback_resistance_base:1 denied

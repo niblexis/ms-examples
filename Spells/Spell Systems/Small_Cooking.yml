@@ -1,0 +1,112 @@
+#NOTE FROM NIB:
+#this system is pretty good to expand upon. You could add more categories of food types, or just different foods
+#in the pre-existing categories. Overall it's a good one to play around with.
+
+predefined-items:
+     Pastries_Sacred-Chocolate-Chip:
+          type: cookie
+          name: "&c&oSacred Chocolate Chip Cookie"
+          lore:
+               - "&7&oA cookie so good it must have been"
+               - "&7&osent by the gods."
+     Pastries_Sacred-Chocolate-Chip_Recipe:
+          type: cookie
+          name: "&c&oSacred Chocolate Chip Cookie"
+          lore:
+               - "&7&o * 3 wheat"
+               - "&7&o * 1 egg"
+               - "&7&o * 4 cocoa beans"
+     Sandwiches_Grilled-Mushroom-Sandwich:
+          type: bread
+          name: "&c&oGrilled Mushroom Sandwich"
+          lore:
+               - "&7&oSurprisingly delicious."
+     Sandwiches_Grilled-Mushroom-Sandwich_Recipe:
+          type: bread
+          name: "&c&oGrilled Mushroom Sandwich"
+          lore:
+               - "&7&o * 1 bread"
+               - "&7&o * 2 brown mushrooms"
+               - "&7&o * 1 red mushroom"
+
+##------------------[Cooking Menu]------------------##
+
+Cooking_Menu_Activate:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - rightclickblocktype sponge
+     spells:
+          - Cooking_Menu_Main
+
+Cooking_Menu_Main:
+     spell-class: ".MenuSpell"
+     title: "              &8&lCooking"
+     delay: 1
+     options:
+          Pastries:
+               slot: 0
+               item: cookie|&f&lPastries
+               spell: Cooking_Menu_Pastries
+          Sandwiches:
+               slot: 1
+               item: bread|&c&lSandwiches
+               spell: Cooking_Menu_Sandwiches
+     incantations:
+          - "/cooking"
+     can-cast-by-command: false
+
+##-----------[Pastries]-----------##
+
+##--------[Menu]--------##
+
+Cooking_Menu_Pastries:
+     spell-class: ".MenuSpell"
+     title: "              &8&lPastries"
+     delay: 1
+     options:
+          Sacred_Chocolate_Chip:
+               slot: 0
+               item: Pastries_Sacred-Chocolate-Chip_Recipe
+               spell: Cooking_Conjure_Pastries_Sacred-Chocolate-Chip(mode=full)
+     can-cast-by-command: false
+
+##--------[Conjure]--------##
+
+Cooking_Conjure_Pastries_Sacred-Chocolate-Chip:
+     spell-class: ".instant.ConjureSpell"
+     add-to-inventory: true
+     items:
+          - Pastries_Sacred-Chocolate-Chip 1
+     cost:
+          - 296 3
+          - 344 1
+          - "351:3 4"
+     str-missing-reagents: "&7&oYou don't have the ingredients to cook this."
+
+##-----------[Sandwiches]-----------##
+
+##--------[Menu]--------##
+
+Cooking_Menu_Sandwiches:
+     spell-class: ".MenuSpell"
+     title: "            &8&lSandwiches"
+     delay: 1
+     options:
+          Sacred_Chocolate_Chip:
+               slot: 0
+               item: Sandwiches_Grilled-Mushroom-Sandwich_Recipe
+               spell: Cooking_Conjure_Sandwiches_Grilled-Mushroom-Sandwich(mode=full)
+     can-cast-by-command: false
+
+##--------[Conjure]--------##
+
+Cooking_Conjure_Sandwiches_Grilled-Mushroom-Sandwich:
+     spell-class: ".instant.ConjureSpell"
+     add-to-inventory: true
+     items:
+          - Sandwiches_Grilled-Mushroom-Sandwich 1
+     cost:
+          - bread 1
+          - 39 2
+          - 40 1
+     str-missing-reagents: "&7&oYou don't have the ingredients to cook this."

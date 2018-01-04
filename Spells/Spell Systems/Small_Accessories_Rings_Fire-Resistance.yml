@@ -1,0 +1,186 @@
+predefined-items:
+     Rings_Fire-Resistance_I:
+          type: "351:2"
+          name: "&2&oRing of Fire Resistance I"
+          lore:
+               - "&8On Equip: &c+10% Fire Resistance"
+     Rings_Fire-Resistance_II:
+          type: "351:2"
+          name: "&3&oRing of Fire Resistance II"
+          lore:
+               - "&8On Equip: &c+20% Fire Resistance"
+     Rings_Fire-Resistance_III:
+          type: "351:2"
+          name: "&4&oRing of Fire Resistance III"
+          lore:
+               - "&8On Equip: &c+30% Fire Resistance"
+     Rings_Fire-Resistance_IV:
+          type: "351:2"
+          name: "&5&oRing of Fire Resistance IV"
+          lore:
+               - "&8On Equip: &c+40% Fire Resistance"
+     Rings_Fire-Resistance_V:
+          type: "351:2"
+          name: "&6&oRing of Fire Resistance V"
+          lore:
+               - "&8On Equip: &c+50% Fire Resistance"
+
+##------------------[Equipping]------------------##
+
+Accessories_Equip_Rings_Fire-Resistance_I_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Rings_Fire-Resistance_I
+     boots: Rings_Fire-Resistance_I
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have a ring equipped."
+     cost:
+          - Rings_Fire-Resistance_I 1
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_I denied
+          - wearingprecise Rings_Fire-Resistance_II denied
+          - wearingprecise Rings_Fire-Resistance_III denied
+          - wearingprecise Rings_Fire-Resistance_IV denied
+          - wearingprecise Rings_Fire-Resistance_V denied
+     str-modifier-failed: "&7&oYou already have a ring equipped."
+
+Accessories_Equip_Rings_Fire-Resistance_II_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Rings_Fire-Resistance_II
+     boots: Rings_Fire-Resistance_II
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have a ring equipped."
+     cost:
+          - Rings_Fire-Resistance_II 1
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_I denied
+          - wearingprecise Rings_Fire-Resistance_II denied
+          - wearingprecise Rings_Fire-Resistance_III denied
+          - wearingprecise Rings_Fire-Resistance_IV denied
+          - wearingprecise Rings_Fire-Resistance_V denied
+     str-modifier-failed: "&7&oYou already have a ring equipped."
+
+Accessories_Equip_Rings_Fire-Resistance_III_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Rings_Fire-Resistance_III
+     boots: Rings_Fire-Resistance_III
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have a ring equipped."
+     cost:
+          - Rings_Fire-Resistance_III 1
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_I denied
+          - wearingprecise Rings_Fire-Resistance_II denied
+          - wearingprecise Rings_Fire-Resistance_III denied
+          - wearingprecise Rings_Fire-Resistance_IV denied
+          - wearingprecise Rings_Fire-Resistance_V denied
+     str-modifier-failed: "&7&oYou already have a ring equipped."
+
+Accessories_Equip_Rings_Fire-Resistance_IV_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Rings_Fire-Resistance_IV
+     boots: Rings_Fire-Resistance_IV
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have a ring equipped."
+     cost:
+          - Rings_Fire-Resistance_IV 1
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_I denied
+          - wearingprecise Rings_Fire-Resistance_II denied
+          - wearingprecise Rings_Fire-Resistance_III denied
+          - wearingprecise Rings_Fire-Resistance_IV denied
+          - wearingprecise Rings_Fire-Resistance_V denied
+     str-modifier-failed: "&7&oYou already have a ring equipped."
+
+Accessories_Equip_Rings_Fire-Resistance_V_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Rings_Fire-Resistance_V
+     boots: Rings_Fire-Resistance_V
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have a ring equipped."
+     cost:
+          - Rings_Fire-Resistance_V 1
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_I denied
+          - wearingprecise Rings_Fire-Resistance_II denied
+          - wearingprecise Rings_Fire-Resistance_III denied
+          - wearingprecise Rings_Fire-Resistance_IV denied
+          - wearingprecise Rings_Fire-Resistance_V denied
+     str-modifier-failed: "&7&oYou already have a ring equipped."
+
+##------------------[Buffs]------------------##
+
+Accessories_Buffs_Rings_Fire-Resistance_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     spells:
+          - Accessories_Buffs_Rings_Fire-Resistance_Dummy
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_I castinstead Accessories_Buffs_Rings_Fire-Resistance_I
+          - wearingprecise Rings_Fire-Resistance_II castinstead Accessories_Buffs_Rings_Fire-Resistance_II
+          - wearingprecise Rings_Fire-Resistance_III castinstead Accessories_Buffs_Rings_Fire-Resistance_III
+          - wearingprecise Rings_Fire-Resistance_IV castinstead Accessories_Buffs_Rings_Fire-Resistance_IV
+          - wearingprecise Rings_Fire-Resistance_V castinstead Accessories_Buffs_Rings_Fire-Resistance_V
+
+Accessories_Buffs_Rings_Fire-Resistance_Dummy:
+     spell-class: ".instant.DummySpell"
+
+Accessories_Buffs_Rings_Fire-Resistance_I:
+     spell-class: ".buff.ResistSpell"
+     toggle: false
+     duration: 1
+     normal-damage-types:
+          - onFire
+          - lava
+     multiplier: 0.9
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_I required
+
+Accessories_Buffs_Rings_Fire-Resistance_II:
+     spell-class: ".buff.ResistSpell"
+     toggle: false
+     duration: 1
+     normal-damage-types:
+          - onFire
+          - lava
+     multiplier: 0.8
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_II required
+
+Accessories_Buffs_Rings_Fire-Resistance_III:
+     spell-class: ".buff.ResistSpell"
+     toggle: false
+     duration: 1
+     normal-damage-types:
+          - onFire
+          - lava
+     multiplier: 0.7
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_III required
+
+Accessories_Buffs_Rings_Fire-Resistance_IV:
+     spell-class: ".buff.ResistSpell"
+     toggle: false
+     duration: 1
+     normal-damage-types:
+          - onFire
+          - lava
+     multiplier: 0.6
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_IV required
+
+Accessories_Buffs_Rings_Fire-Resistance_V:
+     spell-class: ".buff.ResistSpell"
+     toggle: false
+     duration: 1
+     normal-damage-types:
+          - onFire
+          - lava
+     multiplier: 0.5
+     modifiers:
+          - wearingprecise Rings_Fire-Resistance_V required

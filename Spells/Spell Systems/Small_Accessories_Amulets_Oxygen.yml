@@ -1,0 +1,107 @@
+predefined-items:
+     Amulets_Oxygen_I:
+          type: "351:1"
+          name: "&3&oAmulet of Oxygen I"
+          lore:
+               - "&8On Equip: &b+1 Oxygen"
+     Amulets_Oxygen_II:
+          type: "351:1"
+          name: "&4&oAmulet of Oxygen II"
+          lore:
+               - "&8On Equip: &b+2 Oxygen"
+     Amulets_Oxygen_III:
+          type: "351:1"
+          name: "&5&oAmulet of Oxygen III"
+          lore:
+               - "&8On Equip: &b+3 Oxygen"
+
+##------------------[Equipping]------------------##
+
+Accessories_Equip_Amulets_Oxygen_I_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Amulets_Oxygen_I
+     leggings: Amulets_Oxygen_I
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have an amulet equipped."
+     cost:
+          - Amulets_Oxygen_I 1
+     modifiers:
+          - wearingprecise Amulets_Oxygen_I denied
+          - wearingprecise Amulets_Oxygen_II denied
+          - wearingprecise Amulets_Oxygen_III denied
+     str-modifier-failed: "&7&oYou already have an amulet equipped."
+
+Accessories_Equip_Amulets_Oxygen_II_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Amulets_Oxygen_II
+     leggings: Amulets_Oxygen_II
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have an amulet equipped."
+     cost:
+          - Amulets_Oxygen_II 1
+     modifiers:
+          - wearingprecise Amulets_Oxygen_I denied
+          - wearingprecise Amulets_Oxygen_II denied
+          - wearingprecise Amulets_Oxygen_III denied
+     str-modifier-failed: "&7&oYou already have an amulet equipped."
+
+Accessories_Equip_Amulets_Oxygen_III_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Amulets_Oxygen_III
+     leggings: Amulets_Oxygen_III
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have an amulet equipped."
+     cost:
+          - Amulets_Oxygen_III 1
+     modifiers:
+          - wearingprecise Amulets_Oxygen_I denied
+          - wearingprecise Amulets_Oxygen_II denied
+          - wearingprecise Amulets_Oxygen_III denied
+     str-modifier-failed: "&7&oYou already have an amulet equipped."
+
+##------------------[Buffs]------------------##
+
+Accessories_Buffs_Amulets_Oxygen_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     spells:
+          - Accessories_Buffs_Amulets_Oxygen_Reset
+     modifiers:
+          - wearingprecise Amulets_Oxygen_I castinstead Accessories_Buffs_Amulets_Oxygen_I
+          - wearingprecise Amulets_Oxygen_II castinstead Accessories_Buffs_Amulets_Oxygen_II
+          - wearingprecise Amulets_Oxygen_III castinstead Accessories_Buffs_Amulets_Oxygen_III
+
+Accessories_Buffs_Amulets_Oxygen_Reset:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - meta_max_air =300
+     modifiers:
+          - variableequals meta_max_air:300 denied
+          - wearingprecise Amulets_Oxygen_I denied
+          - wearingprecise Amulets_Oxygen_II denied
+          - wearingprecise Amulets_Oxygen_III denied
+
+Accessories_Buffs_Amulets_Oxygen_I:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - meta_max_air =320
+     modifiers:
+          - variableequals meta_max_air:320 denied
+
+Accessories_Buffs_Amulets_Oxygen_II:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - meta_max_air =340
+     modifiers:
+          - variableequals meta_max_air:340 denied
+
+Accessories_Buffs_Amulets_Oxygen_III:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - meta_max_air =360
+     modifiers:
+          - variableequals meta_max_air:360 denied

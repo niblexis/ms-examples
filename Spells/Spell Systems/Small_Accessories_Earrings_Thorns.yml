@@ -1,0 +1,21 @@
+predefined-items:
+     Earrings_Thorns:
+          type: "351:3"
+          name: "&5Thorny Earrings"
+          lore:
+               - "&8On Equip: &7Inflicts damage to attacker when hit."
+          enchants:
+               - thorns 6
+
+Accessories_Equip_Earrings_Thorns_Armor:
+     spell-class: ".buff.ArmorSpell"
+     right-click-cast-item: Earrings_Thorns
+     chestplate: Earrings_Thorns
+     permanent: true
+     toggle: true
+     str-has-armor: "&7&oYou already have earrings equipped."
+     cost:
+          - Earrings_Thorns 1
+     modifiers:
+          - wearingprecise Earrings_Thorns denied
+     str-modifier-failed: "&7&oYou already have earrings equipped."
