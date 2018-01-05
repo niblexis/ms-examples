@@ -1,0 +1,13 @@
+predefined-items:
+     Levitating_Bread:
+          type: bread
+          name: "&c&oLevitating Bread"
+          lore:
+               - "&7&oThis bread is very, very light."
+
+Levitating-Bread_Potion:
+     spell-class: ".targeted.PotionEffectSpell"
+     consume-cast-item: Levitating_Bread
+     target-self: true
+     type: 25
+     duration: 100

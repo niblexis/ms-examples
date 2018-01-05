@@ -1,0 +1,51 @@
+Arcane-Whip_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - Arcane-Whip_AoE
+          - DELAY 3
+          - Arcane-Whip_AoE
+          - DELAY 3
+          - Arcane-Whip_AoE
+          - DELAY 3
+          - Arcane-Whip_AoE
+          - DELAY 3
+          - Arcane-Whip_AoE
+          - DELAY 3
+          - Arcane-Whip_AoE
+          - DELAY 3
+          - Arcane-Whip_AoE
+     effects:
+          Particles:
+               position: caster
+               effect: effectlibentity
+               effectlib:
+                    class: AnimatedBallEffect
+                    iterations: 13
+                    xFactor: 3
+                    yFactor: 0
+                    zFactor: 3
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.enchantment_table.use
+               pitch: 1.2
+               volume: 1
+
+Arcane-Whip_AoE:
+     spell-class: ".targeted.AreaEffectSpell"
+     horizontal-radius: 3
+     vertical-radius: 1.5
+     spells:
+          - Arcane-Whip_Pain
+
+Arcane-Whip_Pain:
+     spell-class: ".targeted.PainSpell"
+     damage: 3
+     effects:
+          Particles:
+               effect: particles
+               position: target
+               particle-name: blockcrack_152
+               count: 30
+               speed: 0.2
+               height-offset: 1
