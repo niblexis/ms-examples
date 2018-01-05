@@ -1,0 +1,285 @@
+#This is a fun little minigame using modifier collections/variables/passives.
+#It's good to look at if you're interested in learning any of those concepts.
+
+variables:
+     Pick-And-Hammer_Precision:
+          type: player
+          min: 0
+          max: 100
+          default: 0
+          exp-bar: true
+     Pick-And-Hammer_Precision_Mode:
+          type: player
+          min: 0
+          max: 1
+          default: 0
+
+modifiers:
+     Poor_Low:
+          checks:
+               - variablemorethan Pick-And-Hammer_Precision:1 continue
+               - variablelessthan Pick-And-Hammer_Precision:25 continue
+          pass-condition: ALL
+     Poor_High:
+          checks:
+               - variablemorethan Pick-And-Hammer_Precision:75 continue
+               - variablelessthan Pick-And-Hammer_Precision:100 continue
+          pass-condition: ALL
+     Good_Low:
+          checks:
+               - variablemorethan Pick-And-Hammer_Precision:25 continue
+               - variablelessthan Pick-And-Hammer_Precision:40 continue
+          pass-condition: ALL
+     Good_High:
+          checks:
+               - variablemorethan Pick-And-Hammer_Precision:60 continue
+               - variablelessthan Pick-And-Hammer_Precision:75 continue
+          pass-condition: ALL
+     Poor:
+          checks:
+               - collection Poor_Low continue
+               - collection Poor_High continue
+          pass-condition: ANY
+     Good:
+          checks:
+               - collection Good_Low continue
+               - collection Good_High continue
+          pass-condition: ANY
+     Great:
+          checks:
+               - variablemorethan Pick-And-Hammer_Precision:40 continue
+               - variablelessthan Pick-And-Hammer_Precision:60 continue
+          pass-condition: ALL
+     Holding_Pickaxe:
+          checks:
+               - holding 257 continue
+               - holding 270 continue
+               - holding 274 continue
+               - holding 278 continue
+               - holding 285 continue
+          pass-condition: ANY
+
+Pick-And-Hammer_Dummy:
+     spell-class: ".instant.DummySpell"
+
+##------------------[Start]------------------##
+
+Pick-And-Hammer_Start_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - rightclickblocktype 57
+     spells:
+          - Pick-And-Hammer_Start_Menu
+     modifiers:
+          - collection Holding_Pickaxe required
+          - buffactive Pick-And-Hammer_Precision_Buff denied
+
+Pick-And-Hammer_Start_Menu:
+     spell-class: ".MenuSpell"
+     title: "          &8&lPick & Hammer"
+     options:
+          Start:
+               slot: 4
+               item: 257|&f&lStart
+               spell: Pick-And-Hammer_Precision_Buff
+          Quit:
+               slot: 8
+               item: 166|&c&lQuit
+               spell: Pick-And-Hammer_Dummy
+
+##------------------[Game]------------------##
+
+##-----------[Precision Bar]------------##
+
+Pick-And-Hammer_Precision_Buff:
+     spell-class: ".buff.DummySpell"
+     duration: 10
+     effects:
+          Particles:
+               position: orbit
+               effect: particles
+               particle-name: magicCrit
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 10
+               speed: 0.002
+               height-offset: 0
+               orbit-seconds-per-revolution: 0.2
+          Title:
+               position: caster
+               effect: title
+               title: "&7&oPick & Hammer!"
+               subtitle: "&fStrike at the right moment"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+     variable-mods-cast:
+          - Pick-And-Hammer_Precision =1
+
+Pick-And-Hammer_Precision_Mode-Switch_0:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Pick-And-Hammer_Precision_Mode =0
+
+Pick-And-Hammer_Precision_Mode-Switch_1:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Pick-And-Hammer_Precision_Mode =1
+
+Pick-And-Hammer_Precision_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     spells:
+          - Pick-And-Hammer_Precision_Add
+          - Pick-And-Hammer_Precision_Subtract
+     modifiers:
+          - buffactive Pick-And-Hammer_Precision_Buff required
+
+Pick-And-Hammer_Precision_Add:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Pick-And-Hammer_Precision +3
+     modifiers:
+          - variablemorethan Pick-And-Hammer_Precision:99 castinstead Pick-And-Hammer_Precision_Mode-Switch_1
+          - variableequals Pick-And-Hammer_Precision_Mode:0 required
+
+Pick-And-Hammer_Precision_Subtract:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Pick-And-Hammer_Precision -3
+     modifiers:
+          - variablelessthan Pick-And-Hammer_Precision:2 castinstead Pick-And-Hammer_Precision_Mode-Switch_0
+          - variableequals Pick-And-Hammer_Precision_Mode:1 required
+
+##-----------[Mining]------------##
+
+Pick-And-Hammer_Mine_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - sneak
+     spells:
+          - Pick-And-Hammer_Mine_Poor(mode=full)
+          - Pick-And-Hammer_Mine_Good(mode=full)
+          - Pick-And-Hammer_Mine_Great(mode=full)
+
+Pick-And-Hammer_Mine_Poor:
+     spell-class: ".instant.ConjureSpell"
+     shared-cooldowns:
+          - Pick-And-Hammer_Mine_Good 1
+          - Pick-And-Hammer_Mine_Great 1
+     cooldown: 2
+     str-on-cooldown: ""
+     add-to-inventory: true
+     items:
+          - 371 3-6
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: crit
+               horiz-spread: 0.5
+               vert-spread: 0.5
+               count: 15
+               speed: 0.002
+               height-offset: 0.5
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.anvil.use
+               pitch: 0.8
+               volume: 1
+          Title:
+               position: caster
+               effect: title
+               title: "&8&oPoor"
+               subtitle: ""
+     modifiers:
+          - collection Poor required
+
+Pick-And-Hammer_Mine_Good:
+     spell-class: ".instant.ConjureSpell"
+     shared-cooldowns:
+          - Pick-And-Hammer_Mine_Poor 1
+          - Pick-And-Hammer_Mine_Great 1
+     cooldown: 1
+     str-on-cooldown: ""
+     add-to-inventory: true
+     items:
+          - 266 3-6
+          - 264 1-3 30%
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: crit
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 15
+               speed: 0.002
+               height-offset: 0.5
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.anvil.use
+               pitch: 1.3
+               volume: 1
+          Title:
+               position: caster
+               effect: title
+               title: "&7&oGood"
+               subtitle: ""
+     modifiers:
+          - collection Good required
+
+Pick-And-Hammer_Mine_Great:
+     spell-class: ".instant.ConjureSpell"
+     shared-cooldowns:
+          - Pick-And-Hammer_Mine_Poor 1
+          - Pick-And-Hammer_Mine_Good 1
+     cooldown: 1
+     str-on-cooldown: ""
+     add-to-inventory: true
+     items:
+          - 57 1-4 30%
+          - 264 6-7
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: crit
+               horiz-spread: 0.5
+               vert-spread: 0.2
+               count: 30
+               speed: 0.002
+               height-offset: 0.5
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.anvil.use
+               pitch: 1.3
+               volume: 1
+          Title:
+               position: caster
+               effect: title
+               title: "&f&oGreat!"
+               subtitle: ""
+     modifiers:
+          - collection Great required
+
+##-----------[End]------------##
+
+Pick-And-Hammer_End_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     spells:
+          - Pick-And-Hammer_Clear
+     modifiers:
+          - buffactive Pick-And-Hammer_Precision_Buff denied
+
+Pick-And-Hammer_Clear:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Pick-And-Hammer_Precision =0
+          - Pick-And-Hammer_Precision-Mode =0
