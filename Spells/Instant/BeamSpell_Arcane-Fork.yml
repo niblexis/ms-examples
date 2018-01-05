@@ -1,0 +1,79 @@
+Arcane-Fork_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - Arcane-Fork_1
+          - Arcane-Fork_2
+          - Arcane-Fork_3
+          - Arcane-Fork_4
+
+Arcane-Fork_Pain:
+     spell-class: ".targeted.PainSpell"
+     damage: 4
+
+Arcane-Fork_1:
+     spell-class: ".instant.BeamSpell"
+     rotation: 0.2
+     spell: Arcane-Fork_Pain
+     hit-radius: 0.3
+     stop-on-hit-ground: false
+     effects:
+          Particles:
+               position: special
+               effect: particles
+               particle-name: magicCrit
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 10
+               speed: 0.002
+               height-offset: 0
+
+Arcane-Fork_2:
+     spell-class: ".instant.BeamSpell"
+     rotation: -0.2
+     spell: Arcane-Fork_Pain
+     hit-radius: 0.3
+     stop-on-hit-ground: false
+     effects:
+          Particles:
+               position: special
+               effect: particles
+               particle-name: magicCrit
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 10
+               speed: 0.002
+               height-offset: 0
+
+Arcane-Fork_3:
+     spell-class: ".instant.BeamSpell"
+     rotation: -0.7
+     spell: Arcane-Fork_Pain
+     hit-radius: 0.3
+     stop-on-hit-ground: false
+     effects:
+          Particles:
+               position: special
+               effect: particles
+               particle-name: magicCrit
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 10
+               speed: 0.002
+               height-offset: 0
+
+Arcane-Fork_4:
+     spell-class: ".instant.BeamSpell"
+     rotation: 0.7
+     spell: Arcane-Fork_Pain
+     hit-radius: 0.3
+     stop-on-hit-ground: false
+     effects:
+          Particles:
+               position: special
+               effect: particles
+               particle-name: magicCrit
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 10
+               speed: 0.002
+               height-offset: 0

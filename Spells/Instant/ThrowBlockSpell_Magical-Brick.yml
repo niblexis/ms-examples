@@ -1,0 +1,31 @@
+Magical-Brick_Toss_ThrowBlock:
+     spell-class: ".instant.ThrowBlockSpell"
+     cast-item: 405
+     block-type: 112
+     velocity: 1.5
+     vertical-adjustment: 0
+     prevent-blocks: true
+     spell-on-land: Magical-Brick_Toss_Explode
+     effects:
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.enderdragon.flap
+               volume: 1
+               pitch: 1
+
+Magical-Brick_Toss_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 5
+     prevent-block-damage: true
+     damage-multiplier: 2
+     effects:
+        Particles:
+             position: target
+             effect: particles
+             particle-name: blockcrack_112
+             horiz-spread: 3
+             vert-spread: 1
+             height-offset: 0
+             speed: 0.002
+             count: 80

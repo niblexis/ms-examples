@@ -1,0 +1,35 @@
+Echo-Gate_Mark:
+     spell-class: ".instant.MarkSpell"
+     permanent-marks: true
+
+Echo-Gate_Portal:
+     spell-class: ".instant.PortalSpell"
+     mark-spell: Echo-Gate_Mark
+     duration: 400
+     teleport-cooldown: 1
+     min-distance: 0
+     max-distance: 0
+     effect-interval: 5
+     effects:
+          Particles:
+               position: special
+               effect: particles
+               particle-name: witchMagic
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 10
+               speed: 0.002
+               height-offset: 0
+          Helix:
+               position: special
+               effect: effectlib
+               effectlib:
+                    class: HelixEffect
+                    strands: 8
+                    particles: 80
+                    radius: 2
+                    particle: FLAME
+          Sound:
+               position: special
+               effect: sound
+               sound: block.fire.extinguish
