@@ -11,7 +11,7 @@ predefined-items:
           type: prismarine_shard
           name: "&8Flintlock"
           lore:
-               - "&7&oA flintlock that fires off bolts of energy."\
+               - "&7&oA flintlock that fires off bolts of energy."
 
 ##-----------[Ammo]-----------##
 
