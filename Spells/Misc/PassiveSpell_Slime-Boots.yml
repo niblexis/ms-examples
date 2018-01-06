@@ -1,0 +1,35 @@
+predefined-items:
+     Slime_Boots:
+          type: chainmail_boots
+          name: "&bSlime Boots"
+
+Slime-Boots_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     modifiers:
+          - onblock 0 denied
+          - sneaking denied
+          - wearingprecise Slime_Boots required
+     spells:
+          - Slime-Boots_Leap
+
+Slime-Boots_Leap:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 2
+     upward-velocity: 10
+     cancel-damage: true
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: slime
+               count: 20
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               speed: 0.002
+               height-offset: 0
+          Sound:
+               position: caster
+               effect: sound
+               sound: entity.slime.jump

@@ -1,0 +1,83 @@
+Flame-Breath_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+          - DELAY 1
+          - Flame-Breath_Block
+
+Flame-Breath_Block:
+     spell-class: ".instant.ThrowBlockSpell"
+     block-type: 51
+     velocity: 2
+     vertical-adjustment: 0.5
+     prevent-blocks: true
+     spell-on-land: Flame-Breath_AoE
+     effects:
+          Particles:
+               position: csater
+               effect: particles
+               particle-name: flame
+               count: 3
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               speed: 0.002
+               height-offset: 0
+          Sound:
+               position: caster
+               effect: sound
+               sound: item.firecharge.use
+
+Flame-Breath_AoE:
+     spell-class: ".targeted.AreaEffectSpell"
+     horizontal-radius: 3
+     vertical-radius: 1
+     fail-if-no-targets: false
+     spells:
+          - Flame-Breath_Combust
+     effects:
+          Particles:
+               position: special
+               effect: particles
+               particle-name: flame
+               count: 25
+               horiz-spread: 2
+               vert-spread: 1
+               speed: 0.002
+               height-offset: 0
+
+Flame-Breath_Combust:
+     spell-class: ".targeted.CombustSpell"

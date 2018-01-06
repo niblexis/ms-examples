@@ -1,0 +1,12 @@
+Feed_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 1
+     spells:
+          - Feed_Dummy
+
+Feed_Dummy:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - meta_food_level =19
+     can-cast-by-command: false
