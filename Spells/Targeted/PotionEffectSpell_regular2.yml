@@ -1,4 +1,4 @@
-poison:
+regular_poison:
     spell-class: ".targeted.PotionEffectSpell"
     name: poison
     spell-icon: spider_eye

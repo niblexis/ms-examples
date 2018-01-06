@@ -1,0 +1,36 @@
+predefined-items:
+     Super_Bonemeal:
+          type: "351:15"
+          name: "&6&lSuper Bonemeal"
+          lore:
+               - "&7&oEven more effective than normal bonemeal."
+
+Super-Bonemeal_Create:
+     spell-class: ".instant.ConjureSpell"
+     cast-item: "351:15"
+     items:
+          - Super_Bonemeal 1
+     cost:
+          - "351:15 3"
+     modifiers:
+          - sneaking required
+     str-missing-reagents: "&7&oYou do not have enough bonemeal."
+
+Super-Bonemeal_Growth:
+     spell-class: ".targeted.FarmSpell"
+     right-click-cast-item: Super_Bonemeal
+     radius: 3
+     growth: 10
+     targeted: true
+     cost:
+          - Super_Bonemeal 1
+     effects:
+        Particles:
+             position: caster
+             effect: particles
+             particle-name: happyVillager
+             count: 100
+             horiz-spread: 5
+             vert-spread: 0.3
+             speed: 0.002
+             height-offset: 0

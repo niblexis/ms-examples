@@ -1,0 +1,24 @@
+Divine-Pillar_Geyser:
+     spell-class: ".targeted.GeyserSpell"
+     range: 20
+     damage: 5
+     velocity: 10
+     animation-speed: 1
+     geyser-height: 15
+     geyser-type: "155:2"
+     effects:
+        Particles:
+             position: target
+             effect: particles
+             particle-name: crit
+             count: 100
+             horiz-spread: 1
+             vert-spread: 1
+             speed: 0.002
+             height-offset: 1
+        Sound:
+             position: caster
+             effect: sound
+             sound: entity.generic.explode
+             volume: 1
+             pitch: 1

@@ -1,0 +1,27 @@
+Dragon-Claw_Fireball:
+     spell-class: ".targeted.FireballSpell"
+     range: 30
+     damage-multiplier: 3
+     small-fireball: false
+     no-fire: true
+     no-explosion: true
+     effects:
+          Particles:
+               position: projectile
+               effect: effectlibentity
+               effectlib:
+                    class: AnimatedBallEffect
+                    particle: FLAME
+                    iterations: 150
+                    xFactor: 1
+                    ZFactor: 1
+                    yFactor: 1
+                    particlesPerIteration: 100
+                    xRotation: 1.5
+                    yRotation: 0
+                    zRotation: 1.5
+          Sound:
+               position: caster
+               effect: sound
+               sound: entity.enderdragon.shoot
+               volume: 2

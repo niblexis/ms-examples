@@ -1,0 +1,31 @@
+predefined-items:
+     Phoenix_Antidote:
+          type: 370
+          name: "&6&lPhoenix Antidote"
+          lore:
+               - "&7&oAn incredibly expensive potion that"
+               - "&7&ocan remove fire."
+
+Phoenix-Antidote_Cleanse:
+     spell-class: ".targeted.CleanseSpell"
+     right-click-cast-item: Phoenix_Antidote
+     target-self: true
+     remove:
+          - fire
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: happyVillager
+               count: 100
+               horiz-spread: 0.8
+               vert-spread: 0.8
+               speed: 0.002
+               height-offset: 0.5
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.fire.extinguish
+               pitch: 0.8
+     cost:
+          - Phoenix_Antidote 1

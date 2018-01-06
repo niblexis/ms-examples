@@ -1,0 +1,18 @@
+Vampiric-Sap_Drainlife:
+     spell-class: ".targeted.DrainlifeSpell"
+     range: 15
+     take-type: health
+     take-amt: 2
+     give-type: health
+     give-amt: 2
+     animation-speed: 0
+     effects:
+          Particles:
+               effect: particles
+               position: line
+               particle-name: blockcrack_152
+               count: 30
+               speed: 0.2
+               horiz-spread: 0.1
+               vert-spread: 0.1
+               height-offset: 0.3

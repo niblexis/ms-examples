@@ -1,0 +1,38 @@
+Phoenix-Eye_Pulser:
+     spell-class: ".targeted.PulserSpell"
+     block-type: 0
+     total-pulses: 5
+     interval: 30
+     max-distance: 5
+     cap-per-player: 1
+     spells:
+          - Phoenix-Eye_AoE
+
+Phoenix-Eye_AoE:
+     spell-class: ".targeted.AreaEffectSpell"
+     horizontal-radius: 5
+     vertical-radius: 1.5
+     fail-if-no-targets: false
+     spells:
+          - Phoenix-Eye_Combust
+     effects:
+          Particles:
+               position: special
+               effect: effectlib
+               effectlib:
+                    class: HelixEffect
+                    radius: 5
+
+Phoenix-Eye_Combust:
+     spell-class: ".targeted.CombustSpell"
+     fire-ticks: 200
+     fire-tick-damage: 1
+     effects:
+          Particles:
+               position: target
+               effect: particles
+               particle-name: flame
+               horiz-spread: 2
+               vert-spread: 0.3
+               count: 30
+               speed: 0.002

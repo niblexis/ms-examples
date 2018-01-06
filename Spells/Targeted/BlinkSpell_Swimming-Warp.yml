@@ -1,0 +1,40 @@
+Swimming-Warp_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - Swimming-Warp_Blink
+          - Swimming-Warp_Leap
+
+Swimming-Warp_Blink:
+     spell-class: ".targeted.BlinkSpell"
+     range: 20
+     smoke-trail: false
+     effects:
+          Particles:
+               position: line
+               effect: particles
+               particle-name: dripWater
+               horiz-spread: 0.6
+               vert-spread: 0.1
+               speed: 0.5
+               count: 500
+               height-offset: 0
+
+Swimming-Warp_Leap:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 3
+     upward-velocity: 10
+     effects:
+          Particles:
+               effect: particles
+               position: caster
+               particle-name: droplet
+               count: 100
+               speed: 0.2
+               horiz-spread: 1
+               vert-spread: 1
+          Sound:
+               effect: sound
+               position: caster
+               sound: entity.player.splash
+               pitch: 1.5
+               volume: 2

@@ -1,0 +1,15 @@
+Bubble_Puppeteer:
+     spell-class: ".targeted.LevitateSpell"
+     tick-rate: 1
+     duration: 25
+     cancel-on-item-switch: true
+     range: 15
+     effects:
+          Particles:
+               position: target
+               effect: effectlibentity
+               effectlib:
+                    class: SphereEffect
+                    radius: 1.5
+                    particles: 250
+                    particle: WATER_SPLASH
