@@ -1,0 +1,25 @@
+Nimbus_Windwalk:
+     spell-class: ".buff.WindwalkSpell"
+     fly-speed: 0.1
+     launch-speed: 2
+     cancel-on-land: true
+     cancel-on-logout: true
+     cancel-on-teleport: true
+     cancel-on-give-damage: false
+     cancel-on-take-damage: false
+     duration: 0
+     effects:
+          Particles:
+               position: buff
+               effect: particles
+               effect-interval: 1
+               particle-name: cloud
+               count: 30
+               speed: 0.002
+               horiz-spread: 0.5
+               vert-spread: 0.5
+          Sound:
+               position: buff
+               effect: sound
+               effect-interval: 20
+               sound: item.elytra.flying

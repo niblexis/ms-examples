@@ -1,0 +1,28 @@
+Dragon-Leg_Flamewalk:
+     spell-class: ".buff.FlamewalkSpell"
+     range: 2
+     fire-ticks: 100
+     tick-interval: 10
+     duration: 10
+     effects:
+          Particles:
+               position: buff
+               effect: effectlibentity
+               effect-interval: 10
+               height-offset: -0.5
+               effectlib:
+                    class: AnimatedBallEffect
+                    size: 0.3
+                    particle: FLAME
+                    iterations: 20
+                    size: 2
+                    xFactor: 1
+                    ZFactor: 1
+                    yFactor: 0.3
+                    relativeOffset: 0,-1,0
+                    particlesPerIteration: 20
+          Sound:
+               position: buff
+               effect: sound
+               effect-interval: 10
+               sound: entity.generic.extinguish_fire

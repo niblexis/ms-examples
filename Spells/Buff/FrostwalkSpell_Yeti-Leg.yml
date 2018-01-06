@@ -1,0 +1,27 @@
+Yeti-Leg_Frostwalk:
+     spell-class: ".buff.FrostwalkSpell"
+     size: 3
+     leave-frozen: false
+     duration: 10
+     effects:
+          Particles:
+               position: buff
+               effect: effectlibentity
+               effect-interval: 10
+               height-offset: -0.5
+               effectlib:
+                    class: AnimatedBallEffect
+                    particle: SNOW_SHOVEL
+                    material: 79
+                    iterations: 20
+                    size: 4
+                    xFactor: 1
+                    ZFactor: 1
+                    yFactor: 0
+                    relativeOffset: 0,-0.5,0
+                    particlesPerIteration: 20
+          Sound:
+               position: buff
+               effect: sound
+               effect-interval: 10
+               sound: block.glass.break
