@@ -1,0 +1,277 @@
+variables:
+     Deck-of-Many-Things_Comet_Kills:
+          type: player
+          min: 0
+          max: 10
+          default: 0
+          permanent: true
+     Deck-of-Many-Things_Comet_Activated:
+          type: player
+          min: 0
+          max: 1
+          default: 0
+          permanent: true
+
+predefined-items:
+     Deck_of_Many_Things:
+          type: 395
+          name: "&c&lDeck of Many Things"
+          lore:
+               - "&7&oA deck of cards that, when drawn, activate"
+               - "&7&ovarious effects. Both beneficial and harmful."
+     Deck-of-Many-Things_Key_Sword:
+          type: 276
+          name: "&b&oBarlolowen"
+          lore:
+               - "&7&oA magically enhanced sword"
+          enchants:
+               - sharpness 5
+
+##------------------[Draw]------------------##
+
+Deck-of-Many-Things_Draw:
+     spell-class: ".MultiSpell"
+     cast-item: Deck_of_Many_Things
+     cast-random-spell-instead: true
+     spells:
+          - Deck-of-Many-Things_Comet_Activate
+          - Deck-of-Many-Things_Fool
+          - Deck-of-Many-Things_Gem
+          - Deck-of-Many-Things_Key
+          - Deck-of-Many-Things_Knight
+          - Deck-of-Many-Things_Skull
+          - Deck-of-Many-Things_Sun
+
+##------------------[Cards]------------------##
+
+##-----------[Comet]------------##
+
+Deck-of-Many-Things_Comet_Activate:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Deck-of-Many-Things_Comet_Activated =1
+     effects:
+          Title:
+               position: caster
+               effect: title
+               title: "&c&l&oComet"
+               subtitle: "&f&oTwo of Diamonds"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: ambient.cave
+               pitch: 1
+               volume: 1
+
+Deck-of-Many-Things_Comet_Death_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - respawn
+     spells:
+          - Deck-of-Many-Things_Comet_Death_Dummy
+
+Deck-of-Many-Things_Comet_Death_Dummy:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Deck-of-Many-Things_Comet_Activated =0
+          - Deck-of-Many-Things_Comet_Kills =0
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: witchMagic
+               horiz-spread: 0.6
+               vert-spread: 0.6
+               count: 16
+               height-offset: 1.5
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.wither.spawn
+               pitch: 1
+               volume: 0.2
+
+Deck-of-Many-Things_Comet_Kill_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - kill
+     spells:
+          - Deck-of-Many-Things_Comet_Kill_Add
+     modifiers:
+          - variableequals Deck-of-Many-Things_Comet_Activated:1 required
+
+Deck-of-Many-Things_Comet_Kill_Add:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Deck-of-Many-Things_Comet_Kills +1
+     modifiers:
+          - variableequals Deck-of-Many-Things_Comet_Kills:9 castinstead Deck-of-Many-Things_Comet_End
+
+Deck-of-Many-Things_Comet_End:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Deck-of-Many-Things_Comet_Activated =0
+          - Deck-of-Many-Things_Comet_Kills =0
+          - meta_experience_level +20
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: happyVillager
+               count: 100
+               horiz-spread: 0.5
+               vert-spread: 0.5
+               speed: 0.2
+               height-offset: 1
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.player.levelup
+               pitch: 1
+               volume: 1
+
+##-----------[Fool]------------##
+
+Deck-of-Many-Things_Fool:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Deck-of-Many-Things_Comet_Activated =1
+          - meta_experience_level -5
+     effects:
+          Title:
+               position: caster
+               effect: title
+               title: "&c&l&oFool"
+               subtitle: "&f&oJoker"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: ambient.cave
+               pitch: 1
+               volume: 1
+
+##-----------[Gem]------------##
+
+Deck-of-Many-Things_Gem:
+     spell-class: ".instant.ConjureSpell"
+     items:
+          - diamond 20-24
+     effects:
+          Title:
+               position: caster
+               effect: title
+               title: "&c&l&oGem"
+               subtitle: "&f&oTwo of Hearts"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: ambient.cave
+               pitch: 1
+               volume: 1
+
+##-----------[Key]------------##
+
+Deck-of-Many-Things_Key:
+     spell-class: ".instant.ConjureSpell"
+     items:
+          - Deck-of-Many-Things_Key_Sword 1
+     effects:
+          Title:
+               position: caster
+               effect: title
+               title: "&c&l&oKey"
+               subtitle: "&f&oQueen of Hearts"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: ambient.cave
+               pitch: 1
+               volume: 1
+
+##-----------[Knight]------------##
+
+Deck-of-Many-Things_Knight:
+     spell-class: ".buff.MinionSpell"
+     duration: 0
+     toggle: false
+     mob-chances:
+          - zombie 100
+     effects:
+          Title:
+               position: caster
+               effect: title
+               title: "&c&l&oKnight"
+               subtitle: "&f&oJack of Hearts"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: ambient.cave
+               pitch: 1
+               volume: 1
+
+##-----------[Skull]------------##
+
+Deck-of-Many-Things_Skull:
+     spell-class: ".targeted.SpawnMonsterSpell"
+     location: random
+     range: 15
+     entity-type: skeleton
+     allow-spawn-in-midair: true
+     holding: 276
+     helmet: 310
+     chestplate: 311
+     attributes:
+          - generic.movementSpeed 0.15 add
+          - generic.attackDamage 2.0 add
+     effects:
+          Title:
+               position: caster
+               effect: title
+               title: "&c&l&oSkull"
+               subtitle: "&f&oJack of Clubs"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: ambient.cave
+               pitch: 1
+               volume: 1
+
+##-----------[Sun]------------##
+
+Deck-of-Many-Things_Sun:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - meta_experience_level +30
+     effects:
+          Title:
+               position: caster
+               effect: title
+               title: "&c&l&oSun"
+               subtitle: "&f&oKing of Diamonds"
+               fade-in: 5
+               fade-out: 5
+               stay: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: ambient.cave
+               pitch: 1
+               volume: 1
