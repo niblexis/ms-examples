@@ -1,0 +1,201 @@
+# MADE BY CHRONOKEEPER
+
+Astral-Spheres:
+    spell-class: ".MultiSpell"
+    name: "Astral Spheres"
+    cast-item: magma_cream
+    cooldown: 20
+    cost:
+        - mana 25
+    str-cost: "25 Mana"
+    spells:
+        - ORBIT_ASTRAL_SPHERES_1
+        - ORBIT_ASTRAL_SPHERES_2
+        - ORBIT_ASTRAL_SPHERES_3
+
+ORBIT_ASTRAL_SPHERES_1:
+    spell-class: ".targeted.OrbitSpell"
+    horiz-expand-delay: 2
+    horiz-expand-radius: 0.025
+    vert-expand-delay: 2
+    vert-expand-radius: 0.01
+    start-horiz-offset: 0
+    hit-radius: 1.25
+    vertical-hit-radius: 1.25
+    seconds-per-revolution: 3
+    particle-name: take
+    orbit-radius: 2
+    tick-interval: 1
+    max-duration: 10
+    y-offset: 0.25
+    target-self: true
+    can-hit:
+        - nonplayers
+        - players
+    spell: FORCEBOMB_ASTRAL_SPHERES
+    spell-on-hit-ground: EFF_ASTRAL_SPHERES_GROUND
+    spell-on-hit-entity: DMG_ASTRAL_SPHERES
+    stop-on-hit-entity: true
+    stop-on-hit-ground: true
+    effects:
+        eff1:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: FF00FF
+                iterations: 1
+                radius: 0.25
+                particles: 15
+                period: 0
+                visibleRange: 100
+        eff2:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 9400D3
+                iterations: 1
+                radius: 0.5
+                particles: 15
+                period: 0
+                visibleRange: 100
+
+ORBIT_ASTRAL_SPHERES_2:
+    spell-class: ".targeted.OrbitSpell"
+    horiz-expand-delay: 2
+    horiz-expand-radius: 0.025
+    vert-expand-delay: 2
+    vert-expand-radius: 0.01
+    start-horiz-offset: 120
+    hit-radius: 1.25
+    vertical-hit-radius: 1.25
+    seconds-per-revolution: 3
+    particle-name: take
+    orbit-radius: 2
+    tick-interval: 1
+    max-duration: 10
+    y-offset: 0.25
+    target-self: true
+    can-hit:
+        - nonplayers
+        - players
+    spell: FORCEBOMB_ASTRAL_SPHERES
+    spell-on-hit-ground: EFF_ASTRAL_SPHERES_GROUND
+    spell-on-hit-entity: DMG_ASTRAL_SPHERES
+    stop-on-hit-entity: true
+    stop-on-hit-ground: true
+    effects:
+        eff1:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: FF00FF
+                iterations: 1
+                radius: 0.25
+                particles: 15
+                period: 0
+                visibleRange: 100
+        eff2:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 9400D3
+                iterations: 1
+                radius: 0.5
+                particles: 15
+                period: 0
+                visibleRange: 100
+
+ORBIT_ASTRAL_SPHERES_3:
+    spell-class: ".targeted.OrbitSpell"
+    horiz-expand-delay: 2
+    horiz-expand-radius: 0.025
+    vert-expand-delay: 2
+    vert-expand-radius: 0.01
+    start-horiz-offset: 240
+    hit-radius: 1.25
+    vertical-hit-radius: 1.25
+    seconds-per-revolution: 3
+    particle-name: take
+    orbit-radius: 2
+    tick-interval: 1
+    max-duration: 10
+    y-offset: 0.25
+    target-self: true
+    can-hit:
+        - nonplayers
+        - players
+    spell: FORCEBOMB_ASTRAL_SPHERES
+    spell-on-hit-ground: EFF_ASTRAL_SPHERES_GROUND
+    spell-on-hit-entity: DMG_ASTRAL_SPHERES
+    stop-on-hit-entity: true
+    stop-on-hit-ground: true
+    effects:
+        eff1:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: FF00FF
+                iterations: 1
+                radius: 0.25
+                particles: 15
+                period: 0
+                visibleRange: 100
+        eff2:
+            position: special
+            effect: effectlib
+            effectlib:
+                class: SphereEffect
+                particle: REDSTONE
+                color: 9400D3
+                iterations: 1
+                radius: 0.5
+                particles: 15
+                period: 0
+                visibleRange: 100
+
+FORCEBOMB_ASTRAL_SPHERES:
+    spell-class: ".targeted.ForcebombSpell"
+    radius: 3
+    pushback-force: -5
+    additional-vertical-force: 2
+    max-vertical-force: 2
+    target-players: true
+    dont-target-caster: true
+EFF_ASTRAL_SPHERES_GROUND:
+    spell-class: ".targeted.DummySpell"
+    effects:
+        eff1:
+            position: target
+            effect: particles
+            particle-name: largeExplode
+            horiz-spread: 0.5
+            vert-spread: 0.5
+            count: 5
+            speed: 0
+DMG_ASTRAL_SPHERES:
+    spell-class: ".targeted.PainSpell"
+    damage: 3
+    check-plugins: true
+    ignore-armor: false
+    target-players: true
+    target-non-players: true
+    effects:
+        eff1:
+            position: target
+            height-offset: 0.75
+            effect: particles
+            particle-name: largeExplode
+            horiz-spread: 0.3
+            vert-spread: 0.3
+            count: 2
+            speed: 0
