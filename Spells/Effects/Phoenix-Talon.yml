@@ -1,0 +1,119 @@
+Phoenix-Talon_Effects_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - ticks 15
+     spells:
+          - Phoenix-Talon_Effects_Dummy
+     modifiers:
+          - oncooldown Phoenix-Talon_ParticleProj denied
+
+Phoenix-Talon_Effects_Dummy:
+     spell-class: ".instant.DummySpell"
+     effects:
+          Particles:
+               position: caster
+               effect: effectlibentity
+               effectlib:
+                    class: AnimatedBallEffect
+                    particle: FLAME
+                    size: 0.15
+                    particlesPerIteration: 100
+                    relativeOffset: 0,0.2,0.4
+                    iterations: 20
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.fire.ambient
+               volume: 1
+               pitch: 1
+
+Phoenix-Talon_Particles_Talons:
+     spell-class: ".targeted.AreaEffectSpell"
+     horizontal-radius: 10
+     vertical-radius: 8
+     fail-if-no-targets: false
+     spell-source-in-center: true
+     spells:
+          - Phoenix-Talon_Combust
+     effects:
+          Particles1:
+               position: special
+               effect: effectlib
+               effectlib:
+                    class: LineEffect
+                    particle: FLAME
+                    isZigZag: true
+                    zigZags: 3
+                    particles: 100
+                    length: 6
+                    relativeOffset: 3,2,0
+                    yawOffset: -30
+                    pitchOffset: -10
+          Particles2:
+               position: special
+               effect: effectlib
+               effectlib:
+                    class: LineEffect
+                    particle: FLAME
+                    isZigZag: true
+                    zigZags: 3
+                    particles: 100
+                    length: 6
+                    relativeOffset: 3,2,0
+                    yawOffset: 30
+                    pitchOffset: -10
+          Particles3:
+               position: special
+               effect: effectlib
+               effectlib:
+                    class: LineEffect
+                    particle: FLAME
+                    isZigZag: true
+                    zigZags: 3
+                    particles: 100
+                    length: 6
+                    relativeOffset: 3,2,0
+                    yawOffset: 0
+                    pitchOffset: -10
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.fire.extinguish
+               volume: 1
+               pitch: 1
+
+Phoenix-Talon_ParticleProj:
+     spell-class: ".instant.ParticleProjectileSpell"
+     cast-item: 0
+     cooldown: 10
+     projectile-velocity: 18
+     particle-horizontal-spread: 0.5
+     particle-vertical-spread: 0.5
+     particle-count: 150
+     particle-name: flame
+     particle-speed: 0.002
+     max-distance: 10
+     hit-air-at-end: true
+     spell: Phoenix-Talon_Particles_Talons
+     special-effect-interval: 3
+     effects:
+          Particles:
+               position: special
+               effect: effectlib
+               effectlib:
+                    class: StarEffect
+                    spikeHeight: 2
+                    spikesHalf: 2
+                    innerRadius: 0.3
+                    particles: 20
+                    particle: FLAME
+                    iterations: 1
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: block.lava.pop
+               volume: 2
+               pitch: 1
+
+Phoenix-Talon_Combust:
+     spell-class: ".targeted.CombustSpell"
