@@ -1,0 +1,23 @@
+Sky-Walk_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - sneak
+     spells:
+          - Sky-Walk_Leap
+
+Sky-Walk_Leap:
+     spell-class: ".instant.LeapSpell"
+     forward-velocity: 3
+     upward-velocity: 7
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: cloud
+               horiz-spread: 0.2
+               vert-spread: 0.1
+               height-offset: 0
+          Sound:
+               position: caster
+               effect: sound
+               sound: entity.irongolem.step
