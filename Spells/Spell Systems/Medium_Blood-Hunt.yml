@@ -1,0 +1,932 @@
+# MADE BY RIFLE D. LUFFY
+
+variables:
+    BloodHunt_Kill_AOELoop:
+        type: player
+        min: 0
+        max: 10
+        default: 0
+        permanent: false
+    BloodHunt_Kill_AOEAttackCost:
+        type: player
+        min: 0
+        max: 1
+        default: 0
+        permanent: false
+    BloodHunt_Kill_Count:
+        type: player
+        min: 0
+        max: 3
+        default: 0
+        permanent: false
+predefined-items:
+    hunter:
+        type: 449
+        name: "&cCruvenan: The Restless Soul"
+        lore:
+            - "&7Cruvenan was a merciless king with no respect to the weak."
+            - "&cAnother worthless pile of flesh? Feed them to the dogs! &4- He commanded."
+            - "&7His servants overthrew his unforgiving rule, forging a new one above it..."
+            - "&cKilled? I was. Forgotten? Such a thought is unfathomable within me."
+            - "&cThier killing ment that I was treated like a low life creature."
+            - "&cI was deemed worthless by worthless creatures. How dare they try to rid me."
+            - "&cI am the one in control, not them... NOT any of them. I choose when to leave."
+            - "&cI &4WON'T&c cease to exist. I &4REFUSE&c to give in. I &4MUST&c 'live' on!"
+            - "&cI deem &4YOU&c as my stepping stone. I give you the power to &4KILL&c."
+            - "&cTheir deaths will only be a second or two. They aren't worth the effort."
+            - "&cIf they &4run&c from me. You &4WILL&c chase them."
+            - "&cMy stepping stone &4CANNOT&c die while it hunts."
+            - "&cBind me to your soul and forge me a new legacy.!"
+    info1:
+        type: 387
+        title: "&2Inspiration/Lore"
+        pages:
+          - |
+            &4BloodHunt: &cCovenant's Contract Lore Book
+
+            A submitted spell file challenge
+          - |
+            Inspirations
+
+            The spell was based off Warwick's W: Blood Hunt from League of Legends.
+
+            I loved the fear and panic his spell induces when
+            you are on the receiving end of it.
+          - |
+            Lore Part 1:
+            Cruvenan is a mixture of two latin words.
+
+            'Cru' comes from Cruor which means bloodshed/slaughter
+
+            'Venan' comes from venator which means hunter/tracksman
+
+            Together, it makes Bloodshed Hunter.
+          - |
+            Lore Part 2:
+            I think that his role as a ruthless, merciless king that steps on anything to keep his throne on is the perfect villian for a spell like this.
+
+            One who forces his commands on others with a strong enough will
+          - |
+            Lore Part 3:
+            to literally force his soul to continue even after death envokes the strong desire for blood. He doesn't randomly start killing either.
+
+            Him feeding the weak to the dogs is proof that he discriminately kills and doesn't ponder any of it.
+    info2:
+        type: 387
+        title: "&2Read Before Casting"
+        pages:
+          - |
+            The spell has...
+
+            Kill Reset and Stacking
+
+            Custom Death Event
+
+            A rush of adrenaline when you run towards someone from 80m away.
+
+            Small portion of lore on the hunter cast-item
+          - |
+            The spell has a few problems that I'm able to fix mostly because of Area Effect Spells
+
+            - Targets other monsters when not supposed to.
+            - If opped, will double-cast the AOE spells if cost is ignored.
+          - |
+            - I also happen to be to far gone to add helper-spell: true to the 900 line spell. xd
+
+            - It will slightly bug the speed if more than 1 target is available
+          - |
+            To avoid issues...
+            Target players only for the best experience
+            Each target should ~130m or ~5m from each other.
+            Cast the spell 80m away from a player for the most fun
+            Be opped.
+            Have plently of ram on your server. 2GB should do.
+          - |
+            Have fun!
+BloodHunt_Cast:
+   spell-class: ".MultiSpell"
+   cast-item: hunter
+   name: "&cCruvenan's Contract"
+   cooldown: 30
+   spells:
+      - BloodHunt_Caster_Hunting_Buff
+   effects:
+      charge:
+        position: caster
+        effect: sound
+        sound: entity.elder_guardian.curse
+        pitch: 0.1
+BloodHunt_Info:
+    spell-class: ".instant.ConjureSpell"
+    always-granted: true
+    name: "Spell Guide - Read Before Use"
+    cast-item: stick
+    items:
+        - hunter 1 100%
+        - info1 1 100%
+        - info2 1 100%
+#Pre-Hunt Setup
+BloodHunt_Caster_Hunting_Buff:
+    spell-class: ".buff.DummySpell"
+    duration: 600
+#Nothing... Dummy!
+Dummy_Nothing:
+    spell-class: ".instant.DummySpell"
+
+#Passive Checks
+BloodHunt_Caster_AOEFetch_Passive:
+    spell-class: ".PassiveSpell"
+    triggers:
+        - ticks 5
+    spells:
+        - BloodHunt_Caster_DistanceCheck_AOE
+    modifiers:
+        - buffactive BloodHunt_Caster_Hunting_Buff required
+BloodHunt_Caster_Passive_Hunted:
+    spell-class: ".PassiveSpell"
+    triggers:
+        - ticks 5
+    spells:
+        - BloodHunt_Caster_AOEFetch_Hunted
+    modifiers:
+        - buffactive BloodHunt_Caster_Hunting_Buff required
+BloodHunt_Caster_DeathDeny:
+    spell-class: ".PassiveSpell"
+    cancel-default-action: true
+    triggers:
+        - fataldamage
+    spells:
+        - BloodHunt_Caster_Death_Multi
+    modifiers:
+        - buffactive BloodHunt_Caster_Hunting_Buff required
+    variable-mods-cast:
+        - BloodHunt_Kill_Count 0
+    effects:
+      sound:
+        position: caster
+        effect: sound
+        sound: entity.player.attack.crit
+        pitch: 0.1
+        volume: 3
+BloodHunt_Caster_Kill:
+    spell-class: ".PassiveSpell"
+    triggers:
+        - kill
+    spells:
+        - BloodHunt_Caster_Hunting_Buff
+        - BloodHunt_Caster_Kill_Say
+    modifiers:
+        - variablemorethan BloodHunt_Kill_Count:0 cast BloodHunt_Kill_Stack_1
+        - variablemorethan BloodHunt_Kill_Count:1 cast BloodHunt_Kill_Stack_2
+        - variablemorethan BloodHunt_Kill_Count:2 cast BloodHunt_Kill_Stack_3
+    variable-mods-cast:
+        - BloodHunt_Kill_Count +1
+
+#Kill
+BloodHunt_Caster_Kill_Say:
+    spell-class: ".ExternalCommandSpell"
+    command-to-execute:
+      - say Another! Another! ANOTHER!
+BloodHunt_Kill_Stack_1:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    effects:
+        ring:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: WarpEffect
+                rings: 0
+                particle: REDSTONE
+                color: FF0000
+                offset: 0,2,0
+                radius: 0.5
+                iterations: 600
+                period: 0
+BloodHunt_Kill_Stack_2:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    effects:
+        ring:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: WarpEffect
+                rings: 0
+                particle: REDSTONE
+                color: fad10b
+                offset: 0,2.2,0
+                radius: 0.75
+                iterations: 600
+                period: 0
+BloodHunt_Kill_Stack_3:
+    spell-class: ".buff.DummySpell"
+    duration: 30
+    effects:
+        ring:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: WarpEffect
+                rings: 0
+                particle: REDSTONE
+                color: 000000
+                offset: 0,2.4,0
+                radius: 1
+                iterations: 600
+                period: 0
+
+#Death Buffs
+BloodHunt_Caster_Death_Multi:
+    spell-class: ".MultiSpell"
+    spells:
+      - BloodHunt_Caster_Hunting_Buff
+      - BloodHunt_Caster_Buff_Invunerable
+      - BloodHunt_Caster_Heal
+      - BloodHunt_Caster_Death_Say
+      - BloodHunt_Caster_Blind
+      - BloodHunt_Caster_Stun
+      - DELAY 100
+      - BloodHunt_Caster_Death_Say2
+      - BloodHunt_Caster_Hunting_Buff
+    modifiers:
+      - buffactive BloodHunt_Kill_Stack_1 cast BloodHunt_Kill_Stack_1
+      - buffactive BloodHunt_Kill_Stack_2 cast BloodHunt_Kill_Stack_2
+      - buffactive BloodHunt_Kill_Stack_3 cast BloodHunt_Kill_Stack_3
+BloodHunt_Caster_Stun:
+    spell-class: ".targeted.StunSpell"
+    duration: 4.9
+    target-self: true
+BloodHunt_Caster_Blind:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: 15
+    duration: 120
+    targeted: false
+    strength: 5
+BloodHunt_Caster_Death_Say:
+    spell-class: ".ExternalCommandSpell"
+    command-to-execute:
+      - say His legacy can't end now. I mus... I must...
+BloodHunt_Caster_Death_Say2:
+    spell-class: ".ExternalCommandSpell"
+    command-to-execute:
+      - say I MUST forge it!
+    effects:
+      cloud:
+          position: caster
+          effect: particles
+          particle-name: cloud
+          count: 400
+      sound:
+          position: caster
+          effect: sound
+          sound: entity.endermen.death
+          volume: 3
+          pitch: 0.1
+BloodHunt_Caster_Buff_Invunerable:
+    spell-class: ".buff.InvulnerabilitySpell"
+    duration: 5
+    damage-causes:
+        - block explosion
+        - contact
+        - custom
+        - drowning
+        - entity attack
+        - entity explosion
+        - fall
+        - fire
+        - fire tick
+        - lava
+        - lightning
+        - magic
+        - poison
+        - projectile
+        - starvation
+        - suffocation
+        - void
+        - wither
+    effects:
+        sphere:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 1
+                particle: REDSTONE
+                color: FF0000
+                particles: 200
+                iterations: 100
+                period: 0
+                offset: 0,1,0
+        sphere2:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 1
+                particle: REDSTONE
+                color: FF0000
+                particles: 200
+                iterations: 100
+                period: 0
+                offset: 0,1,0
+        ring:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: WarpEffect
+                radius: 1.5
+                particle: REDSTONE
+                color: 3c3a3a
+                particles: 100
+                iterations: 100
+                period: 0
+                rings: 8
+                offset: 0,0,0
+        atom:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: AtomEffect
+                radius: 2
+                particleNucleus: REDSTONE
+                particleOrbital: REDSTONE
+                colorNucleus: 717171
+                colorOrbital: 717171
+                period: 0
+                offset: 0,1,0
+        wind:
+            position: buff
+            effect: sound
+            sound: entity.horse.breathe
+            pitch: 0.1
+            effect-interval: 5
+BloodHunt_Caster_Heal:
+    spell-class: ".instant.PrayerSpell"
+    amount-healed: 1000
+#Distance AOE Check
+BloodHunt_Caster_AOEFetch_Hunted:
+    horizontal-radius: 2
+    vertical-radius: 5
+    max-targets: 1
+    target-players: true
+    can-target:
+      - players
+    spells:
+      - BloodHunt_Kill_Setup
+BloodHunt_Caster_DistanceCheck_AOE:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 80
+    vertical-radius: 5
+    spells:
+      - Dummy_Nothing
+    max-targets: 1
+    target-players: true
+    entity-target-modifiers:
+      - distancelessthan 80 castinstead BloodHunt_Caster_Distance_Far
+      - distancelessthan 60 castinstead BloodHunt_Caster_Distance_Mid
+      - distancelessthan 40 castinstead BloodHunt_Caster_Distance_Close
+      - distancelessthan 20 castinstead BloodHunt_Caster_Distance_Extreme
+      - distancelessthan 4 castinstead BloodHunt_Kill_Setup
+BloodHunt_Caster_Distance_Far:
+    spell-class: ".TargetedMultiSpell"
+    spells:
+      - BloodHunt_Caster_Speed_1
+BloodHunt_Caster_Distance_Mid:
+    spell-class: ".TargetedMultiSpell"
+    spells:
+      - BloodHunt_Caster_Speed_2
+BloodHunt_Caster_Distance_Close:
+    spell-class: ".TargetedMultiSpell"
+    spells:
+      - BloodHunt_Caster_Speed_3
+BloodHunt_Caster_Distance_Extreme:
+    spell-class: ".TargetedMultiSpell"
+    spells:
+      - BloodHunt_Caster_Speed_4
+BloodHunt_Caster_Speed_1:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: 1
+    duration: 5
+    strength: 0
+    target-self: true
+    effects:
+        dust:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.005
+                particles: 5
+                color: ff0000
+                particle: CLOUD
+                period: 1
+                iterations: 5
+                offset: 0,0.2,0
+        speed1:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: ff0000
+                particle: REDSTONE
+                offset: 0,1,0
+                period: 1
+                iterations: 5
+        speed2:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: ff0000
+                particle: REDSTONE
+                offset: 0,1.2,0
+                period: 1
+                iterations: 5
+        speed3:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: ff0000
+                particle: REDSTONE
+                offset: 0,0.8,0
+                period: 1
+                iterations: 5
+BloodHunt_Caster_Speed_2:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: 1
+    duration: 5
+    strength: 2
+    target-self: true
+    effects:
+        wind:
+            position: caster
+            effect: sound
+            sound: entity.horse.breathe
+            pitch: 0.1
+            volume: 3
+        dust:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.005
+                particles: 5
+                color: ff0000
+                particle: CLOUD
+                period: 1
+                iterations: 5
+                offset: 0,0.2,0
+        speed1:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: ff0000
+                particle: REDSTONE
+                offset: 0,1,0
+                period: 1
+                iterations: 5
+        speed2:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: ff0000
+                particle: REDSTONE
+                offset: 0,1.2,0
+                period: 1
+                iterations: 5
+        speed3:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: ff0000
+                particle: REDSTONE
+                offset: 0,0.8,0
+                period: 1
+                iterations: 5
+BloodHunt_Caster_Speed_3:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: 1
+    duration: 5
+    strength: 5
+    target-self: true
+    effects:
+        ground:
+            position: caster
+            effect: blockbreak
+            id: 2
+        dust:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.005
+                particles: 5
+                color: 000000
+                particle: CLOUD
+                period: 1
+                iterations: 5
+                offset: 0,0.2,0
+        speed1:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: 000000
+                particle: REDSTONE
+                offset: 0,1,0
+                period: 1
+                iterations: 5
+        speed2:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: 000000
+                particle: REDSTONE
+                offset: 0,1.2,0
+                period: 1
+                iterations: 5
+        speed3:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: 000000
+                particle: REDSTONE
+                offset: 0,0.8,0
+                period: 1
+                iterations: 5
+BloodHunt_Caster_Speed_4:
+    spell-class: ".targeted.PotionEffectSpell"
+    type: 1
+    duration: 5
+    strength: 8
+    target-self: true
+    effects:
+        ground:
+            position: caster
+            effect: blockbreak
+            id: 2
+        dust:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.005
+                particles: 5
+                color: ff0000
+                particle: CLOUD
+                period: 1
+                iterations: 5
+                offset: 0,0.2,0
+        speed1:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: 000000
+                particle: REDSTONE
+                offset: 0,1,0
+                period: 1
+                iterations: 5
+        speed2:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: 000000
+                particle: REDSTONE
+                offset: 0,1.2,0
+                period: 1
+                iterations: 5
+        speed3:
+            position: caster
+            effect: effectlibentity
+            effectlib:
+                class: SphereEffect
+                radius: 0.3
+                particles: 5
+                color: 000000
+                particle: REDSTONE
+                offset: 0,0.8,0
+                period: 1
+                iterations: 5
+#KillSpell
+BloodHunt_Kill_Setup:
+    spell-class: ".TargetedMultiSpell"
+    spells:
+        - BloodHunt_Kill_Setup_Self
+BloodHunt_Kill_Setup_Self:
+    spell-class: ".MultiSpell"
+    spells:
+        - BloodHunt_Caster_Hunting_Buff
+        - BloodHunt_Kill_StrikeLeap
+        - BloodHunt_Kill_StrikeForward
+    modifiers:
+        - buffactive BloodHunt_Kill_Stack_1 cast BloodHunt_Kill_Stack_1
+        - buffactive BloodHunt_Kill_Stack_2 cast BloodHunt_Kill_Stack_2
+        - buffactive BloodHunt_Kill_Stack_3 cast BloodHunt_Kill_Stack_3
+BloodHunt_Kill_StrikeLeap:
+    spell-class: ".instant.LeapSpell"
+    forward-velocity: 80
+    upward-velocity: -10
+BloodHunt_Kill_StrikeForward:
+    spell-class: ".MultiSpell"
+    spells:
+        - DELAY 2
+        - BloodHunt_Kill_AOECheck
+    variable-mods-cast:
+        - BloodHunt_Kill_AOELoop 1
+    modifiers:
+        - variablelessthan BloodHunt_Kill_AOELoop:10 cast BloodHunt_Kill_AOECheck
+BloodHunt_Kill_AOECheck:
+    spell-class: ".targeted.AreaEffectSpell"
+    horizontal-radius: 8
+    vertical-radius: 2
+    max-targets: 1
+    spells:
+        - BloodHunt_Kill_Multi_After
+BloodHunt_Kill_Multi_After:
+    spell-class: ".TargetedMultiSpell"
+    spells:
+        - BloodHunt_Kill_Target_Dummy
+        - BloodHunt_Kill_Target_Stun
+        - DELAY 32
+        - BloodHunt_Kill_Pain
+BloodHunt_Kill_Target_Stun:
+    spell-class: ".targeted.StunSpell"
+    duration: 1
+BloodHunt_Kill_Pain:
+    spell-class: ".targeted.PainSpell"
+    damage: 1000
+    effects:
+        sound:
+            position: target
+            effect: sound
+            sound: entity.player.attack.crit
+            volume: 3
+        crit:
+            position: target
+            effect: particles
+            particle-name: Crit
+            count: 50
+            height-offset: 1
+BloodHunt_Kill_Target_Dummy:
+    spell-class: ".targeted.DummySpell"
+    effects:
+        sound1:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+        particle1:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+        sound2:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 2
+        particle2:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 2
+        sound3:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 4
+        particle3:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 4
+        sound4:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 6
+        particle4:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 6
+        sound5:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 8
+        particle5:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 8
+        sound6:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 10
+        particle6:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 10
+        sound7:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 12
+        particle7:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 12
+        sound8:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 14
+        particle8:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 14
+        sound9:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 16
+        particle9:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 16
+        sound10:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 18
+        particle10:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 18
+        sound11:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 20
+        particle11:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 20
+        sound12:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 22
+        particle12:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 22
+        sound13:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 24
+        particle13:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 24
+        sound14:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 26
+        particle14:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 26
+        sound15:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 28
+        particle15:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 28
+        sound16:
+          position: target
+          effect: sound
+          sound: entity.player.attack.sweep
+          pitch: 1
+          volume: 1
+          delay: 30
+        particle16:
+          position: target
+          effect: particles
+          particle-name: cloud
+          count: 10
+          height-offset: 1
+          delay: 30
+        death:
+          position: target
+          effect: sound
+          sound: entity.ghast.death
+          pitch: 1
+          volume: 3
+          delay: 32
