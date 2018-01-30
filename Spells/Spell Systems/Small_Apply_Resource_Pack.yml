@@ -1,0 +1,27 @@
+#######################################################################
+#Pack will auto apply each login after they run the /pack command     #
+#                                                                     #
+#Can be used to make menus with multiple resource packs to load!      #
+#                                                                     #
+#WARNING: Each update will make an entirely new download of the pack  #
+#so frequent updates aren't really practical. Release in waves.       #
+#######################################################################
+Pack_AutoApply:
+    spell-class: ".PassiveSpell"
+    always-granted: true
+    triggers: 
+        - join
+    spells:
+        - Pack_Download
+Pack_Download:
+    spell-class: ".targeted.ResourcePackSpell"
+    always-granted: true
+    incantations: 
+        - "/pack"
+    url: "" #URL directly to zip file here
+    target-self: true
+    effects:
+      Title:
+        position: caster
+        effect: actionbartext
+        message: "&7Pack Loaded!"
