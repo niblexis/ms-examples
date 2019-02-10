@@ -1,0 +1,81 @@
+predefined-items:
+     Composer_Baton:
+          type: stick
+          name: "&6&oComposer's Baton"
+
+Composer-Baton_Sound_G:
+     spell-class: ".instant.DummySpell"
+     cast-item: Composer_Baton
+     name: "&8&lNote: &7&oG"
+     effects:
+          Sound:
+               position: caster
+               effect: sound
+               sound: block.note.harp
+               pitch: 0.529732
+
+Composer-Baton_Sound_A:
+     spell-class: ".instant.DummySpell"
+     cast-item: Composer_Baton
+     name: "&8&lNote: &7&oA"
+     effects:
+          Sound:
+               position: caster
+               effect: sound
+               sound: block.note.harp
+               pitch: 0.594604
+
+Composer-Baton_Sound_B:
+     spell-class: ".instant.DummySpell"
+     cast-item: Composer_Baton
+     name: "&8&lNote: &7&oB"
+     effects:
+          Sound:
+               position: caster
+               effect: sound
+               sound: block.note.harp
+               pitch: 0.667420
+
+Composer-Baton_Sound_C:
+     spell-class: ".instant.DummySpell"
+     cast-item: Composer_Baton
+     name: "&8&lNote: &7&oC"
+     effects:
+          Sound:
+               position: caster
+               effect: sound
+               sound: block.note.harp
+               pitch: 0.707107
+
+Composer-Baton_Sound_D:
+     spell-class: ".instant.DummySpell"
+     cast-item: Composer_Baton
+     name: "&8&lNote: &7&oD"
+     effects:
+          Sound:
+               position: caster
+               effect: sound
+               sound: block.note.harp
+               pitch: 0.793701
+
+Composer-Baton_Sound_E:
+     spell-class: ".instant.DummySpell"
+     cast-item: Composer_Baton
+     name: "&8&lNote: &7&oE"
+     effects:
+          Sound:
+               position: caster
+               effect: sound
+               sound: block.note.harp
+               pitch: 0.890899
+
+Composer-Baton_Sound_F:
+     spell-class: ".instant.DummySpell"
+     cast-item: Composer_Baton
+     name: "&8&lNote: &7&oF"
+     effects:
+          Sound:
+               position: caster
+               effect: sound
+               sound: block.note.harp
+               pitch: 0.943874

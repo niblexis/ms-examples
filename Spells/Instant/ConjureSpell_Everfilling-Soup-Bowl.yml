@@ -1,0 +1,61 @@
+predefined-items:
+     EFSB_Full:
+          type: 282
+          name: "&6&oEver-Filling Soup Bowl [Full]"
+          lore:
+               - "&7&oThis bowl can infinitely generate mushroom soup,"
+               - "&7&othough it requires some water. Right-clicking while"
+               - "&7&osubmerged should fill it up."
+     EFSB_Empty:
+          type: bowl
+          name: "&6&oEver-Filling Soup Bowl [Empty]"
+          lore:
+               - "&7&oThis bowl can infinitely generate mushroom soup,"
+               - "&7&othough it requires some water. Right-clicking while"
+               - "&7&osubmerged should fill it up."
+
+EFSB_Fill_Conjure:
+     spell-class: ".instant.ConjureSpell"
+     right-click-cast-item: EFSB_Empty
+     items:
+          - EFSB_Full
+     add-to-inventory: true
+     cost:
+          - EFSB_Empty 1
+     modifiers:
+          - inblock 8,9 required
+     effects:
+          Particle_sparkle:
+               position: caster
+               effect: particles
+               particle-name: happyVillager
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 50
+               particle-speed: 0.02
+               height-offset: 0.5
+          Sound_splash:
+               position: caster
+               effect: sound
+               sound: entity.generic.splash
+               volume: 1
+               pitch: 1.6
+
+EFSB_Empty_Multi:
+     spell-class: ".MultiSpell"
+     consume-cast-item: EFSB_Full
+     spells:
+          - EFSB_Empty_Conjure(mode=full)
+          - DELAY 1
+          - EFSB_Empty_Remove-Bowl(mode=full)
+
+EFSB_Empty_Conjure:
+     spell-class: ".instant.ConjureSpell"
+     items:
+          - EFSB_Empty
+     add-to-inventory: true
+
+EFSB_Empty_Remove-Bowl:
+     spell-class: ".instant.DummySpell"
+     cost:
+          - bowl 1
