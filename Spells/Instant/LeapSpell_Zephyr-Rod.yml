@@ -1,0 +1,48 @@
+predefined-items:
+     Zephyr_Rod:
+          type: blaze_rod
+          name: "&6&oZephyr Rod"
+          lore:
+               - "&7&oA magic wand that uses a mixture of magical"
+               - "&7&owind and gunpowder to propel the user upward,"
+               - "&7&oYour safety is 40% guaranteed."
+
+Zephyr-Rod_Vertical:
+     spell-class: ".instant.LeapSpell"
+     right-click-cast-item: Zephyr_Rod
+     cooldown: 15
+     forward-velocity: 0.2
+     upward-velocity: 20
+     effects:
+          Particles_Cloud:
+               position: caster
+               effect: effectlib
+               height-offset: 8
+               effectlib:
+                    class: AnimatedBallEffect
+                    particle: CLOUD
+                    iterations: 8
+                    particlesPerIteration: 30
+                    particles: 300
+                    xFactor: 2
+                    yFactor: -10
+                    zFactor: 2
+          Particles_Flame:
+               position: caster
+               effect: effectlib
+               height-offset: 8
+               effectlib:
+                    class: AnimatedBallEffect
+                    particle: FLAME
+                    iterations: 8
+                    particlesPerIteration: 10
+                    particles: 100
+                    xFactor: 2
+                    yFactor: -10
+                    zFactor: 2c
+          Sound:
+               position: caster
+               effect: soundpersonal
+               sound: entity.firework.blast
+               pitch: 1
+               volume: 5

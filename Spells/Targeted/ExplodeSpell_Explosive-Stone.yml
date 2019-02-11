@@ -1,0 +1,97 @@
+predefined-items:
+     Explosive_Stone:
+          type: 433
+          name: "&bExplosive Stone"
+          lore:
+               - "&7&oBlow stuff up with this!"
+
+Explosive-Stone_1_Proj:
+     spell-class: ".instant.ProjectileSpell"
+     name: "&9&lExplosive Stone: &7&oLv. 1"
+     cast-item: Explosive_Stone
+     velocity: 1.5
+     projectile: arrow
+     spells:
+          - Explosive-Stone_1_Explode
+
+Explosive-Stone_1_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 1
+
+Explosive-Stone_2_Proj:
+     spell-class: ".instant.ProjectileSpell"
+     name: "&9&lExplosive Stone: &7&oLv. 2"
+     cast-item: Explosive_Stone
+     velocity: 1.5
+     projectile: arrow
+     spells:
+          - Explosive-Stone_2_Explode
+
+Explosive-Stone_2_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 2
+
+Explosive-Stone_3_Proj:
+     spell-class: ".instant.ProjectileSpell"
+     name: "&9&lExplosive Stone: &7&oLv. 3"
+     cast-item: Explosive_Stone
+     velocity: 1.5
+     projectile: arrow
+     spells:
+          - Explosive-Stone_3_Explode
+
+Explosive-Stone_3_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 3
+
+Explosive-Stone_4_Proj:
+     spell-class: ".instant.ProjectileSpell"
+     name: "&9&lExplosive Stone: &7&oLv. 4"
+     cast-item: Explosive_Stone
+     velocity: 1.5
+     projectile: arrow
+     spells:
+          - Explosive-Stone_4_Explode
+
+Explosive-Stone_4_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 4
+
+Explosive-Stone_5_Proj:
+     spell-class: ".instant.ProjectileSpell"
+     name: "&9&lExplosive Stone: &7&oLv. 5"
+     cast-item: Explosive_Stone
+     velocity: 1.5
+     projectile: arrow
+     spells:
+          - Explosive-Stone_5_Explode
+
+Explosive-Stone_5_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 5
+
+Explosive-Stone_6_Proj:
+     spell-class: ".instant.ProjectileSpell"
+     name: "&9&lExplosive Stone: &7&oLv. 6"
+     cast-item: Explosive_Stone
+     velocity: 1.5
+     projectile: arrow
+     spells:
+          - Explosive-Stone_6_Explode
+
+Explosive-Stone_6_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 6
+
+Explosive-Stone_7_Proj:
+     spell-class: ".instant.ProjectileSpell"
+     name: "&9&lExplosive Stone: &7&oLv. 7"
+     cast-item: Explosive_Stone
+     velocity: 1.5
+     projectile: arrow
+     spells:
+          - Explosive-Stone_7_Explode
+
+Explosive-Stone_7_Explode:
+     spell-class: ".targeted.ExplodeSpell"
+     explosion-size: 7

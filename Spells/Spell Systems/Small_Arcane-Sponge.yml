@@ -1,0 +1,108 @@
+predefined-items:
+     Arcane-Sponge_Dry:
+          type: sponge
+          name: "&6&oArcane Sponge [Dry]"
+          lore:
+               - "&7&oThis sponge is magically enchanted to store"
+               - "&7&oand release water. Local mages have yet to"
+               - "&7&olearn these exist as mundane items, without"
+               - "&7&oany magic."
+     Arcane-Sponge_Wet:
+          type: "19:1"
+          name: "&6&oArcane Sponge [Wet]"
+          lore:
+               - "&7&oThis sponge is magically enchanted to store"
+               - "&7&oand release water. Local mages have yet to"
+               - "&7&olearn these exist as mundane items, without"
+               - "&7&oany magic."
+
+Arcane-Sponge_Fill_Passive:
+     spell-class: ".PassiveSpell"
+     triggers:
+          - sneak
+     modifiers:
+          - holdingprecise Arcane-Sponge_Dry required
+     spells:
+          - Arcane-Sponge_Fill_Conjure(mode=full)
+
+Arcane-Sponge_Fill_Conjure:
+     spell-class: ".instant.ConjureSpell"
+     items:
+          - Arcane-Sponge_Wet 1
+     add-to-inventory: true
+     cost:
+          - Arcane-Sponge_Dry 1
+     str-missing-reagents: ""
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: dripWater
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 50
+               speed: 0.02
+          Sound:
+               position: caster
+               effect: sound
+               sound: entity.generic.splash
+
+Arcane-Sponge_Empty_Multi:
+     spell-class: ".MultiSpell"
+     cast-item: Arcane-Sponge_Wet
+     spells:
+          - Arcane-Sponge_Empty_Throwblock
+          - DELAY 1
+          - Arcane-Sponge_Empty_Throwblock
+          - DELAY 1
+          - Arcane-Sponge_Empty_Throwblock
+          - DELAY 1
+          - Arcane-Sponge_Empty_Throwblock
+          - DELAY 1
+          - Arcane-Sponge_Empty_Throwblock
+          - DELAY 1
+          - Arcane-Sponge_Empty_Throwblock
+          - Arcane-Sponge_Empty_Conjure(mode=full)
+
+Arcane-Sponge_Empty_Throwblock:
+     spell-class: ".instant.ThrowBlockSpell"
+     block-type: lapis_block
+     velocity: 1.5
+     vertical-adjustment: 0
+     prevent-blocks: true
+     spell-on-land: Arcane-Sponge_Dummy
+     effects:
+          Particles:
+               position: caster
+               effect: particles
+               particle-name: dripWater
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 50
+               speed: 0.02
+          Sound:
+               position: caster
+               effect: sound
+               sound: entity.generic.splash
+               volume: 0.3
+
+Arcane-Sponge_Dummy:
+     spell-class: ".targeted.DummySpell"
+     effects:
+          Particles:
+               position: target
+               effect: particles
+               particle-name: dripWater
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               count: 50
+               speed: 0.02
+
+Arcane-Sponge_Empty_Conjure:
+     spell-class: ".instant.ConjureSpell"
+     items:
+          - Arcane-Sponge_Dry 1
+     add-to-inventory: true
+     cost:
+          - Arcane-Sponge_Wet 1
+     str-missing-reagents: ""

@@ -1,0 +1,31 @@
+predefined-items:
+     Wither_Head:
+          type: "397:1"
+          name: "&6&oWither's Head"
+          lore:
+               - "&7&oOne of the three heads of a Wither, it's"
+               - "&7&ocapable of releasing very destructive magic."
+
+Wither-Head_Skull:
+     spell-class: ".instant.WitherSkullSpell"
+     cast-item: Wither_Head
+     charged: false
+     velocity: 2
+     gravity: false
+     fire: false
+     effects:
+          Particles:
+               position: projectile
+               effect: particles
+               particle-name: witchMagic
+               count: 25
+               speed: 0.02
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               height-offset: -0.5
+          Sound:
+               position: projectile
+               effect: sound
+               sound: entity.wither.shoot
+               volume: 0.2
+               pitch: 0.7
