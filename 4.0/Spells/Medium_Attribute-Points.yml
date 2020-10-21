@@ -1,0 +1,189 @@
+variables:
+     Attribute_Points_Available:
+          type: player
+          min: 0
+          max: 9999
+          default: 0
+     Attribute_Points_Acquired:
+          type: player
+          min: 0
+          max: 9999
+          default: 0
+     Attribute_Points_Agility:
+          type: player
+          min: 0
+          max: 50
+          default: 0
+     Attribute_Points_Strength:
+          type: player
+          min: 0
+          max: 50
+          default: 0
+     Attribute_Points_Defense:
+          type: player
+          min: 0
+          max: 50
+          default: 0
+
+Attribute-Points_Acquire:
+     spell-class: ".instant.DummySpell"
+     str-cast-self: "&7&oYou have gained &9&o6 attribute points&7&o."
+     variable-mods-cast:
+          - Attribute_Points_Available +6
+          - Attribute_Points_Acquired +6
+     incantations: ["/attributepoints"]
+     can-cast-by-command: false
+
+##------------------[Attribute Upgrading]------------------##
+
+Attribute-Points_Menu_Main:
+     spell-class: ".MenuSpell"
+     title: "             &8&lAttributes"
+     unique-names: true
+     delay: 1
+     options:
+          Attribute-Points_Reset:
+               slot: 0
+               item: red_stained_glass_pane{name:"&4&lReset Attributes"}
+               spell: Attribute-Points_Menu_Reset(mode=full)
+          Attribute-Points_Counter:
+               slot: 1
+               item: white_stained_glass_pane{name:"&8&lPoints Remaining", lore:["&7%var:Attribute_Points_Available:0%/%var:Attribute_Points_Acquired:0%"]}
+               spell: Attribute-Points_Menu_Main(mode=full)
+               stay-open: true
+          Attribute-Points_Strength:
+               slot: 3
+               item: iron_sword{name:"&c&lStrength", lore:["&8&lPoints &7%var:Attribute_Points_Strength:0%/50", "&7&oDetermines your physical strength."]}
+               spell: Attribute-Points_Strength_Upgrade(mode=full)
+               stay-open: true
+          Attribute-Points_Agility:
+               slot: 4
+               item: feather{name:"&f&lAgility", lore:["&8&lPoints &7%var:Attribute_Points_Agility:0%/50", "&7&oDetermines how fast you run."]}
+               spell: Attribute-Points_Agility_Upgrade(mode=full)
+               stay-open: true
+          Attribute-Points_Defense:
+               slot: 5
+               item: iron_chestplate{name:"&9&lDefense", lore:["&8&lPoints &7%var:Attribute_Points_Defense:0%/50", "&7&oDetermines how much resistance to damage you have."]}
+               spell: Attribute-Points_Defense_Upgrade(mode=full)
+               stay-open: true
+     incantations: ["/attributes"]
+     can-cast-by-command: false
+
+##-----------[Attribute Resetting]-----------##
+
+Attribute-Points_Menu_Reset:
+     spell-class: ".MenuSpell"
+     title: "           &8&lAre You Sure?"
+     unique-names: true
+     delay: 1
+     options:
+          Reset_Deny:
+               slot: 3
+               item: red_stained_glass_pane{name:"&c&lDeny"}
+               spell: Attribute-Points_Menu_Main(mode=full)
+          Reset_Confirm:
+               slot: 5
+               item: lime_stained_glass_pane{name:"&a&lConfirm"}
+               spell: Attribute-Points_Menu_Reset_Confirm_Multi(mode=full)
+     can-cast-by-command: false
+
+Attribute-Points_Menu_Reset_Confirm_Multi:
+     spell-class: ".MultiSpell"
+     cooldown: 1800
+     str-on-cooldown: "&7&oYou can't reset your attribute points for &9&o%c seconds&7&o."
+     spells:
+          - Attribute-Points_Menu_Reset_Confirm_Dummy(mode=full)
+          - Attribute-Points_Menu_Reset_Confirm_Defense_External(mode=full)
+          - Attribute-Points_Menu_Main(mode=full)
+     can-cast-by-command: false
+
+Attribute-Points_Menu_Reset_Confirm_Dummy:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Agility =0
+          - meta_walk_speed =0.2
+          - Attribute_Points_Strength =0
+          - meta_attribute_generic_attack_damage_base =1
+          - Attribute_Points_Defense =0
+          - Attribute_Points_Available =Attribute_Points_Acquired
+     effects:
+        Particles:
+             position: caster
+             effect: particles
+             particle-name: witch
+             horiz-spread: 0.6
+             vert-spread: 0.6
+             count: 16
+             height-offset: 1.5
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.wither.spawn
+             pitch: 1
+             volume: 0.2
+     can-cast-by-command: false
+
+Attribute-Points_Menu_Reset_Confirm_Defense_External:
+     spell-class: ".ExternalCommandSpell"
+     command-to-execute: ["ms variable modify meta_attribute_generic_armor_base %a =0"]
+     execute-on-console-instead: true
+
+##-----------[Strength]-----------##
+
+Attribute-Points_Strength_Upgrade:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Strength +1
+          - meta_attribute_generic_attack_damage_base +0.1
+     cost: [variable Attribute_Points_Available 1]
+     str-missing-reagents: "&7&oYou do not have enough attribute points!"
+     modifiers: [variable Attribute_Points_Strength<50 required]
+     str-modifier-failed: "&7&oYour strength attribute is maxed out!"
+     effects:
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.experience_orb.pickup
+             pitch: 0.8
+             volume: 0.2
+     can-cast-by-command: false
+
+##-----------[Agility]-----------##
+
+Attribute-Points_Agility_Upgrade:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Agility +1
+          - meta_walk_speed +0.003
+     cost: [variable Attribute_Points_Available 1]
+     str-missing-reagents: "&7&oYou do not have enough attribute points!"
+     modifiers: [variable Attribute_Points_Agility<50 required]
+     str-modifier-failed: "&7&oYour agility attribute is maxed out!"
+     effects:
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.experience_orb.pickup
+             pitch: 0.8
+             volume: 0.2
+     can-cast-by-command: false
+
+##-----------[Defense]-----------##
+
+Attribute-Points_Defense_Upgrade:
+     spell-class: ".instant.DummySpell"
+     variable-mods-cast:
+          - Attribute_Points_Defense +1
+          - meta_attribute_generic_armor_base +0.405
+     cost: [variable Attribute_Points_Available 1]
+     str-missing-reagents: "&7&oYou do not have enough attribute points!"
+     modifiers: [variable Attribute_Points_Defense<50 required]
+     str-modifier-failed: "&7&oYour defense attribute is maxed out!"
+     effects:
+        Sound:
+             position: caster
+             effect: soundpersonal
+             sound: entity.experience_orb.pickup
+             pitch: 0.8
+             volume: 0.2
+     can-cast-by-command: false
