@@ -1,0 +1,59 @@
+
+Snow-Bear_Summon:
+     spell-class: ".targeted.SpawnEntitySpell"
+     cooldown: 1000
+     str-on-cooldown: "&7&oYou can't summon &b&oPolaris &7&ofor another &9%c &7&oseconds!"
+     nameplate-text: "&b&oPolaris"
+     nameplate-formatting: true
+     location: caster
+     duration: 600
+     entity:
+          entity: polar_bear
+     attack-spell: Snow-Bear_Attack_Multi(mode=full)
+     effects:
+          Particles_Caster:
+               position: caster
+               effect: particles
+               particle-name: enchanted_hit
+               horiz-spread: 0.55
+               vert-spread: 0.55
+               count: 12
+               speed: 0.001
+          Sound:
+               position: caster
+               effect: sound
+               sound: entity.polar_bear.warning
+               volume: 2
+               pitch: 0.9
+
+Snow-Bear_Attack_Multi:
+     spell-class: ".TargetedMultiSpell"
+     spells: [Snow-Bear_Attack_Freeze(mode=full), Snow-Bear_Attack_Pain(mode=full)]
+
+Snow-Bear_Attack_Freeze:
+     spell-class: ".targeted.PotionEffectSpell"
+     type: slowness
+     targeted: true
+     duration: 100
+     hidden: false
+     strength: 2
+     effects:
+          Particles_Target:
+               position: target
+               effect: effectlibentity
+               height-offset: 0.3
+               effectlib:
+                    class: AnimatedBallEffect
+                    particle: BLOCK_CRACK
+                    material: blue_ice
+                    iterations: 25
+          Sound_Freeze:
+               position: target
+               effect: sound
+               sound: entity.wither.ambient
+               pitch: 0.5
+               volume: 1
+
+Snow-Bear_Attack_Pain:
+     spell-class: ".targeted.PainSpell"
+     damage: 6
