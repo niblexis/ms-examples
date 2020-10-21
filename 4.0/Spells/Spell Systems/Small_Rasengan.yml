@@ -1,0 +1,82 @@
+magic-items:
+     Rasengan:
+          type: "light_blue_stained_glass_pane"
+          name: "&b&oRasengan"
+
+Rasengan_Buff:
+     spell-class: ".buff.DummySpell"
+     right-click-cast-item: Rasengan
+     duration: 15
+     effects:
+          sphere:
+               position: buff
+               effect: effectlibentity
+               effect-interval: 1
+               effectlib:
+                    class: SphereEffect
+                    radius: 0.2
+                    particle: REDSTONE
+                    particles: 10
+                    color: a4c5fc
+                    relativeOffset: 0.08,0.8,0.4
+                    pitch: 0
+                    duration: 20
+          sound:
+               position: buff
+               effect: sound
+               sound: item.elytra.flying
+               volume: 0.5
+               pitch: 2
+               effect-interval: 22
+     can-cast-by-command: false
+
+Rasengan_Passive:
+     spell-class: ".PassiveSpell"
+     triggers: [givedamage]
+     modifiers: [buffactive Rasengan_Buff required]
+     cancel-default-action: true
+     spells: [Rasengan_Hit_Multi(mode=full)]
+     can-cast-by-command: false
+
+Rasengan_Cleanse:
+     spell-class: ".targeted.CleanseSpell"
+     target-self: true
+     remove: ["buff:Rasengan_Buff"]
+     can-cast-by-command: false
+
+Rasengan_Hit_Multi:
+     spell-class: ".MultiSpell"
+     spells:
+          - DELAY 1
+          - Rasengan_Cleanse(mode=full)
+          - Rasengan_Hit_Forcepush(mode=full)
+          - Rasengan_Hit_Pain(mode=full)
+     can-cast-by-command: false
+
+Rasengan_Hit_Forcepush:
+     spell-class: ".instant.ForcepushSpell"
+     target-players: true
+     pushback-force: 15
+     additional-vertical-force: 8
+     can-cast-by-command: false
+
+Rasengan_Hit_Pain:
+     spell-class: ".targeted.PainSpell"
+     damage: 10
+     effects:
+          particles:
+               position: target
+               effect: particles
+               particle-name: firework
+               horiz-spread: 0.3
+               vert-spread: 0.3
+               height-offset: 1
+               speed: 0.02
+               count: 8
+          Sound:
+               position: target
+               effect: sound
+               sound: entity.generic.explode
+               volume: 1
+               pitch: 1
+     can-cast-by-command: false
