@@ -53,17 +53,17 @@ Attribute-Points_Menu_Main:
                stay-open: true
           Attribute-Points_Strength:
                slot: 3
-               item: iron_sword{name:"&c&lStrength", lore:["&8&lPoints &7%var:Attribute_Points_Strength:0%/50", "&7&oDetermines your physical strength."]}
+               item: 'iron_sword{name:"&c&lStrength", lore:["&8&lPoints: &7%var:Attribute_Points_Strength:0%/50", "&7&oDetermines your physical strength."]}'
                spell: Attribute-Points_Strength_Upgrade(mode=full)
                stay-open: true
           Attribute-Points_Agility:
                slot: 4
-               item: feather{name:"&f&lAgility", lore:["&8&lPoints &7%var:Attribute_Points_Agility:0%/50", "&7&oDetermines how fast you run."]}
+               item: 'feather{name:"&f&lAgility", lore:["&8&lPoints: &7%var:Attribute_Points_Agility:0%/50", "&7&oDetermines how fast you run."]}'
                spell: Attribute-Points_Agility_Upgrade(mode=full)
                stay-open: true
           Attribute-Points_Defense:
                slot: 5
-               item: iron_chestplate{name:"&9&lDefense", lore:["&8&lPoints &7%var:Attribute_Points_Defense:0%/50", "&7&oDetermines how much resistance to damage you have."]}
+               item: 'iron_chestplate{name:"&9&lDefense", lore:["&8&lPoints: &7%var:Attribute_Points_Defense:0%/50", "&7&oDetermines how much resistance to damage you have."]}'
                spell: Attribute-Points_Defense_Upgrade(mode=full)
                stay-open: true
      incantations: ["/attributes"]
